@@ -16,14 +16,14 @@ input   wire	i_data_ready1,
 //bottom
 input	wire	[DataWidth-1:0] i_data2,
 input	wire	i_data_valid2,
-output	wire	o_data_ready3,
+output	wire	o_data_ready2,
 output	wire	[DataWidth-1:0] o_data2,
 output	wire	o_data_valid2,
 input	wire	i_data_ready2,
 //right
 input	wire	[DataWidth-1:0] i_data3,
 input	wire	i_data_valid3,
-output	wire	o_data_ready4,
+output	wire	o_data_ready3,
 output	wire	[DataWidth-1:0] o_data3,
 output	wire	o_data_valid3,
 input	wire	i_data_ready3
