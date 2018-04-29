@@ -57,6 +57,7 @@
 packetBuffer your_instance_name (
   .wr_rst_busy(wr_rst_busy),      // output wire wr_rst_busy
   .rd_rst_busy(rd_rst_busy),      // output wire rd_rst_busy
+  .m_aclk(m_aclk),                // input wire m_aclk
   .s_aclk(s_aclk),                // input wire s_aclk
   .s_aresetn(s_aresetn),          // input wire s_aresetn
   .s_axis_tvalid(s_axis_tvalid),  // input wire s_axis_tvalid

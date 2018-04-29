@@ -56,6 +56,7 @@ COMPONENT packetBuffer
   PORT (
     wr_rst_busy : OUT STD_LOGIC;
     rd_rst_busy : OUT STD_LOGIC;
+    m_aclk : IN STD_LOGIC;
     s_aclk : IN STD_LOGIC;
     s_aresetn : IN STD_LOGIC;
     s_axis_tvalid : IN STD_LOGIC;
@@ -76,6 +77,7 @@ your_instance_name : packetBuffer
   PORT MAP (
     wr_rst_busy => wr_rst_busy,
     rd_rst_busy => rd_rst_busy,
+    m_aclk => m_aclk,
     s_aclk => s_aclk,
     s_aresetn => s_aresetn,
     s_axis_tvalid => s_axis_tvalid,
