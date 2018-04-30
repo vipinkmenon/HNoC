@@ -58,6 +58,7 @@
 #------------------------------------------------------------------------------#
 # Set false path on the asynchronous AXI reset port (s_aresetn) to the inputs of synchronizers
 
+#set_false_path -through [get_pins -of [get_cells -hier -filter name=~*rst_wr_reg2_inst*/arststages_ff_reg[1]] -filter {REF_PIN_NAME == Q}] -to [get_pins -of [get_cells -hier -filter name=~*rstblk*/*] -filter {REF_PIN_NAME == PRE}]  
 
 
 ################################################################################
