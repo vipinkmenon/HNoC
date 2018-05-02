@@ -1,5 +1,7 @@
 `timescale 1ns/1ps
 
+`define expectedPkts 16*100
+
 module tb();
 
 reg clk;
@@ -44,6 +46,8 @@ wire [31:0] i_pe12_data;
 wire [31:0] i_pe13_data;
 wire [31:0] i_pe14_data;
 wire [31:0] i_pe15_data;
+
+reg done;
 
 initial
 begin
@@ -197,7 +201,8 @@ pe #(.address(0))pe0(
     .o_data_ready(o_pe0_data_ready),
     .o_data(o_pe0_data),
     .o_data_valid(o_pe0_data_valid),
-    .i_data_ready(i_pe0_data_ready)
+    .i_data_ready(i_pe0_data_ready),
+    .done(done)
 );
 
 pe #(.address(1))pe1(
@@ -208,7 +213,8 @@ pe #(.address(1))pe1(
     .o_data_ready(o_pe1_data_ready),
     .o_data(o_pe1_data),
     .o_data_valid(o_pe1_data_valid),
-    .i_data_ready(i_pe1_data_ready)
+    .i_data_ready(i_pe1_data_ready),
+    .done(done)
 );
 
 pe #(.address(2))pe2(
@@ -219,7 +225,8 @@ pe #(.address(2))pe2(
     .o_data_ready(o_pe2_data_ready),
     .o_data(o_pe2_data),
     .o_data_valid(o_pe2_data_valid),
-    .i_data_ready(i_pe2_data_ready)
+    .i_data_ready(i_pe2_data_ready),
+    .done(done)
 );
 
 pe #(.address(3))pe3(
@@ -230,7 +237,8 @@ pe #(.address(3))pe3(
     .o_data_ready(o_pe3_data_ready),
     .o_data(o_pe3_data),
     .o_data_valid(o_pe3_data_valid),
-    .i_data_ready(i_pe3_data_ready)
+    .i_data_ready(i_pe3_data_ready),
+    .done(done)
 );
 
 pe #(.address(4))pe4(
@@ -241,7 +249,8 @@ pe #(.address(4))pe4(
     .o_data_ready(o_pe4_data_ready),
     .o_data(o_pe4_data),
     .o_data_valid(o_pe4_data_valid),
-    .i_data_ready(i_pe4_data_ready)
+    .i_data_ready(i_pe4_data_ready),
+    .done(done)
 );
 
 pe #(.address(5))pe5(
@@ -252,7 +261,8 @@ pe #(.address(5))pe5(
     .o_data_ready(o_pe5_data_ready),
     .o_data(o_pe5_data),
     .o_data_valid(o_pe5_data_valid),
-    .i_data_ready(i_pe5_data_ready)
+    .i_data_ready(i_pe5_data_ready),
+    .done(done)
 );
 
 pe #(.address(6))pe6(
@@ -263,7 +273,8 @@ pe #(.address(6))pe6(
     .o_data_ready(o_pe6_data_ready),
     .o_data(o_pe6_data),
     .o_data_valid(o_pe6_data_valid),
-    .i_data_ready(i_pe6_data_ready)
+    .i_data_ready(i_pe6_data_ready),
+    .done(done)
 );
 
 pe #(.address(7))pe7(
@@ -274,7 +285,8 @@ pe #(.address(7))pe7(
     .o_data_ready(o_pe7_data_ready),
     .o_data(o_pe7_data),
     .o_data_valid(o_pe7_data_valid),
-    .i_data_ready(i_pe7_data_ready)
+    .i_data_ready(i_pe7_data_ready),
+    .done(done)
 );
 
 pe #(.address(8))pe8(
@@ -285,7 +297,8 @@ pe #(.address(8))pe8(
     .o_data_ready(o_pe8_data_ready),
     .o_data(o_pe8_data),
     .o_data_valid(o_pe8_data_valid),
-    .i_data_ready(i_pe8_data_ready)
+    .i_data_ready(i_pe8_data_ready),
+    .done(done)
 );
 
 pe #(.address(9))pe9(
@@ -296,7 +309,8 @@ pe #(.address(9))pe9(
     .o_data_ready(o_pe9_data_ready),
     .o_data(o_pe9_data),
     .o_data_valid(o_pe9_data_valid),
-    .i_data_ready(i_pe9_data_ready)
+    .i_data_ready(i_pe9_data_ready),
+    .done(done)
 );
 
 pe #(.address(10))pe10(
@@ -307,7 +321,8 @@ pe #(.address(10))pe10(
     .o_data_ready(o_pe10_data_ready),
     .o_data(o_pe10_data),
     .o_data_valid(o_pe10_data_valid),
-    .i_data_ready(i_pe10_data_ready)
+    .i_data_ready(i_pe10_data_ready),
+    .done(done)
 );
 
 pe #(.address(11))pe11(
@@ -318,7 +333,8 @@ pe #(.address(11))pe11(
     .o_data_ready(o_pe11_data_ready),
     .o_data(o_pe11_data),
     .o_data_valid(o_pe11_data_valid),
-    .i_data_ready(i_pe11_data_ready)
+    .i_data_ready(i_pe11_data_ready),
+    .done(done)
 );
 
 pe #(.address(12))pe12(
@@ -329,7 +345,8 @@ pe #(.address(12))pe12(
     .o_data_ready(o_pe12_data_ready),
     .o_data(o_pe12_data),
     .o_data_valid(o_pe12_data_valid),
-    .i_data_ready(i_pe12_data_ready)
+    .i_data_ready(i_pe12_data_ready),
+    .done(done)
 );
 
 pe #(.address(13))pe13(
@@ -340,7 +357,8 @@ pe #(.address(13))pe13(
     .o_data_ready(o_pe13_data_ready),
     .o_data(o_pe13_data),
     .o_data_valid(o_pe13_data_valid),
-    .i_data_ready(i_pe13_data_ready)
+    .i_data_ready(i_pe13_data_ready),
+    .done(done)
 );
 
 pe #(.address(14))pe14(
@@ -351,7 +369,8 @@ pe #(.address(14))pe14(
     .o_data_ready(o_pe14_data_ready),
     .o_data(o_pe14_data),
     .o_data_valid(o_pe14_data_valid),
-    .i_data_ready(i_pe14_data_ready)
+    .i_data_ready(i_pe14_data_ready),
+    .done(done)
 );
 
 pe #(.address(15))pe15(
@@ -362,7 +381,8 @@ pe #(.address(15))pe15(
     .o_data_ready(o_pe15_data_ready),
     .o_data(o_pe15_data),
     .o_data_valid(o_pe15_data_valid),
-    .i_data_ready(i_pe15_data_ready)
+    .i_data_ready(i_pe15_data_ready),
+    .done(done)
 );
 
 always @(posedge clk)
@@ -370,9 +390,18 @@ begin
     if(rst)
         receivedPkts = 0;
     else
+    begin
         receivedPkts = receivedPkts + i_pe0_data_valid + i_pe1_data_valid + i_pe2_data_valid + i_pe3_data_valid +
         i_pe4_data_valid + i_pe5_data_valid + i_pe6_data_valid + i_pe7_data_valid + i_pe8_data_valid + i_pe9_data_valid +
         i_pe10_data_valid + i_pe11_data_valid + i_pe12_data_valid + i_pe13_data_valid + i_pe14_data_valid + i_pe15_data_valid;
+        
+        if(receivedPkts == `expectedPkts)
+        begin
+            done = 1;
+            #1000;
+            $stop;
+        end
+    end
 end
 
 endmodule
