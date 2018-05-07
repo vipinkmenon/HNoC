@@ -1,6 +1,6 @@
 `timescale 1ns/1ps
 
-`define expectedPkts 16*100
+`define expectedPkts 4*100
 
 module tb();
 

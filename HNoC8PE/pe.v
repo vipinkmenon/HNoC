@@ -1,7 +1,7 @@
 `timescale 1ns/1ps
 
 `define PktLmit 100
-module pe #(address = 0)(
+module pe #(address = 0,numPe=8)(
 input clk,
 input rst,
 input [31:0] i_data,
@@ -45,7 +45,7 @@ begin
     begin
         data = `PktLmit*address + i;
         i = i+1;
-        peaddress = $urandom(seed)%16;
+        peaddress = $urandom(seed)%numPe;
         seed = seed + 1;
         sendData({peaddress,data});
     end
