@@ -47,6 +47,8 @@ wire [31:0] i_pe13_data;
 wire [31:0] i_pe14_data;
 wire [31:0] i_pe15_data;
 
+integer start,stop,delay;
+
 reg done;
 
 initial
@@ -72,6 +74,8 @@ begin
     @(posedge clk);
     @(posedge clk);
     rst = 0;
+    wait(i_pe0_data_ready);
+    start = $time;
 end
 
 HNoC HNoC(
@@ -398,7 +402,11 @@ begin
         if(receivedPkts == `expectedPkts)
         begin
             done = 1;
+            stop = $time;
+            $display("Start time %d Stop time %d",start,stop);
+            $display("Throughput : %f",`expectedPkts*1.0/((stop-start)/10.0));
             #1000;
+            $fclose(receive_log_file_name);
             $stop;
         end
     end

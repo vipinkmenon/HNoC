@@ -3,7 +3,7 @@
 <!--                                                         -->
 <!-- Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.   -->
 
-<Project Version="7" Minor="32" Path="C:/Users/vipin.kizheppatt/OneDrive/Reserch/mygit/HNoC/HNoC16PE/project_1.xpr">
+<Project Version="7" Minor="32" Path="/home/vipin/workspace/Research/HNoC/HNoC16PE/project_1.xpr">
   <DefaultLaunch Dir="$PRUNDIR"/>
   <Configuration>
     <Option Name="Id" Val="c9ff669558ff44b2b7a4c27a1ab20cde"/>
@@ -31,7 +31,7 @@
     <Option Name="DSAVendor" Val="xilinx"/>
     <Option Name="DSABoardId" Val="vc709"/>
     <Option Name="DSANumComputeUnits" Val="16"/>
-    <Option Name="WTXSimLaunchSim" Val="128"/>
+    <Option Name="WTXSimLaunchSim" Val="155"/>
     <Option Name="WTModelSimLaunchSim" Val="0"/>
     <Option Name="WTQuestaLaunchSim" Val="0"/>
     <Option Name="WTIesLaunchSim" Val="0"/>
@@ -77,6 +77,13 @@
         </FileInfo>
       </File>
       <File Path="$PPRDIR/switch.v">
+        <FileInfo>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/switch2.v">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
@@ -184,23 +191,27 @@
     <Simulator Name="Questa">
       <Option Name="Description" Val="Questa Advanced Simulator"/>
     </Simulator>
+    <Simulator Name="IES">
+      <Option Name="Description" Val="Incisive Enterprise Simulator (IES)"/>
+    </Simulator>
+    <Simulator Name="VCS">
+      <Option Name="Description" Val="Verilog Compiler Simulator (VCS)"/>
+    </Simulator>
     <Simulator Name="Riviera">
       <Option Name="Description" Val="Riviera-PRO Simulator"/>
     </Simulator>
-    <Simulator Name="ActiveHDL">
-      <Option Name="Description" Val="Active-HDL Simulator"/>
-    </Simulator>
   </Simulators>
   <Runs Version="1" Minor="10">
-    <Run Id="synth_1" Type="Ft3:Synth" SrcSet="sources_1" Part="xc7vx690tffg1761-2" ConstrsSet="constrs_1" Description="Vivado Synthesis Defaults" WriteIncrSynthDcp="false" State="current" IncludeInArchive="true">
+    <Run Id="synth_1" Type="Ft3:Synth" SrcSet="sources_1" Part="xc7vx690tffg1761-2" ConstrsSet="constrs_1" Description="Vivado Synthesis Defaults" WriteIncrSynthDcp="false" State="current" Dir="$PRUNDIR/synth_1" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2017"/>
         <Step Id="synth_design"/>
       </Strategy>
+      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
       <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2017">
         <ReportConfig Name="synth_1_synth_report_utilization_0" Spec="report_utilization" RunStep="synth_design" ReportFile="HNoC_utilization_synth.rpt" Version="1" Minor="0">
           <ReportConfigOption Name="dummy_option" Type="string"/>
-          <ReportConfigOutputOption Name="pb" Type="string" Value=""/>
+          <ReportConfigOutputOption Name="pb" Type="string" Value="HNoC_utilization_synth.pb"/>
         </ReportConfig>
         <ReportConfig Name="synth_1_synth_synthesis_report_0" Spec="" RunStep="synth_design" ReportFile="HNoC.vds">
           <ReportConfigOption Name="dummy_option" Type="string"/>
@@ -208,15 +219,16 @@
       </ReportStrategy>
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
     </Run>
-    <Run Id="packetBuffer_synth_1" Type="Ft3:Synth" SrcSet="packetBuffer" Part="xc7vx690tffg1761-2" ConstrsSet="packetBuffer" Description="Vivado Synthesis Defaults" WriteIncrSynthDcp="false" IncludeInArchive="true">
+    <Run Id="packetBuffer_synth_1" Type="Ft3:Synth" SrcSet="packetBuffer" Part="xc7vx690tffg1761-2" ConstrsSet="packetBuffer" Description="Vivado Synthesis Defaults" WriteIncrSynthDcp="false" Dir="$PRUNDIR/packetBuffer_synth_1" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2017"/>
         <Step Id="synth_design"/>
       </Strategy>
+      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
       <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2017">
         <ReportConfig Name="packetBuffer_synth_1_synth_report_utilization_0" Spec="report_utilization" RunStep="synth_design" ReportFile="packetBuffer_utilization_synth.rpt" Version="1" Minor="0">
           <ReportConfigOption Name="dummy_option" Type="string"/>
-          <ReportConfigOutputOption Name="pb" Type="string" Value=""/>
+          <ReportConfigOutputOption Name="pb" Type="string" Value="packetBuffer_utilization_synth.pb"/>
         </ReportConfig>
         <ReportConfig Name="packetBuffer_synth_1_synth_synthesis_report_0" Spec="" RunStep="synth_design" ReportFile="packetBuffer.vds">
           <ReportConfigOption Name="dummy_option" Type="string"/>
@@ -224,15 +236,16 @@
       </ReportStrategy>
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
     </Run>
-    <Run Id="SyncFifo_synth_1" Type="Ft3:Synth" SrcSet="SyncFifo" Part="xc7vx690tffg1761-2" ConstrsSet="SyncFifo" Description="Vivado Synthesis Defaults" WriteIncrSynthDcp="false" IncludeInArchive="true">
+    <Run Id="SyncFifo_synth_1" Type="Ft3:Synth" SrcSet="SyncFifo" Part="xc7vx690tffg1761-2" ConstrsSet="SyncFifo" Description="Vivado Synthesis Defaults" WriteIncrSynthDcp="false" Dir="$PRUNDIR/SyncFifo_synth_1" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2017"/>
         <Step Id="synth_design"/>
       </Strategy>
+      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
       <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2017">
         <ReportConfig Name="SyncFifo_synth_1_synth_report_utilization_0" Spec="report_utilization" RunStep="synth_design" ReportFile="SyncFifo_utilization_synth.rpt" Version="1" Minor="0">
           <ReportConfigOption Name="dummy_option" Type="string"/>
-          <ReportConfigOutputOption Name="pb" Type="string" Value=""/>
+          <ReportConfigOutputOption Name="pb" Type="string" Value="SyncFifo_utilization_synth.pb"/>
         </ReportConfig>
         <ReportConfig Name="SyncFifo_synth_1_synth_synthesis_report_0" Spec="" RunStep="synth_design" ReportFile="SyncFifo.vds">
           <ReportConfigOption Name="dummy_option" Type="string"/>
@@ -240,15 +253,16 @@
       </ReportStrategy>
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
     </Run>
-    <Run Id="clockGen_synth_1" Type="Ft3:Synth" SrcSet="clockGen" Part="xc7vx690tffg1761-2" ConstrsSet="clockGen" Description="Vivado Synthesis Defaults" WriteIncrSynthDcp="false" IncludeInArchive="true">
+    <Run Id="clockGen_synth_1" Type="Ft3:Synth" SrcSet="clockGen" Part="xc7vx690tffg1761-2" ConstrsSet="clockGen" Description="Vivado Synthesis Defaults" WriteIncrSynthDcp="false" Dir="$PRUNDIR/clockGen_synth_1" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2017"/>
         <Step Id="synth_design"/>
       </Strategy>
+      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
       <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2017">
         <ReportConfig Name="clockGen_synth_1_synth_report_utilization_0" Spec="report_utilization" RunStep="synth_design" ReportFile="clockGen_utilization_synth.rpt" Version="1" Minor="0">
           <ReportConfigOption Name="dummy_option" Type="string"/>
-          <ReportConfigOutputOption Name="pb" Type="string" Value=""/>
+          <ReportConfigOutputOption Name="pb" Type="string" Value="clockGen_utilization_synth.pb"/>
         </ReportConfig>
         <ReportConfig Name="clockGen_synth_1_synth_synthesis_report_0" Spec="" RunStep="synth_design" ReportFile="clockGen.vds">
           <ReportConfigOption Name="dummy_option" Type="string"/>

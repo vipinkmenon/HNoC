@@ -29,18 +29,6 @@ begin
     o_data_valid = 1'b0;
     seed = address;
     wait(~rst);
-    @(posedge clk);
-    @(posedge clk);
-    @(posedge clk);
-    @(posedge clk);
-    @(posedge clk);
-    @(posedge clk);
-    @(posedge clk);
-    @(posedge clk);
-    @(posedge clk);
-    @(posedge clk);
-    @(posedge clk);
-    @(posedge clk);
     repeat(`PktLmit)
     begin
         data = `PktLmit*address + i;

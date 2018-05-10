@@ -39,7 +39,7 @@ wire [31:0] switch2to1data;
 wire        switch2to1dataValid;
 wire        switch2to1dataReady;
 
-switch #(
+switch2 #(
 .DataWidth(32),
 .bottomMin(sw1bottomMin),
 .bottomMax(sw1bottomMax),
@@ -72,7 +72,7 @@ switch #(
     .i_data_ready3(switch1to2dataReady)
 );
 
-switch #(
+switch2 #(
 .DataWidth(32),
 .bottomMin(sw2bottomMin),
 .bottomMax(sw2bottomMax),
