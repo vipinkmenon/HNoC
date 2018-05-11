@@ -1,6 +1,13 @@
 `timescale 1ns/1ps
 
-`define expectedPkts 8*100
+`define NUMPE 8
+`define PktLimit 100
+`define expectedPkts `NUMPE*`PktLimit
+`define DataWidth 32
+`define AddressWidth $clog2(`NUMPE)
+`define TotalWidth `DataWidth+`AddressWidth
+`define Period 10
+
 
 module tb();
 
@@ -12,40 +19,26 @@ reg[31:0] receivedPkts=0;
 integer               receive_log_file;
 reg   [100*8:0]       receive_log_file_name = "receive_log.csv";
 
-wire [31:0] o_pe0_data;
-wire [31:0] o_pe1_data;
-wire [31:0] o_pe2_data;
-wire [31:0] o_pe3_data;
-wire [31:0] o_pe4_data;
-wire [31:0] o_pe5_data;
-wire [31:0] o_pe6_data;
-wire [31:0] o_pe7_data;
-wire [31:0] o_pe8_data;
-wire [31:0] o_pe9_data;
-wire [31:0] o_pe10_data;
-wire [31:0] o_pe11_data;
-wire [31:0] o_pe12_data;
-wire [31:0] o_pe13_data;
-wire [31:0] o_pe14_data;
-wire [31:0] o_pe15_data;
+wire [`TotalWidth-1:0] o_pe0_data;
+wire [`TotalWidth-1:0] o_pe1_data;
+wire [`TotalWidth-1:0] o_pe2_data;
+wire [`TotalWidth-1:0] o_pe3_data;
+wire [`TotalWidth-1:0] o_pe4_data;
+wire [`TotalWidth-1:0] o_pe5_data;
+wire [`TotalWidth-1:0] o_pe6_data;
+wire [`TotalWidth-1:0] o_pe7_data;
 
 
-wire [31:0] i_pe0_data;
-wire [31:0] i_pe1_data;
-wire [31:0] i_pe2_data;
-wire [31:0] i_pe3_data;
-wire [31:0] i_pe4_data;
-wire [31:0] i_pe5_data;
-wire [31:0] i_pe6_data;
-wire [31:0] i_pe7_data;
-wire [31:0] i_pe8_data;
-wire [31:0] i_pe9_data;
-wire [31:0] i_pe10_data;
-wire [31:0] i_pe11_data;
-wire [31:0] i_pe12_data;
-wire [31:0] i_pe13_data;
-wire [31:0] i_pe14_data;
-wire [31:0] i_pe15_data;
+wire [`TotalWidth-1:0] i_pe0_data;
+wire [`TotalWidth-1:0] i_pe1_data;
+wire [`TotalWidth-1:0] i_pe2_data;
+wire [`TotalWidth-1:0] i_pe3_data;
+wire [`TotalWidth-1:0] i_pe4_data;
+wire [`TotalWidth-1:0] i_pe5_data;
+wire [`TotalWidth-1:0] i_pe6_data;
+wire [`TotalWidth-1:0] i_pe7_data;
+
+integer start,stop,delay;
 
 reg done;
 
@@ -56,7 +49,7 @@ begin
     forever
     begin
         clk = ~clk;
-        #5;
+        #(`Period/2);
     end
 end
 
@@ -72,9 +65,12 @@ begin
     @(posedge clk);
     @(posedge clk);
     rst = 0;
+    wait(i_pe0_data_ready);
+    start = $time;
 end
 
-HNoC HNoC(
+HNoC #(.DataWidth(`DataWidth),.numPE(`NUMPE),.AddrWidth(`AddressWidth))
+    HNoC(
     .i_clk(clk),
     .i_reset(rst),
     
@@ -244,7 +240,11 @@ begin
         if(receivedPkts == `expectedPkts)
         begin
             done = 1;
+            stop = $time;
+            $display("Start time %d Stop time %d",start,stop);
+            $display("Throughput : %f",`expectedPkts*1.0/((stop-start)/`Period));
             #1000;
+            $fclose(receive_log_file_name);
             $stop;
         end
     end

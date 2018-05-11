@@ -1,13 +1,12 @@
 `timescale 1ns/1ps
 
-`define PktLmit 100
-module pe #(address = 0,numPe=8)(
+module pe #(address = 0,numPE=8,AddressWidth=3,DataWidth=32,TotalWidth=35,PktLmit=100)(
 input clk,
 input rst,
-input [31:0] i_data,
+input [TotalWidth-1:0] i_data,
 input i_data_valid,
 output o_data_ready,
-output reg [31:0] o_data,
+output reg [TotalWidth-1:0] o_data,
 output reg o_data_valid,
 input i_data_ready,
 input done
@@ -15,9 +14,9 @@ input done
 
 integer receivedPkts = 0;
 assign o_data_ready = 1'b1;
-reg [7:0] peaddress = 3;
+reg [AddressWidth-1:0] peaddress;
 integer seed;
-reg [23:0] data;
+reg [DataWidth-1:0] data;
 integer i=0;
 integer               receive_log_file;
 reg   [100*8:0]       receive_log_file_name = "receive_log.csv";
@@ -29,23 +28,11 @@ begin
     o_data_valid = 1'b0;
     seed = address;
     wait(~rst);
-    @(posedge clk);
-    @(posedge clk);
-    @(posedge clk);
-    @(posedge clk);
-    @(posedge clk);
-    @(posedge clk);
-    @(posedge clk);
-    @(posedge clk);
-    @(posedge clk);
-    @(posedge clk);
-    @(posedge clk);
-    @(posedge clk);
-    repeat(`PktLmit)
+    repeat(PktLmit)
     begin
-        data = `PktLmit*address + i;
+        data = PktLmit*address + i;
         i = i+1;
-        peaddress = $urandom(seed)%numPe;
+        peaddress = $urandom(seed)%16;
         seed = seed + 1;
         sendData({peaddress,data});
     end
@@ -56,7 +43,7 @@ always @(posedge clk)
 begin
     if(i_data_valid)
     begin
-       $fwrite(receive_log_file,"%0d,%0d,%d\n",address,i_data[31:24],i_data[23:0]);
+       $fwrite(receive_log_file,"%0d,%0d,%d\n",address,i_data[DataWidth+:AddressWidth],i_data[DataWidth-1:0]);
        $fflush(receive_log_file);
        receivedPkts = receivedPkts + 1;
     end
@@ -64,7 +51,7 @@ end
 
 
 task sendData;
-    input [31:0] data;
+    input [TotalWidth-1:0] data;
     begin
         o_data_valid <= 1'b1;
         o_data <= data;

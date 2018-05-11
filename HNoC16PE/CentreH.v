@@ -1,4 +1,4 @@
-module CentreH #(parameter DataWidth = 32,sw1bottomMin=0,sw1bottomMax=0,sw1topMin=1,sw1topMax=1,sw2bottomMin=2,sw2bottomMax=2,sw2topMin=3,sw2topMax=3)(
+module CentreH #(parameter DataWidth = 36,AddrWidth = 4,sw1bottomMin=0,sw1bottomMax=0,sw1topMin=1,sw1topMax=1,sw2bottomMin=2,sw2bottomMax=2,sw2topMin=3,sw2topMax=3)(
 input   wire    i_sclk,
 input   wire    i_mclk,
 input   wire    i_reset,
@@ -32,15 +32,15 @@ output	wire	o_bottomRight_data_valid,
 input   wire	i_bottomRight_data_ready
 );
 
-wire [31:0] switch1to2data;
+wire [DataWidth-1:0] switch1to2data;
 wire        switch1to2dataValid;
 wire        switch1to2dataReady;
-wire [31:0] switch2to1data;
+wire [DataWidth-1:0] switch2to1data;
 wire        switch2to1dataValid;
 wire        switch2to1dataReady;
 
 switch2 #(
-.DataWidth(32),
+.DataWidth(DataWidth),
 .bottomMin(sw1bottomMin),
 .bottomMax(sw1bottomMax),
 .topMin(sw1topMin),
@@ -73,7 +73,7 @@ switch2 #(
 );
 
 switch2 #(
-.DataWidth(32),
+.DataWidth(DataWidth),
 .bottomMin(sw2bottomMin),
 .bottomMax(sw2bottomMax),
 .topMin(sw2topMin),

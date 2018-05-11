@@ -1,4 +1,5 @@
-module switchSingleClock #(parameter DataWidth = 32,
+module switchSingleClock #(parameter DataWidth = 36,
+AddrWidth = 4,
 bottomMin = 0,
 bottomMax = 0,
 topMin = 1,
@@ -30,7 +31,7 @@ input	wire	i_data_ready3
 );
 
 
-wire [31:0] bufferData[1:3];
+wire [DataWidth-1:0] bufferData[1:3];
 
 wire [1:3] bufferDataAvail;
 wire buffer2Top;
@@ -48,11 +49,11 @@ reg [1:0] currTopBuffer;
 reg [1:0] currBottomBuffer;
 reg [1:0] currRightBuffer;
 
-assign buffer2Top = bufferDataAvail[2] & (bufferData[2][31:24] >= topMin) & (bufferData[2][31:24] <= topMax); 
-assign buffer3Top = bufferDataAvail[3] & (bufferData[3][31:24] >= topMin) & (bufferData[3][31:24] <= topMax);  
+assign buffer2Top = bufferDataAvail[2] & (bufferData[2][DataWidth-1-:AddrWidth] >= topMin) & (bufferData[2][DataWidth-1-:AddrWidth] <= topMax); 
+assign buffer3Top = bufferDataAvail[3] & (bufferData[3][DataWidth-1-:AddrWidth] >= topMin) & (bufferData[3][DataWidth-1-:AddrWidth] <= topMax);  
 
-assign buffer1Bottom = bufferDataAvail[1] & (bufferData[1][31:24] >= bottomMin) & (bufferData[1][31:24] <= bottomMax);
-assign buffer3Bottom = bufferDataAvail[3] & (bufferData[3][31:24] >= bottomMin) & (bufferData[3][31:24] <= bottomMax);
+assign buffer1Bottom = bufferDataAvail[1] & (bufferData[1][DataWidth-1-:AddrWidth] >= bottomMin) & (bufferData[1][DataWidth-1-:AddrWidth] <= bottomMax);
+assign buffer3Bottom = bufferDataAvail[3] & (bufferData[3][DataWidth-1-:AddrWidth] >= bottomMin) & (bufferData[3][DataWidth-1-:AddrWidth] <= bottomMax);
 
 
 assign buffer1Right = bufferDataAvail[1] & ~buffer1Bottom;

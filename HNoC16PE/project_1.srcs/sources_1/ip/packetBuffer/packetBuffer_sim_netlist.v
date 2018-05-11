@@ -1,10 +1,10 @@
 // Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
-// Tool Version: Vivado v.2017.3 (lin64) Build 2018833 Wed Oct  4 19:58:07 MDT 2017
-// Date        : Thu May 10 15:14:42 2018
-// Host        : vipin-ESPRIMO-P756 running 64-bit Ubuntu 16.04.4 LTS
+// Tool Version: Vivado v.2017.3 (win64) Build 2018833 Wed Oct  4 19:58:22 MDT 2017
+// Date        : Fri May 11 01:31:13 2018
+// Host        : DESKTOP-9OFN2NK running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
-//               /home/vipin/workspace/Research/HNoC/HNoC16PE/project_1.srcs/sources_1/ip/packetBuffer/packetBuffer_sim_netlist.v
+//               C:/Users/vipin.kizheppatt/OneDrive/Reserch/mygit/HNoC/HNoC16PE/project_1.srcs/sources_1/ip/packetBuffer/packetBuffer_sim_netlist.v
 // Design      : packetBuffer
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -31,21 +31,21 @@ module packetBuffer
   (* x_interface_info = "xilinx.com:signal:clock:1.0 master_aclk CLK" *) (* x_interface_parameter = "XIL_INTERFACENAME master_aclk, ASSOCIATED_BUSIF M_AXIS:M_AXI, FREQ_HZ 100000000, PHASE 0.000" *) input m_aclk;
   (* x_interface_info = "xilinx.com:signal:clock:1.0 slave_aclk CLK" *) (* x_interface_parameter = "XIL_INTERFACENAME slave_aclk, ASSOCIATED_BUSIF S_AXIS:S_AXI, ASSOCIATED_RESET s_aresetn, FREQ_HZ 100000000, PHASE 0.000" *) input s_aclk;
   (* x_interface_info = "xilinx.com:signal:reset:1.0 slave_aresetn RST" *) (* x_interface_parameter = "XIL_INTERFACENAME slave_aresetn, POLARITY ACTIVE_LOW" *) input s_aresetn;
-  (* x_interface_info = "xilinx.com:interface:axis:1.0 S_AXIS TVALID" *) (* x_interface_parameter = "XIL_INTERFACENAME S_AXIS, TDATA_NUM_BYTES 4, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 100000000, PHASE 0.000, LAYERED_METADATA undef" *) input s_axis_tvalid;
+  (* x_interface_info = "xilinx.com:interface:axis:1.0 S_AXIS TVALID" *) (* x_interface_parameter = "XIL_INTERFACENAME S_AXIS, TDATA_NUM_BYTES 8, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 100000000, PHASE 0.000, LAYERED_METADATA undef" *) input s_axis_tvalid;
   (* x_interface_info = "xilinx.com:interface:axis:1.0 S_AXIS TREADY" *) output s_axis_tready;
-  (* x_interface_info = "xilinx.com:interface:axis:1.0 S_AXIS TDATA" *) input [31:0]s_axis_tdata;
-  (* x_interface_info = "xilinx.com:interface:axis:1.0 M_AXIS TVALID" *) (* x_interface_parameter = "XIL_INTERFACENAME M_AXIS, TDATA_NUM_BYTES 4, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 100000000, PHASE 0.000, LAYERED_METADATA undef" *) output m_axis_tvalid;
+  (* x_interface_info = "xilinx.com:interface:axis:1.0 S_AXIS TDATA" *) input [63:0]s_axis_tdata;
+  (* x_interface_info = "xilinx.com:interface:axis:1.0 M_AXIS TVALID" *) (* x_interface_parameter = "XIL_INTERFACENAME M_AXIS, TDATA_NUM_BYTES 8, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 100000000, PHASE 0.000, LAYERED_METADATA undef" *) output m_axis_tvalid;
   (* x_interface_info = "xilinx.com:interface:axis:1.0 M_AXIS TREADY" *) input m_axis_tready;
-  (* x_interface_info = "xilinx.com:interface:axis:1.0 M_AXIS TDATA" *) output [31:0]m_axis_tdata;
+  (* x_interface_info = "xilinx.com:interface:axis:1.0 M_AXIS TDATA" *) output [63:0]m_axis_tdata;
 
   wire m_aclk;
-  wire [31:0]m_axis_tdata;
+  wire [63:0]m_axis_tdata;
   wire m_axis_tready;
   wire m_axis_tvalid;
   wire rd_rst_busy;
   wire s_aclk;
   wire s_aresetn;
-  wire [31:0]s_axis_tdata;
+  wire [63:0]s_axis_tdata;
   wire s_axis_tready;
   wire s_axis_tvalid;
   wire wr_rst_busy;
@@ -158,8 +158,8 @@ module packetBuffer
   wire [0:0]NLW_U0_m_axi_wuser_UNCONNECTED;
   wire [0:0]NLW_U0_m_axis_tdest_UNCONNECTED;
   wire [0:0]NLW_U0_m_axis_tid_UNCONNECTED;
-  wire [3:0]NLW_U0_m_axis_tkeep_UNCONNECTED;
-  wire [3:0]NLW_U0_m_axis_tstrb_UNCONNECTED;
+  wire [7:0]NLW_U0_m_axis_tkeep_UNCONNECTED;
+  wire [7:0]NLW_U0_m_axis_tstrb_UNCONNECTED;
   wire [0:0]NLW_U0_m_axis_tuser_UNCONNECTED;
   wire [9:0]NLW_U0_rd_data_count_UNCONNECTED;
   wire [0:0]NLW_U0_s_axi_bid_UNCONNECTED;
@@ -178,11 +178,11 @@ module packetBuffer
   (* C_APPLICATION_TYPE_WACH = "0" *) 
   (* C_APPLICATION_TYPE_WDCH = "0" *) 
   (* C_APPLICATION_TYPE_WRCH = "0" *) 
-  (* C_AXIS_TDATA_WIDTH = "32" *) 
+  (* C_AXIS_TDATA_WIDTH = "64" *) 
   (* C_AXIS_TDEST_WIDTH = "1" *) 
   (* C_AXIS_TID_WIDTH = "1" *) 
-  (* C_AXIS_TKEEP_WIDTH = "4" *) 
-  (* C_AXIS_TSTRB_WIDTH = "4" *) 
+  (* C_AXIS_TKEEP_WIDTH = "8" *) 
+  (* C_AXIS_TSTRB_WIDTH = "8" *) 
   (* C_AXIS_TUSER_WIDTH = "1" *) 
   (* C_AXIS_TYPE = "0" *) 
   (* C_AXI_ADDR_WIDTH = "32" *) 
@@ -201,7 +201,7 @@ module packetBuffer
   (* C_DATA_COUNT_WIDTH = "10" *) 
   (* C_DEFAULT_VALUE = "BlankString" *) 
   (* C_DIN_WIDTH = "18" *) 
-  (* C_DIN_WIDTH_AXIS = "32" *) 
+  (* C_DIN_WIDTH_AXIS = "64" *) 
   (* C_DIN_WIDTH_RACH = "32" *) 
   (* C_DIN_WIDTH_RDCH = "64" *) 
   (* C_DIN_WIDTH_WACH = "32" *) 
@@ -285,7 +285,7 @@ module packetBuffer
   (* C_PRELOAD_LATENCY = "1" *) 
   (* C_PRELOAD_REGS = "0" *) 
   (* C_PRIM_FIFO_TYPE = "4kx4" *) 
-  (* C_PRIM_FIFO_TYPE_AXIS = "512x36" *) 
+  (* C_PRIM_FIFO_TYPE_AXIS = "512x72" *) 
   (* C_PRIM_FIFO_TYPE_RACH = "512x36" *) 
   (* C_PRIM_FIFO_TYPE_RDCH = "1kx36" *) 
   (* C_PRIM_FIFO_TYPE_WACH = "512x36" *) 
@@ -516,10 +516,10 @@ module packetBuffer
         .m_axis_tdata(m_axis_tdata),
         .m_axis_tdest(NLW_U0_m_axis_tdest_UNCONNECTED[0]),
         .m_axis_tid(NLW_U0_m_axis_tid_UNCONNECTED[0]),
-        .m_axis_tkeep(NLW_U0_m_axis_tkeep_UNCONNECTED[3:0]),
+        .m_axis_tkeep(NLW_U0_m_axis_tkeep_UNCONNECTED[7:0]),
         .m_axis_tlast(NLW_U0_m_axis_tlast_UNCONNECTED),
         .m_axis_tready(m_axis_tready),
-        .m_axis_tstrb(NLW_U0_m_axis_tstrb_UNCONNECTED[3:0]),
+        .m_axis_tstrb(NLW_U0_m_axis_tstrb_UNCONNECTED[7:0]),
         .m_axis_tuser(NLW_U0_m_axis_tuser_UNCONNECTED[0]),
         .m_axis_tvalid(m_axis_tvalid),
         .overflow(NLW_U0_overflow_UNCONNECTED),
@@ -588,10 +588,10 @@ module packetBuffer
         .s_axis_tdata(s_axis_tdata),
         .s_axis_tdest(1'b0),
         .s_axis_tid(1'b0),
-        .s_axis_tkeep({1'b0,1'b0,1'b0,1'b0}),
+        .s_axis_tkeep({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
         .s_axis_tlast(1'b0),
         .s_axis_tready(s_axis_tready),
-        .s_axis_tstrb({1'b0,1'b0,1'b0,1'b0}),
+        .s_axis_tstrb({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
         .s_axis_tuser(1'b0),
         .s_axis_tvalid(s_axis_tvalid),
         .sbiterr(NLW_U0_sbiterr_UNCONNECTED),
@@ -1302,31 +1302,35 @@ module packetBuffer_dmem
     \gic0.gc0.count_d2_reg[3] ,
     \gpregsm1.curr_fwft_state_reg[1] ,
     m_aclk);
-  output [31:0]dout_i;
+  output [63:0]dout_i;
   input s_aclk;
   input [0:0]ram_full_fb_i_reg;
-  input [31:0]s_axis_tdata;
+  input [63:0]s_axis_tdata;
   input [3:0]\gc0.count_d1_reg[3] ;
   input [3:0]\gic0.gc0.count_d2_reg[3] ;
   input [0:0]\gpregsm1.curr_fwft_state_reg[1] ;
   input m_aclk;
 
-  wire [31:0]dout_i;
+  wire [63:0]dout_i;
   wire [3:0]\gc0.count_d1_reg[3] ;
   wire [3:0]\gic0.gc0.count_d2_reg[3] ;
   wire [0:0]\gpregsm1.curr_fwft_state_reg[1] ;
   wire m_aclk;
-  wire [31:0]p_0_out;
+  wire [63:0]p_0_out;
   wire [0:0]ram_full_fb_i_reg;
   wire s_aclk;
-  wire [31:0]s_axis_tdata;
+  wire [63:0]s_axis_tdata;
   wire [1:0]NLW_RAM_reg_0_15_0_5_DOD_UNCONNECTED;
   wire [1:0]NLW_RAM_reg_0_15_12_17_DOD_UNCONNECTED;
   wire [1:0]NLW_RAM_reg_0_15_18_23_DOD_UNCONNECTED;
   wire [1:0]NLW_RAM_reg_0_15_24_29_DOD_UNCONNECTED;
-  wire [1:0]NLW_RAM_reg_0_15_30_31_DOB_UNCONNECTED;
-  wire [1:0]NLW_RAM_reg_0_15_30_31_DOC_UNCONNECTED;
-  wire [1:0]NLW_RAM_reg_0_15_30_31_DOD_UNCONNECTED;
+  wire [1:0]NLW_RAM_reg_0_15_30_35_DOD_UNCONNECTED;
+  wire [1:0]NLW_RAM_reg_0_15_36_41_DOD_UNCONNECTED;
+  wire [1:0]NLW_RAM_reg_0_15_42_47_DOD_UNCONNECTED;
+  wire [1:0]NLW_RAM_reg_0_15_48_53_DOD_UNCONNECTED;
+  wire [1:0]NLW_RAM_reg_0_15_54_59_DOD_UNCONNECTED;
+  wire [1:0]NLW_RAM_reg_0_15_60_63_DOC_UNCONNECTED;
+  wire [1:0]NLW_RAM_reg_0_15_60_63_DOD_UNCONNECTED;
   wire [1:0]NLW_RAM_reg_0_15_6_11_DOD_UNCONNECTED;
 
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -1394,19 +1398,99 @@ module packetBuffer_dmem
         .WCLK(s_aclk),
         .WE(ram_full_fb_i_reg));
   (* METHODOLOGY_DRC_VIOS = "" *) 
-  RAM32M RAM_reg_0_15_30_31
+  RAM32M RAM_reg_0_15_30_35
        (.ADDRA({1'b0,\gc0.count_d1_reg[3] }),
         .ADDRB({1'b0,\gc0.count_d1_reg[3] }),
         .ADDRC({1'b0,\gc0.count_d1_reg[3] }),
         .ADDRD({1'b0,\gic0.gc0.count_d2_reg[3] }),
         .DIA(s_axis_tdata[31:30]),
-        .DIB({1'b0,1'b0}),
-        .DIC({1'b0,1'b0}),
+        .DIB(s_axis_tdata[33:32]),
+        .DIC(s_axis_tdata[35:34]),
         .DID({1'b0,1'b0}),
         .DOA(p_0_out[31:30]),
-        .DOB(NLW_RAM_reg_0_15_30_31_DOB_UNCONNECTED[1:0]),
-        .DOC(NLW_RAM_reg_0_15_30_31_DOC_UNCONNECTED[1:0]),
-        .DOD(NLW_RAM_reg_0_15_30_31_DOD_UNCONNECTED[1:0]),
+        .DOB(p_0_out[33:32]),
+        .DOC(p_0_out[35:34]),
+        .DOD(NLW_RAM_reg_0_15_30_35_DOD_UNCONNECTED[1:0]),
+        .WCLK(s_aclk),
+        .WE(ram_full_fb_i_reg));
+  (* METHODOLOGY_DRC_VIOS = "" *) 
+  RAM32M RAM_reg_0_15_36_41
+       (.ADDRA({1'b0,\gc0.count_d1_reg[3] }),
+        .ADDRB({1'b0,\gc0.count_d1_reg[3] }),
+        .ADDRC({1'b0,\gc0.count_d1_reg[3] }),
+        .ADDRD({1'b0,\gic0.gc0.count_d2_reg[3] }),
+        .DIA(s_axis_tdata[37:36]),
+        .DIB(s_axis_tdata[39:38]),
+        .DIC(s_axis_tdata[41:40]),
+        .DID({1'b0,1'b0}),
+        .DOA(p_0_out[37:36]),
+        .DOB(p_0_out[39:38]),
+        .DOC(p_0_out[41:40]),
+        .DOD(NLW_RAM_reg_0_15_36_41_DOD_UNCONNECTED[1:0]),
+        .WCLK(s_aclk),
+        .WE(ram_full_fb_i_reg));
+  (* METHODOLOGY_DRC_VIOS = "" *) 
+  RAM32M RAM_reg_0_15_42_47
+       (.ADDRA({1'b0,\gc0.count_d1_reg[3] }),
+        .ADDRB({1'b0,\gc0.count_d1_reg[3] }),
+        .ADDRC({1'b0,\gc0.count_d1_reg[3] }),
+        .ADDRD({1'b0,\gic0.gc0.count_d2_reg[3] }),
+        .DIA(s_axis_tdata[43:42]),
+        .DIB(s_axis_tdata[45:44]),
+        .DIC(s_axis_tdata[47:46]),
+        .DID({1'b0,1'b0}),
+        .DOA(p_0_out[43:42]),
+        .DOB(p_0_out[45:44]),
+        .DOC(p_0_out[47:46]),
+        .DOD(NLW_RAM_reg_0_15_42_47_DOD_UNCONNECTED[1:0]),
+        .WCLK(s_aclk),
+        .WE(ram_full_fb_i_reg));
+  (* METHODOLOGY_DRC_VIOS = "" *) 
+  RAM32M RAM_reg_0_15_48_53
+       (.ADDRA({1'b0,\gc0.count_d1_reg[3] }),
+        .ADDRB({1'b0,\gc0.count_d1_reg[3] }),
+        .ADDRC({1'b0,\gc0.count_d1_reg[3] }),
+        .ADDRD({1'b0,\gic0.gc0.count_d2_reg[3] }),
+        .DIA(s_axis_tdata[49:48]),
+        .DIB(s_axis_tdata[51:50]),
+        .DIC(s_axis_tdata[53:52]),
+        .DID({1'b0,1'b0}),
+        .DOA(p_0_out[49:48]),
+        .DOB(p_0_out[51:50]),
+        .DOC(p_0_out[53:52]),
+        .DOD(NLW_RAM_reg_0_15_48_53_DOD_UNCONNECTED[1:0]),
+        .WCLK(s_aclk),
+        .WE(ram_full_fb_i_reg));
+  (* METHODOLOGY_DRC_VIOS = "" *) 
+  RAM32M RAM_reg_0_15_54_59
+       (.ADDRA({1'b0,\gc0.count_d1_reg[3] }),
+        .ADDRB({1'b0,\gc0.count_d1_reg[3] }),
+        .ADDRC({1'b0,\gc0.count_d1_reg[3] }),
+        .ADDRD({1'b0,\gic0.gc0.count_d2_reg[3] }),
+        .DIA(s_axis_tdata[55:54]),
+        .DIB(s_axis_tdata[57:56]),
+        .DIC(s_axis_tdata[59:58]),
+        .DID({1'b0,1'b0}),
+        .DOA(p_0_out[55:54]),
+        .DOB(p_0_out[57:56]),
+        .DOC(p_0_out[59:58]),
+        .DOD(NLW_RAM_reg_0_15_54_59_DOD_UNCONNECTED[1:0]),
+        .WCLK(s_aclk),
+        .WE(ram_full_fb_i_reg));
+  (* METHODOLOGY_DRC_VIOS = "" *) 
+  RAM32M RAM_reg_0_15_60_63
+       (.ADDRA({1'b0,\gc0.count_d1_reg[3] }),
+        .ADDRB({1'b0,\gc0.count_d1_reg[3] }),
+        .ADDRC({1'b0,\gc0.count_d1_reg[3] }),
+        .ADDRD({1'b0,\gic0.gc0.count_d2_reg[3] }),
+        .DIA(s_axis_tdata[61:60]),
+        .DIB(s_axis_tdata[63:62]),
+        .DIC({1'b0,1'b0}),
+        .DID({1'b0,1'b0}),
+        .DOA(p_0_out[61:60]),
+        .DOB(p_0_out[63:62]),
+        .DOC(NLW_RAM_reg_0_15_60_63_DOC_UNCONNECTED[1:0]),
+        .DOD(NLW_RAM_reg_0_15_60_63_DOD_UNCONNECTED[1:0]),
         .WCLK(s_aclk),
         .WE(ram_full_fb_i_reg));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -1627,11 +1711,155 @@ module packetBuffer_dmem
         .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
+    \gpr1.dout_i_reg[32] 
+       (.C(m_aclk),
+        .CE(\gpregsm1.curr_fwft_state_reg[1] ),
+        .D(p_0_out[32]),
+        .Q(dout_i[32]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \gpr1.dout_i_reg[33] 
+       (.C(m_aclk),
+        .CE(\gpregsm1.curr_fwft_state_reg[1] ),
+        .D(p_0_out[33]),
+        .Q(dout_i[33]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \gpr1.dout_i_reg[34] 
+       (.C(m_aclk),
+        .CE(\gpregsm1.curr_fwft_state_reg[1] ),
+        .D(p_0_out[34]),
+        .Q(dout_i[34]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \gpr1.dout_i_reg[35] 
+       (.C(m_aclk),
+        .CE(\gpregsm1.curr_fwft_state_reg[1] ),
+        .D(p_0_out[35]),
+        .Q(dout_i[35]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \gpr1.dout_i_reg[36] 
+       (.C(m_aclk),
+        .CE(\gpregsm1.curr_fwft_state_reg[1] ),
+        .D(p_0_out[36]),
+        .Q(dout_i[36]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \gpr1.dout_i_reg[37] 
+       (.C(m_aclk),
+        .CE(\gpregsm1.curr_fwft_state_reg[1] ),
+        .D(p_0_out[37]),
+        .Q(dout_i[37]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \gpr1.dout_i_reg[38] 
+       (.C(m_aclk),
+        .CE(\gpregsm1.curr_fwft_state_reg[1] ),
+        .D(p_0_out[38]),
+        .Q(dout_i[38]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \gpr1.dout_i_reg[39] 
+       (.C(m_aclk),
+        .CE(\gpregsm1.curr_fwft_state_reg[1] ),
+        .D(p_0_out[39]),
+        .Q(dout_i[39]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
     \gpr1.dout_i_reg[3] 
        (.C(m_aclk),
         .CE(\gpregsm1.curr_fwft_state_reg[1] ),
         .D(p_0_out[3]),
         .Q(dout_i[3]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \gpr1.dout_i_reg[40] 
+       (.C(m_aclk),
+        .CE(\gpregsm1.curr_fwft_state_reg[1] ),
+        .D(p_0_out[40]),
+        .Q(dout_i[40]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \gpr1.dout_i_reg[41] 
+       (.C(m_aclk),
+        .CE(\gpregsm1.curr_fwft_state_reg[1] ),
+        .D(p_0_out[41]),
+        .Q(dout_i[41]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \gpr1.dout_i_reg[42] 
+       (.C(m_aclk),
+        .CE(\gpregsm1.curr_fwft_state_reg[1] ),
+        .D(p_0_out[42]),
+        .Q(dout_i[42]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \gpr1.dout_i_reg[43] 
+       (.C(m_aclk),
+        .CE(\gpregsm1.curr_fwft_state_reg[1] ),
+        .D(p_0_out[43]),
+        .Q(dout_i[43]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \gpr1.dout_i_reg[44] 
+       (.C(m_aclk),
+        .CE(\gpregsm1.curr_fwft_state_reg[1] ),
+        .D(p_0_out[44]),
+        .Q(dout_i[44]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \gpr1.dout_i_reg[45] 
+       (.C(m_aclk),
+        .CE(\gpregsm1.curr_fwft_state_reg[1] ),
+        .D(p_0_out[45]),
+        .Q(dout_i[45]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \gpr1.dout_i_reg[46] 
+       (.C(m_aclk),
+        .CE(\gpregsm1.curr_fwft_state_reg[1] ),
+        .D(p_0_out[46]),
+        .Q(dout_i[46]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \gpr1.dout_i_reg[47] 
+       (.C(m_aclk),
+        .CE(\gpregsm1.curr_fwft_state_reg[1] ),
+        .D(p_0_out[47]),
+        .Q(dout_i[47]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \gpr1.dout_i_reg[48] 
+       (.C(m_aclk),
+        .CE(\gpregsm1.curr_fwft_state_reg[1] ),
+        .D(p_0_out[48]),
+        .Q(dout_i[48]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \gpr1.dout_i_reg[49] 
+       (.C(m_aclk),
+        .CE(\gpregsm1.curr_fwft_state_reg[1] ),
+        .D(p_0_out[49]),
+        .Q(dout_i[49]),
         .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
@@ -1643,11 +1871,123 @@ module packetBuffer_dmem
         .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
+    \gpr1.dout_i_reg[50] 
+       (.C(m_aclk),
+        .CE(\gpregsm1.curr_fwft_state_reg[1] ),
+        .D(p_0_out[50]),
+        .Q(dout_i[50]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \gpr1.dout_i_reg[51] 
+       (.C(m_aclk),
+        .CE(\gpregsm1.curr_fwft_state_reg[1] ),
+        .D(p_0_out[51]),
+        .Q(dout_i[51]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \gpr1.dout_i_reg[52] 
+       (.C(m_aclk),
+        .CE(\gpregsm1.curr_fwft_state_reg[1] ),
+        .D(p_0_out[52]),
+        .Q(dout_i[52]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \gpr1.dout_i_reg[53] 
+       (.C(m_aclk),
+        .CE(\gpregsm1.curr_fwft_state_reg[1] ),
+        .D(p_0_out[53]),
+        .Q(dout_i[53]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \gpr1.dout_i_reg[54] 
+       (.C(m_aclk),
+        .CE(\gpregsm1.curr_fwft_state_reg[1] ),
+        .D(p_0_out[54]),
+        .Q(dout_i[54]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \gpr1.dout_i_reg[55] 
+       (.C(m_aclk),
+        .CE(\gpregsm1.curr_fwft_state_reg[1] ),
+        .D(p_0_out[55]),
+        .Q(dout_i[55]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \gpr1.dout_i_reg[56] 
+       (.C(m_aclk),
+        .CE(\gpregsm1.curr_fwft_state_reg[1] ),
+        .D(p_0_out[56]),
+        .Q(dout_i[56]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \gpr1.dout_i_reg[57] 
+       (.C(m_aclk),
+        .CE(\gpregsm1.curr_fwft_state_reg[1] ),
+        .D(p_0_out[57]),
+        .Q(dout_i[57]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \gpr1.dout_i_reg[58] 
+       (.C(m_aclk),
+        .CE(\gpregsm1.curr_fwft_state_reg[1] ),
+        .D(p_0_out[58]),
+        .Q(dout_i[58]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \gpr1.dout_i_reg[59] 
+       (.C(m_aclk),
+        .CE(\gpregsm1.curr_fwft_state_reg[1] ),
+        .D(p_0_out[59]),
+        .Q(dout_i[59]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
     \gpr1.dout_i_reg[5] 
        (.C(m_aclk),
         .CE(\gpregsm1.curr_fwft_state_reg[1] ),
         .D(p_0_out[5]),
         .Q(dout_i[5]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \gpr1.dout_i_reg[60] 
+       (.C(m_aclk),
+        .CE(\gpregsm1.curr_fwft_state_reg[1] ),
+        .D(p_0_out[60]),
+        .Q(dout_i[60]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \gpr1.dout_i_reg[61] 
+       (.C(m_aclk),
+        .CE(\gpregsm1.curr_fwft_state_reg[1] ),
+        .D(p_0_out[61]),
+        .Q(dout_i[61]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \gpr1.dout_i_reg[62] 
+       (.C(m_aclk),
+        .CE(\gpregsm1.curr_fwft_state_reg[1] ),
+        .D(p_0_out[62]),
+        .Q(dout_i[62]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \gpr1.dout_i_reg[63] 
+       (.C(m_aclk),
+        .CE(\gpregsm1.curr_fwft_state_reg[1] ),
+        .D(p_0_out[63]),
+        .Q(dout_i[63]),
         .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
@@ -1696,12 +2036,12 @@ module packetBuffer_fifo_generator_ramfifo
     m_axis_tready,
     s_aresetn);
   output wr_rst_busy;
-  output [31:0]m_axis_tdata;
+  output [63:0]m_axis_tdata;
   output s_axis_tready;
   output m_axis_tvalid;
   input s_aclk;
   input m_aclk;
-  input [31:0]s_axis_tdata;
+  input [63:0]s_axis_tdata;
   input s_axis_tvalid;
   input m_axis_tready;
   input s_aresetn;
@@ -1712,7 +2052,7 @@ module packetBuffer_fifo_generator_ramfifo
   wire \gntv_or_sync_fifo.gl0.rd_n_5 ;
   wire \gntv_or_sync_fifo.gl0.wr_n_3 ;
   wire m_aclk;
-  wire [31:0]m_axis_tdata;
+  wire [63:0]m_axis_tdata;
   wire m_axis_tready;
   wire m_axis_tvalid;
   wire [3:0]p_0_out_0;
@@ -1729,7 +2069,7 @@ module packetBuffer_fifo_generator_ramfifo
   wire rstblk_n_1;
   wire s_aclk;
   wire s_aresetn;
-  wire [31:0]s_axis_tdata;
+  wire [63:0]s_axis_tdata;
   wire s_axis_tready;
   wire s_axis_tvalid;
   wire [2:0]wr_pntr_plus2;
@@ -1755,7 +2095,7 @@ module packetBuffer_fifo_generator_ramfifo
         .Q(rd_pntr_plus1),
         .WR_PNTR_RD(p_24_out),
         .\dest_out_bin_ff_reg[2] (\gntv_or_sync_fifo.gcx.clkx_n_2 ),
-        .\goreg_dm.dout_i_reg[31] (\gntv_or_sync_fifo.gl0.rd_n_5 ),
+        .\goreg_dm.dout_i_reg[63] (\gntv_or_sync_fifo.gl0.rd_n_5 ),
         .m_aclk(m_aclk),
         .m_axis_tready(m_axis_tready),
         .m_axis_tvalid(m_axis_tvalid),
@@ -1809,23 +2149,23 @@ module packetBuffer_fifo_generator_top
     m_axis_tready,
     s_aresetn);
   output wr_rst_busy;
-  output [31:0]m_axis_tdata;
+  output [63:0]m_axis_tdata;
   output s_axis_tready;
   output m_axis_tvalid;
   input s_aclk;
   input m_aclk;
-  input [31:0]s_axis_tdata;
+  input [63:0]s_axis_tdata;
   input s_axis_tvalid;
   input m_axis_tready;
   input s_aresetn;
 
   wire m_aclk;
-  wire [31:0]m_axis_tdata;
+  wire [63:0]m_axis_tdata;
   wire m_axis_tready;
   wire m_axis_tvalid;
   wire s_aclk;
   wire s_aresetn;
-  wire [31:0]s_axis_tdata;
+  wire [63:0]s_axis_tdata;
   wire s_axis_tready;
   wire s_axis_tvalid;
   wire wr_rst_busy;
@@ -1845,15 +2185,15 @@ endmodule
 
 (* C_ADD_NGC_CONSTRAINT = "0" *) (* C_APPLICATION_TYPE_AXIS = "0" *) (* C_APPLICATION_TYPE_RACH = "0" *) 
 (* C_APPLICATION_TYPE_RDCH = "0" *) (* C_APPLICATION_TYPE_WACH = "0" *) (* C_APPLICATION_TYPE_WDCH = "0" *) 
-(* C_APPLICATION_TYPE_WRCH = "0" *) (* C_AXIS_TDATA_WIDTH = "32" *) (* C_AXIS_TDEST_WIDTH = "1" *) 
-(* C_AXIS_TID_WIDTH = "1" *) (* C_AXIS_TKEEP_WIDTH = "4" *) (* C_AXIS_TSTRB_WIDTH = "4" *) 
+(* C_APPLICATION_TYPE_WRCH = "0" *) (* C_AXIS_TDATA_WIDTH = "64" *) (* C_AXIS_TDEST_WIDTH = "1" *) 
+(* C_AXIS_TID_WIDTH = "1" *) (* C_AXIS_TKEEP_WIDTH = "8" *) (* C_AXIS_TSTRB_WIDTH = "8" *) 
 (* C_AXIS_TUSER_WIDTH = "1" *) (* C_AXIS_TYPE = "0" *) (* C_AXI_ADDR_WIDTH = "32" *) 
 (* C_AXI_ARUSER_WIDTH = "1" *) (* C_AXI_AWUSER_WIDTH = "1" *) (* C_AXI_BUSER_WIDTH = "1" *) 
 (* C_AXI_DATA_WIDTH = "64" *) (* C_AXI_ID_WIDTH = "1" *) (* C_AXI_LEN_WIDTH = "8" *) 
 (* C_AXI_LOCK_WIDTH = "1" *) (* C_AXI_RUSER_WIDTH = "1" *) (* C_AXI_TYPE = "1" *) 
 (* C_AXI_WUSER_WIDTH = "1" *) (* C_COMMON_CLOCK = "0" *) (* C_COUNT_TYPE = "0" *) 
 (* C_DATA_COUNT_WIDTH = "10" *) (* C_DEFAULT_VALUE = "BlankString" *) (* C_DIN_WIDTH = "18" *) 
-(* C_DIN_WIDTH_AXIS = "32" *) (* C_DIN_WIDTH_RACH = "32" *) (* C_DIN_WIDTH_RDCH = "64" *) 
+(* C_DIN_WIDTH_AXIS = "64" *) (* C_DIN_WIDTH_RACH = "32" *) (* C_DIN_WIDTH_RDCH = "64" *) 
 (* C_DIN_WIDTH_WACH = "32" *) (* C_DIN_WIDTH_WDCH = "64" *) (* C_DIN_WIDTH_WRCH = "2" *) 
 (* C_DOUT_RST_VAL = "0" *) (* C_DOUT_WIDTH = "18" *) (* C_ENABLE_RLOCS = "0" *) 
 (* C_ENABLE_RST_SYNC = "1" *) (* C_EN_SAFETY_CKT = "1" *) (* C_ERROR_INJECTION_TYPE = "0" *) 
@@ -1881,7 +2221,7 @@ endmodule
 (* C_MEMORY_TYPE = "1" *) (* C_MIF_FILE_NAME = "BlankString" *) (* C_MSGON_VAL = "1" *) 
 (* C_OPTIMIZATION_MODE = "0" *) (* C_OVERFLOW_LOW = "0" *) (* C_POWER_SAVING_MODE = "0" *) 
 (* C_PRELOAD_LATENCY = "1" *) (* C_PRELOAD_REGS = "0" *) (* C_PRIM_FIFO_TYPE = "4kx4" *) 
-(* C_PRIM_FIFO_TYPE_AXIS = "512x36" *) (* C_PRIM_FIFO_TYPE_RACH = "512x36" *) (* C_PRIM_FIFO_TYPE_RDCH = "1kx36" *) 
+(* C_PRIM_FIFO_TYPE_AXIS = "512x72" *) (* C_PRIM_FIFO_TYPE_RACH = "512x36" *) (* C_PRIM_FIFO_TYPE_RDCH = "1kx36" *) 
 (* C_PRIM_FIFO_TYPE_WACH = "512x36" *) (* C_PRIM_FIFO_TYPE_WDCH = "1kx36" *) (* C_PRIM_FIFO_TYPE_WRCH = "512x36" *) 
 (* C_PROG_EMPTY_THRESH_ASSERT_VAL = "2" *) (* C_PROG_EMPTY_THRESH_ASSERT_VAL_AXIS = "13" *) (* C_PROG_EMPTY_THRESH_ASSERT_VAL_RACH = "13" *) 
 (* C_PROG_EMPTY_THRESH_ASSERT_VAL_RDCH = "1021" *) (* C_PROG_EMPTY_THRESH_ASSERT_VAL_WACH = "13" *) (* C_PROG_EMPTY_THRESH_ASSERT_VAL_WDCH = "1021" *) 
@@ -2280,18 +2620,18 @@ module packetBuffer_fifo_generator_v13_2_0
   output m_axi_rready;
   input s_axis_tvalid;
   output s_axis_tready;
-  input [31:0]s_axis_tdata;
-  input [3:0]s_axis_tstrb;
-  input [3:0]s_axis_tkeep;
+  input [63:0]s_axis_tdata;
+  input [7:0]s_axis_tstrb;
+  input [7:0]s_axis_tkeep;
   input s_axis_tlast;
   input [0:0]s_axis_tid;
   input [0:0]s_axis_tdest;
   input [0:0]s_axis_tuser;
   output m_axis_tvalid;
   input m_axis_tready;
-  output [31:0]m_axis_tdata;
-  output [3:0]m_axis_tstrb;
-  output [3:0]m_axis_tkeep;
+  output [63:0]m_axis_tdata;
+  output [7:0]m_axis_tstrb;
+  output [7:0]m_axis_tkeep;
   output m_axis_tlast;
   output [0:0]m_axis_tid;
   output [0:0]m_axis_tdest;
@@ -2378,12 +2718,12 @@ module packetBuffer_fifo_generator_v13_2_0
   wire \<const0> ;
   wire \<const1> ;
   wire m_aclk;
-  wire [31:0]m_axis_tdata;
+  wire [63:0]m_axis_tdata;
   wire m_axis_tready;
   wire m_axis_tvalid;
   wire s_aclk;
   wire s_aresetn;
-  wire [31:0]s_axis_tdata;
+  wire [63:0]s_axis_tdata;
   wire s_axis_tready;
   wire s_axis_tvalid;
   wire wr_rst_busy;
@@ -2791,11 +3131,19 @@ module packetBuffer_fifo_generator_v13_2_0
   assign m_axi_wvalid = \<const0> ;
   assign m_axis_tdest[0] = \<const0> ;
   assign m_axis_tid[0] = \<const0> ;
+  assign m_axis_tkeep[7] = \<const0> ;
+  assign m_axis_tkeep[6] = \<const0> ;
+  assign m_axis_tkeep[5] = \<const0> ;
+  assign m_axis_tkeep[4] = \<const0> ;
   assign m_axis_tkeep[3] = \<const0> ;
   assign m_axis_tkeep[2] = \<const0> ;
   assign m_axis_tkeep[1] = \<const0> ;
   assign m_axis_tkeep[0] = \<const0> ;
   assign m_axis_tlast = \<const0> ;
+  assign m_axis_tstrb[7] = \<const0> ;
+  assign m_axis_tstrb[6] = \<const0> ;
+  assign m_axis_tstrb[5] = \<const0> ;
+  assign m_axis_tstrb[4] = \<const0> ;
   assign m_axis_tstrb[3] = \<const0> ;
   assign m_axis_tstrb[2] = \<const0> ;
   assign m_axis_tstrb[1] = \<const0> ;
@@ -2937,23 +3285,23 @@ module packetBuffer_fifo_generator_v13_2_0_synth
     m_axis_tready,
     s_aresetn);
   output wr_rst_busy;
-  output [31:0]m_axis_tdata;
+  output [63:0]m_axis_tdata;
   output s_axis_tready;
   output m_axis_tvalid;
   input s_aclk;
   input m_aclk;
-  input [31:0]s_axis_tdata;
+  input [63:0]s_axis_tdata;
   input s_axis_tvalid;
   input m_axis_tready;
   input s_aresetn;
 
   wire m_aclk;
-  wire [31:0]m_axis_tdata;
+  wire [63:0]m_axis_tdata;
   wire m_axis_tready;
   wire m_axis_tvalid;
   wire s_aclk;
   wire s_aresetn;
-  wire [31:0]s_axis_tdata;
+  wire [63:0]s_axis_tdata;
   wire s_axis_tready;
   wire s_axis_tvalid;
   wire wr_rst_busy;
@@ -2982,26 +3330,26 @@ module packetBuffer_memory
     \gc0.count_d1_reg[3] ,
     \gic0.gc0.count_d2_reg[3] ,
     \gpregsm1.curr_fwft_state_reg[1] );
-  output [31:0]m_axis_tdata;
+  output [63:0]m_axis_tdata;
   input [0:0]E;
   input m_aclk;
   input s_aclk;
   input [0:0]ram_full_fb_i_reg;
-  input [31:0]s_axis_tdata;
+  input [63:0]s_axis_tdata;
   input [3:0]\gc0.count_d1_reg[3] ;
   input [3:0]\gic0.gc0.count_d2_reg[3] ;
   input [0:0]\gpregsm1.curr_fwft_state_reg[1] ;
 
   wire [0:0]E;
-  wire [31:0]dout_i;
+  wire [63:0]dout_i;
   wire [3:0]\gc0.count_d1_reg[3] ;
   wire [3:0]\gic0.gc0.count_d2_reg[3] ;
   wire [0:0]\gpregsm1.curr_fwft_state_reg[1] ;
   wire m_aclk;
-  wire [31:0]m_axis_tdata;
+  wire [63:0]m_axis_tdata;
   wire [0:0]ram_full_fb_i_reg;
   wire s_aclk;
-  wire [31:0]s_axis_tdata;
+  wire [63:0]s_axis_tdata;
 
   packetBuffer_dmem \gdm.dm_gen.dm 
        (.dout_i(dout_i),
@@ -3214,11 +3562,155 @@ module packetBuffer_memory
         .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
+    \goreg_dm.dout_i_reg[32] 
+       (.C(m_aclk),
+        .CE(E),
+        .D(dout_i[32]),
+        .Q(m_axis_tdata[32]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \goreg_dm.dout_i_reg[33] 
+       (.C(m_aclk),
+        .CE(E),
+        .D(dout_i[33]),
+        .Q(m_axis_tdata[33]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \goreg_dm.dout_i_reg[34] 
+       (.C(m_aclk),
+        .CE(E),
+        .D(dout_i[34]),
+        .Q(m_axis_tdata[34]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \goreg_dm.dout_i_reg[35] 
+       (.C(m_aclk),
+        .CE(E),
+        .D(dout_i[35]),
+        .Q(m_axis_tdata[35]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \goreg_dm.dout_i_reg[36] 
+       (.C(m_aclk),
+        .CE(E),
+        .D(dout_i[36]),
+        .Q(m_axis_tdata[36]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \goreg_dm.dout_i_reg[37] 
+       (.C(m_aclk),
+        .CE(E),
+        .D(dout_i[37]),
+        .Q(m_axis_tdata[37]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \goreg_dm.dout_i_reg[38] 
+       (.C(m_aclk),
+        .CE(E),
+        .D(dout_i[38]),
+        .Q(m_axis_tdata[38]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \goreg_dm.dout_i_reg[39] 
+       (.C(m_aclk),
+        .CE(E),
+        .D(dout_i[39]),
+        .Q(m_axis_tdata[39]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
     \goreg_dm.dout_i_reg[3] 
        (.C(m_aclk),
         .CE(E),
         .D(dout_i[3]),
         .Q(m_axis_tdata[3]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \goreg_dm.dout_i_reg[40] 
+       (.C(m_aclk),
+        .CE(E),
+        .D(dout_i[40]),
+        .Q(m_axis_tdata[40]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \goreg_dm.dout_i_reg[41] 
+       (.C(m_aclk),
+        .CE(E),
+        .D(dout_i[41]),
+        .Q(m_axis_tdata[41]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \goreg_dm.dout_i_reg[42] 
+       (.C(m_aclk),
+        .CE(E),
+        .D(dout_i[42]),
+        .Q(m_axis_tdata[42]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \goreg_dm.dout_i_reg[43] 
+       (.C(m_aclk),
+        .CE(E),
+        .D(dout_i[43]),
+        .Q(m_axis_tdata[43]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \goreg_dm.dout_i_reg[44] 
+       (.C(m_aclk),
+        .CE(E),
+        .D(dout_i[44]),
+        .Q(m_axis_tdata[44]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \goreg_dm.dout_i_reg[45] 
+       (.C(m_aclk),
+        .CE(E),
+        .D(dout_i[45]),
+        .Q(m_axis_tdata[45]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \goreg_dm.dout_i_reg[46] 
+       (.C(m_aclk),
+        .CE(E),
+        .D(dout_i[46]),
+        .Q(m_axis_tdata[46]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \goreg_dm.dout_i_reg[47] 
+       (.C(m_aclk),
+        .CE(E),
+        .D(dout_i[47]),
+        .Q(m_axis_tdata[47]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \goreg_dm.dout_i_reg[48] 
+       (.C(m_aclk),
+        .CE(E),
+        .D(dout_i[48]),
+        .Q(m_axis_tdata[48]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \goreg_dm.dout_i_reg[49] 
+       (.C(m_aclk),
+        .CE(E),
+        .D(dout_i[49]),
+        .Q(m_axis_tdata[49]),
         .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
@@ -3230,11 +3722,123 @@ module packetBuffer_memory
         .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
+    \goreg_dm.dout_i_reg[50] 
+       (.C(m_aclk),
+        .CE(E),
+        .D(dout_i[50]),
+        .Q(m_axis_tdata[50]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \goreg_dm.dout_i_reg[51] 
+       (.C(m_aclk),
+        .CE(E),
+        .D(dout_i[51]),
+        .Q(m_axis_tdata[51]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \goreg_dm.dout_i_reg[52] 
+       (.C(m_aclk),
+        .CE(E),
+        .D(dout_i[52]),
+        .Q(m_axis_tdata[52]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \goreg_dm.dout_i_reg[53] 
+       (.C(m_aclk),
+        .CE(E),
+        .D(dout_i[53]),
+        .Q(m_axis_tdata[53]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \goreg_dm.dout_i_reg[54] 
+       (.C(m_aclk),
+        .CE(E),
+        .D(dout_i[54]),
+        .Q(m_axis_tdata[54]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \goreg_dm.dout_i_reg[55] 
+       (.C(m_aclk),
+        .CE(E),
+        .D(dout_i[55]),
+        .Q(m_axis_tdata[55]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \goreg_dm.dout_i_reg[56] 
+       (.C(m_aclk),
+        .CE(E),
+        .D(dout_i[56]),
+        .Q(m_axis_tdata[56]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \goreg_dm.dout_i_reg[57] 
+       (.C(m_aclk),
+        .CE(E),
+        .D(dout_i[57]),
+        .Q(m_axis_tdata[57]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \goreg_dm.dout_i_reg[58] 
+       (.C(m_aclk),
+        .CE(E),
+        .D(dout_i[58]),
+        .Q(m_axis_tdata[58]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \goreg_dm.dout_i_reg[59] 
+       (.C(m_aclk),
+        .CE(E),
+        .D(dout_i[59]),
+        .Q(m_axis_tdata[59]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
     \goreg_dm.dout_i_reg[5] 
        (.C(m_aclk),
         .CE(E),
         .D(dout_i[5]),
         .Q(m_axis_tdata[5]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \goreg_dm.dout_i_reg[60] 
+       (.C(m_aclk),
+        .CE(E),
+        .D(dout_i[60]),
+        .Q(m_axis_tdata[60]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \goreg_dm.dout_i_reg[61] 
+       (.C(m_aclk),
+        .CE(E),
+        .D(dout_i[61]),
+        .Q(m_axis_tdata[61]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \goreg_dm.dout_i_reg[62] 
+       (.C(m_aclk),
+        .CE(E),
+        .D(dout_i[62]),
+        .Q(m_axis_tdata[62]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \goreg_dm.dout_i_reg[63] 
+       (.C(m_aclk),
+        .CE(E),
+        .D(dout_i[63]),
+        .Q(m_axis_tdata[63]),
         .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
@@ -3388,7 +3992,7 @@ endmodule
 module packetBuffer_rd_fwft
    (ram_empty_fb_i_reg,
     E,
-    \goreg_dm.dout_i_reg[31] ,
+    \goreg_dm.dout_i_reg[63] ,
     m_axis_tvalid,
     m_aclk,
     \ngwrdrst.grst.g7serrst.gnsckt_wrst.gic_rst.sckt_rd_rst_ic_reg ,
@@ -3398,7 +4002,7 @@ module packetBuffer_rd_fwft
     Q);
   output ram_empty_fb_i_reg;
   output [0:0]E;
-  output [0:0]\goreg_dm.dout_i_reg[31] ;
+  output [0:0]\goreg_dm.dout_i_reg[63] ;
   output m_axis_tvalid;
   input m_aclk;
   input \ngwrdrst.grst.g7serrst.gnsckt_wrst.gic_rst.sckt_rd_rst_ic_reg ;
@@ -3419,7 +4023,7 @@ module packetBuffer_rd_fwft
   wire empty_fwft_fb_o_i0;
   (* DONT_TOUCH *) wire empty_fwft_i;
   wire empty_fwft_i0;
-  wire [0:0]\goreg_dm.dout_i_reg[31] ;
+  wire [0:0]\goreg_dm.dout_i_reg[63] ;
   wire m_aclk;
   wire m_axis_tready;
   wire m_axis_tvalid;
@@ -3519,12 +4123,12 @@ module packetBuffer_rd_fwft
         .O(E));
   LUT4 #(
     .INIT(16'h4404)) 
-    \goreg_dm.dout_i[31]_i_1 
+    \goreg_dm.dout_i[63]_i_1 
        (.I0(\ngwrdrst.grst.g7serrst.gnsckt_wrst.gic_rst.sckt_rd_rst_ic_reg ),
         .I1(curr_fwft_state[1]),
         .I2(curr_fwft_state[0]),
         .I3(m_axis_tready),
-        .O(\goreg_dm.dout_i_reg[31] ));
+        .O(\goreg_dm.dout_i_reg[63] ));
   LUT3 #(
     .INIT(8'hAE)) 
     \gpregsm1.curr_fwft_state[0]_i_1 
@@ -3595,7 +4199,7 @@ module packetBuffer_rd_logic
    (Q,
     ram_empty_fb_i_reg,
     E,
-    \goreg_dm.dout_i_reg[31] ,
+    \goreg_dm.dout_i_reg[63] ,
     m_axis_tvalid,
     \src_gray_ff_reg[3] ,
     \dest_out_bin_ff_reg[2] ,
@@ -3606,7 +4210,7 @@ module packetBuffer_rd_logic
   output [2:0]Q;
   output ram_empty_fb_i_reg;
   output [0:0]E;
-  output [0:0]\goreg_dm.dout_i_reg[31] ;
+  output [0:0]\goreg_dm.dout_i_reg[63] ;
   output m_axis_tvalid;
   output [3:0]\src_gray_ff_reg[3] ;
   input \dest_out_bin_ff_reg[2] ;
@@ -3619,7 +4223,7 @@ module packetBuffer_rd_logic
   wire [2:0]Q;
   wire [0:0]WR_PNTR_RD;
   wire \dest_out_bin_ff_reg[2] ;
-  wire [0:0]\goreg_dm.dout_i_reg[31] ;
+  wire [0:0]\goreg_dm.dout_i_reg[63] ;
   wire m_aclk;
   wire m_axis_tready;
   wire m_axis_tvalid;
@@ -3633,7 +4237,7 @@ module packetBuffer_rd_logic
        (.E(E),
         .Q(rd_pntr_plus1),
         .WR_PNTR_RD(WR_PNTR_RD),
-        .\goreg_dm.dout_i_reg[31] (\goreg_dm.dout_i_reg[31] ),
+        .\goreg_dm.dout_i_reg[63] (\goreg_dm.dout_i_reg[63] ),
         .m_aclk(m_aclk),
         .m_axis_tready(m_axis_tready),
         .m_axis_tvalid(m_axis_tvalid),

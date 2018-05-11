@@ -1,145 +1,145 @@
-module HNoC #(parameter DataWidth = 32)(
+module HNoC #(parameter DataWidth = 32,numPE = 16,AddrWidth=4)(
 input   wire    i_clk,
 input   wire    i_reset,
 //pe 0
-input	wire	[DataWidth-1:0] i_pe_data0,
+input	wire	[DataWidth+AddrWidth-1:0] i_pe_data0,
 input	wire	i_pe_data_valid0,
 output	wire	o_pe_data_ready0,
-output	wire	[DataWidth-1:0] o_pe_data0,
+output	wire	[DataWidth+AddrWidth-1:0] o_pe_data0,
 output	wire	o_pe_data_valid0,
 input   wire	i_pe_data_ready0,
 //pe 1
-input	wire	[DataWidth-1:0] i_pe_data1,
+input	wire	[DataWidth+AddrWidth-1:0] i_pe_data1,
 input	wire	i_pe_data_valid1,
 output	wire	o_pe_data_ready1,
-output	wire	[DataWidth-1:0] o_pe_data1,
+output	wire	[DataWidth+AddrWidth-1:0] o_pe_data1,
 output	wire	o_pe_data_valid1,
 input   wire	i_pe_data_ready1,
 //pe 2
-input	wire	[DataWidth-1:0] i_pe_data2,
+input	wire	[DataWidth+AddrWidth-1:0] i_pe_data2,
 input	wire	i_pe_data_valid2,
 output	wire	o_pe_data_ready2,
-output	wire	[DataWidth-1:0] o_pe_data2,
+output	wire	[DataWidth+AddrWidth-1:0] o_pe_data2,
 output	wire	o_pe_data_valid2,
 input   wire	i_pe_data_ready2,
 //pe 3
-input	wire	[DataWidth-1:0] i_pe_data3,
+input	wire	[DataWidth+AddrWidth-1:0] i_pe_data3,
 input	wire	i_pe_data_valid3,
 output	wire	o_pe_data_ready3,
-output	wire	[DataWidth-1:0] o_pe_data3,
+output	wire	[DataWidth+AddrWidth-1:0] o_pe_data3,
 output	wire	o_pe_data_valid3,
 input   wire	i_pe_data_ready3,
 //pe 4
-input	wire	[DataWidth-1:0] i_pe_data4,
+input	wire	[DataWidth+AddrWidth-1:0] i_pe_data4,
 input	wire	i_pe_data_valid4,
 output	wire	o_pe_data_ready4,
-output	wire	[DataWidth-1:0] o_pe_data4,
+output	wire	[DataWidth+AddrWidth-1:0] o_pe_data4,
 output	wire	o_pe_data_valid4,
 input   wire	i_pe_data_ready4,
 //pe 5
-input	wire	[DataWidth-1:0] i_pe_data5,
+input	wire	[DataWidth+AddrWidth-1:0] i_pe_data5,
 input	wire	i_pe_data_valid5,
 output	wire	o_pe_data_ready5,
-output	wire	[DataWidth-1:0] o_pe_data5,
+output	wire	[DataWidth+AddrWidth-1:0] o_pe_data5,
 output	wire	o_pe_data_valid5,
 input   wire	i_pe_data_ready5,
 //pe 6
-input	wire	[DataWidth-1:0] i_pe_data6,
+input	wire	[DataWidth+AddrWidth-1:0] i_pe_data6,
 input	wire	i_pe_data_valid6,
 output	wire	o_pe_data_ready6,
-output	wire	[DataWidth-1:0] o_pe_data6,
+output	wire	[DataWidth+AddrWidth-1:0] o_pe_data6,
 output	wire	o_pe_data_valid6,
 input   wire	i_pe_data_ready6,
 //pe 7
-input	wire	[DataWidth-1:0] i_pe_data7,
+input	wire	[DataWidth+AddrWidth-1:0] i_pe_data7,
 input	wire	i_pe_data_valid7,
 output	wire	o_pe_data_ready7,
-output	wire	[DataWidth-1:0] o_pe_data7,
+output	wire	[DataWidth+AddrWidth-1:0] o_pe_data7,
 output	wire	o_pe_data_valid7,
 input   wire	i_pe_data_ready7,
 //pe 8
-input	wire	[DataWidth-1:0] i_pe_data8,
+input	wire	[DataWidth+AddrWidth-1:0] i_pe_data8,
 input	wire	i_pe_data_valid8,
 output	wire	o_pe_data_ready8,
-output	wire	[DataWidth-1:0] o_pe_data8,
+output	wire	[DataWidth+AddrWidth-1:0] o_pe_data8,
 output	wire	o_pe_data_valid8,
 input   wire	i_pe_data_ready8,
 //pe 9
-input	wire	[DataWidth-1:0] i_pe_data9,
+input	wire	[DataWidth+AddrWidth-1:0] i_pe_data9,
 input	wire	i_pe_data_valid9,
 output	wire	o_pe_data_ready9,
-output	wire	[DataWidth-1:0] o_pe_data9,
+output	wire	[DataWidth+AddrWidth-1:0] o_pe_data9,
 output	wire	o_pe_data_valid9,
 input   wire	i_pe_data_ready9,
 //pe 10
-input	wire	[DataWidth-1:0] i_pe_data10,
+input	wire	[DataWidth+AddrWidth-1:0] i_pe_data10,
 input	wire	i_pe_data_valid10,
 output	wire	o_pe_data_ready10,
-output	wire	[DataWidth-1:0] o_pe_data10,
+output	wire	[DataWidth+AddrWidth-1:0] o_pe_data10,
 output	wire	o_pe_data_valid10,
 input   wire	i_pe_data_ready10,
 //pe 11
-input	wire	[DataWidth-1:0] i_pe_data11,
+input	wire	[DataWidth+AddrWidth-1:0] i_pe_data11,
 input	wire	i_pe_data_valid11,
 output	wire	o_pe_data_ready11,
-output	wire	[DataWidth-1:0] o_pe_data11,
+output	wire	[DataWidth+AddrWidth-1:0] o_pe_data11,
 output	wire	o_pe_data_valid11,
 input   wire	i_pe_data_ready11,
 //pe 12
-input	wire	[DataWidth-1:0] i_pe_data12,
+input	wire	[DataWidth+AddrWidth-1:0] i_pe_data12,
 input	wire	i_pe_data_valid12,
 output	wire	o_pe_data_ready12,
-output	wire	[DataWidth-1:0] o_pe_data12,
+output	wire	[DataWidth+AddrWidth-1:0] o_pe_data12,
 output	wire	o_pe_data_valid12,
 input   wire	i_pe_data_ready12,
 //pe 13
-input	wire	[DataWidth-1:0] i_pe_data13,
+input	wire	[DataWidth+AddrWidth-1:0] i_pe_data13,
 input	wire	i_pe_data_valid13,
 output	wire	o_pe_data_ready13,
-output	wire	[DataWidth-1:0] o_pe_data13,
+output	wire	[DataWidth+AddrWidth-1:0] o_pe_data13,
 output	wire	o_pe_data_valid13,
 input   wire	i_pe_data_ready13,
 //pe 14
-input	wire	[DataWidth-1:0] i_pe_data14,
+input	wire	[DataWidth+AddrWidth-1:0] i_pe_data14,
 input	wire	i_pe_data_valid14,
 output	wire	o_pe_data_ready14,
-output	wire	[DataWidth-1:0] o_pe_data14,
+output	wire	[DataWidth+AddrWidth-1:0] o_pe_data14,
 output	wire	o_pe_data_valid14,
 input   wire	i_pe_data_ready14,
 //pe 15
-input	wire	[DataWidth-1:0] i_pe_data15,
+input	wire	[DataWidth+AddrWidth-1:0] i_pe_data15,
 input	wire	i_pe_data_valid15,
 output	wire	o_pe_data_ready15,
-output	wire	[DataWidth-1:0] o_pe_data15,
+output	wire	[DataWidth+AddrWidth-1:0] o_pe_data15,
 output	wire	o_pe_data_valid15,
 input   wire	i_pe_data_ready15
 );
 
-wire [31:0] centreHtoLeaf1Data;
+wire [DataWidth+AddrWidth-1:0] centreHtoLeaf1Data;
 wire        centreHtoLeaf1DataValid;
 wire        centreHtoLeaf1DataReady;
-wire [31:0] Leaf1toCentreHData;
+wire [DataWidth+AddrWidth-1:0] Leaf1toCentreHData;
 wire        Leaf1toCentreHDataValid;
 wire        Leaf1toCentreHDataReady;
 
-wire [31:0] centreHtoLeaf2Data;
+wire [DataWidth+AddrWidth-1:0] centreHtoLeaf2Data;
 wire        centreHtoLeaf2DataValid;
 wire        centreHtoLeaf2DataReady;
-wire [31:0] Leaf2toCentreHData;
+wire [DataWidth+AddrWidth-1:0] Leaf2toCentreHData;
 wire        Leaf2toCentreHDataValid;
 wire        Leaf2toCentreHDataReady;
 
-wire [31:0] centreHtoLeaf3Data;
+wire [DataWidth+AddrWidth-1:0] centreHtoLeaf3Data;
 wire        centreHtoLeaf3DataValid;
 wire        centreHtoLeaf3DataReady;
-wire [31:0] Leaf3toCentreHData;
+wire [DataWidth+AddrWidth-1:0] Leaf3toCentreHData;
 wire        Leaf3toCentreHDataValid;
 wire        Leaf3toCentreHDataReady;
 
-wire [31:0] centreHtoLeaf4Data;
+wire [DataWidth+AddrWidth-1:0] centreHtoLeaf4Data;
 wire        centreHtoLeaf4DataValid;
 wire        centreHtoLeaf4DataReady;
-wire [31:0] Leaf4toCentreHData;
+wire [DataWidth+AddrWidth-1:0] Leaf4toCentreHData;
 wire        Leaf4toCentreHDataValid;
 wire        Leaf4toCentreHDataReady;
 
@@ -159,7 +159,7 @@ clockGen clockGen
 
 
 
-HLeaf #(.DataWidth(32),.sw1bottomMin(0),.sw1bottomMax(0),.sw1topMin(1),.sw1topMax(1),.sw2bottomMin(0),
+HLeaf #(.DataWidth(DataWidth+AddrWidth),.AddrWidth(AddrWidth),.sw1bottomMin(0),.sw1bottomMax(0),.sw1topMin(1),.sw1topMax(1),.sw2bottomMin(0),
 .sw2bottomMax(1),.sw2topMin(2),.sw2topMax(3),.sw3bottomMin(2),.sw3bottomMax(2),.sw3topMin(3),.sw3topMax(3))
 L1 (
     .i_sclk(clk_100),
@@ -199,7 +199,7 @@ L1 (
 
 
 
-HLeaf #(.DataWidth(32),.sw1bottomMin(4),.sw1bottomMax(4),.sw1topMin(5),.sw1topMax(5),.sw2bottomMin(4),
+HLeaf #(.DataWidth(DataWidth+AddrWidth),.AddrWidth(AddrWidth),.sw1bottomMin(4),.sw1bottomMax(4),.sw1topMin(5),.sw1topMax(5),.sw2bottomMin(4),
 .sw2bottomMax(5),.sw2topMin(6),.sw2topMax(7),.sw3bottomMin(6),.sw3bottomMax(6),.sw3topMin(7),.sw3topMax(7))
 L2 (
     .i_sclk(clk_100),
@@ -238,7 +238,7 @@ L2 (
 );
 
 
-HLeaf #(.DataWidth(32),.sw1bottomMin(8),.sw1bottomMax(8),.sw1topMin(9),.sw1topMax(9),.sw2bottomMin(8),
+HLeaf #(.DataWidth(DataWidth+AddrWidth),.AddrWidth(AddrWidth),.sw1bottomMin(8),.sw1bottomMax(8),.sw1topMin(9),.sw1topMax(9),.sw2bottomMin(8),
 .sw2bottomMax(9),.sw2topMin(10),.sw2topMax(11),.sw3bottomMin(10),.sw3bottomMax(10),.sw3topMin(11),.sw3topMax(11))
 L3 (
     .i_sclk(clk_100),
@@ -277,7 +277,7 @@ L3 (
 );
 
 
-HLeaf #(.DataWidth(32),.sw1bottomMin(12),.sw1bottomMax(12),.sw1topMin(13),.sw1topMax(13),.sw2bottomMin(12),
+HLeaf #(.DataWidth(DataWidth+AddrWidth),.AddrWidth(AddrWidth),.sw1bottomMin(12),.sw1bottomMax(12),.sw1topMin(13),.sw1topMax(13),.sw2bottomMin(12),
 .sw2bottomMax(13),.sw2topMin(14),.sw2topMax(15),.sw3bottomMin(14),.sw3bottomMax(14),.sw3topMin(15),.sw3topMax(15))
 L4 (
     .i_sclk(clk_100),
@@ -317,7 +317,7 @@ L4 (
 
 
 
-CentreH #(.DataWidth(32),.sw1bottomMin(4),.sw1bottomMax(7),.sw1topMin(0),.sw1topMax(3),.sw2bottomMin(12),.sw2bottomMax(15),.sw2topMin(8),.sw2topMax(11))
+CentreH #(.DataWidth(DataWidth+AddrWidth),.AddrWidth(AddrWidth),.sw1bottomMin(4),.sw1bottomMax(7),.sw1topMin(0),.sw1topMax(3),.sw2bottomMin(12),.sw2bottomMax(15),.sw2topMin(8),.sw2topMax(11))
 CH (
     .i_sclk(clk_200),
     .i_mclk(clk_400),
