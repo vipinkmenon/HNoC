@@ -1,6 +1,6 @@
 `timescale 1ns/1ps
 
-module pe #(address = 0,numPE=8,AddressWidth=3,DataWidth=32,TotalWidth=35,PktLmit=100)(
+module pe #(address = 0,numPE=8,AddressWidth=3,DataWidth=32,TotalWidth=35,PktLmit=100,Pattern="Random")(
 input clk,
 input rst,
 input [TotalWidth-1:0] i_data,
@@ -20,7 +20,7 @@ reg [DataWidth-1:0] data;
 integer i=0;
 integer               receive_log_file;
 reg   [100*8:0]       receive_log_file_name = "receive_log.csv";
-
+integer j;
 
 initial
 begin
@@ -32,7 +32,36 @@ begin
     begin
         data = PktLmit*address + i;
         i = i+1;
-        peaddress = $urandom(seed)%16;
+        if(Pattern == "RANDOM")
+           peaddress = $urandom(seed)%16;
+	else if(Pattern == "COMPLEMENT")
+        begin
+           for(j=0;j<AddressWidth;j=j+1)
+               peaddress[j] = !address[j];
+        end
+        else if(Pattern == "REVERSE")
+        begin
+           for(j=0;j<AddressWidth;j=j+1)
+               peaddress[j] = address[AddressWidth-1-j]; 
+        end
+        else if(Pattern == "Rotation")
+        begin
+           for(j=0;j<AddressWidth;j=j+1)
+               peaddress[j] = address[(j+1)%AddressWidth]; 
+        end
+        else if(Pattern == "Transpose")
+        begin
+           for(j=0;j<AddressWidth;j=j+1)
+               peaddress[j] = address[(j+(AddressWidth/2))%AddressWidth]; 
+        end
+        else if(Pattern == "Tornado")
+        begin
+               peaddress = (address + (numPE+1)/2)%numPE; 
+        end
+        else if(Pattern == "Neighbour")
+        begin
+               peaddress = (address + 1)%numPE; 
+        end    
         seed = seed + 1;
         sendData({peaddress,data});
     end
