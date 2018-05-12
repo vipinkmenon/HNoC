@@ -6,7 +6,7 @@
 `define DataWidth 32
 `define AddressWidth $clog2(`NUMPE)
 `define TotalWidth `DataWidth+`AddressWidth
-`define PATTERN "RANDOM"
+`define PATTERN "Neighbour"
 `define Period 10
 
 

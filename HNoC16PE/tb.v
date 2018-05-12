@@ -6,6 +6,7 @@
 `define DataWidth 32
 `define AddressWidth $clog2(`NUMPE)
 `define TotalWidth `DataWidth+`AddressWidth
+`define PATTERN "Tornado"
 `define Period 10
 
 
@@ -205,7 +206,7 @@ HNoC #(.DataWidth(`DataWidth),.numPE(`NUMPE),.AddrWidth(`AddressWidth))
 
 
 
-pe #(.address(0))pe0(
+pe #(.address(0),.numPE(`NUMPE),.AddressWidth(`AddressWidth),.DataWidth(`DataWidth),.TotalWidth(`TotalWidth),.PktLmit(`PktLimit),.Pattern(`PATTERN))pe0(
     .clk(clk),
     .rst(rst),
     .i_data(i_pe0_data),
@@ -217,7 +218,7 @@ pe #(.address(0))pe0(
     .done(done)
 );
 
-pe #(.address(1))pe1(
+pe #(.address(1),.numPE(`NUMPE),.AddressWidth(`AddressWidth),.DataWidth(`DataWidth),.TotalWidth(`TotalWidth),.PktLmit(`PktLimit),.Pattern(`PATTERN))pe1(
     .clk(clk),
     .rst(rst),
     .i_data(i_pe1_data),
@@ -229,7 +230,7 @@ pe #(.address(1))pe1(
     .done(done)
 );
 
-pe #(.address(2))pe2(
+pe #(.address(2),.numPE(`NUMPE),.AddressWidth(`AddressWidth),.DataWidth(`DataWidth),.TotalWidth(`TotalWidth),.PktLmit(`PktLimit),.Pattern(`PATTERN))pe2(
     .clk(clk),
     .rst(rst),
     .i_data(i_pe2_data),
@@ -241,7 +242,7 @@ pe #(.address(2))pe2(
     .done(done)
 );
 
-pe #(.address(3))pe3(
+pe #(.address(3),.numPE(`NUMPE),.AddressWidth(`AddressWidth),.DataWidth(`DataWidth),.TotalWidth(`TotalWidth),.PktLmit(`PktLimit),.Pattern(`PATTERN))pe3(
     .clk(clk),
     .rst(rst),
     .i_data(i_pe3_data),
@@ -253,7 +254,7 @@ pe #(.address(3))pe3(
     .done(done)
 );
 
-pe #(.address(4))pe4(
+pe #(.address(4),.numPE(`NUMPE),.AddressWidth(`AddressWidth),.DataWidth(`DataWidth),.TotalWidth(`TotalWidth),.PktLmit(`PktLimit),.Pattern(`PATTERN))pe4(
     .clk(clk),
     .rst(rst),
     .i_data(i_pe4_data),
@@ -265,7 +266,7 @@ pe #(.address(4))pe4(
     .done(done)
 );
 
-pe #(.address(5))pe5(
+pe #(.address(5),.numPE(`NUMPE),.AddressWidth(`AddressWidth),.DataWidth(`DataWidth),.TotalWidth(`TotalWidth),.PktLmit(`PktLimit),.Pattern(`PATTERN))pe5(
     .clk(clk),
     .rst(rst),
     .i_data(i_pe5_data),
@@ -277,7 +278,7 @@ pe #(.address(5))pe5(
     .done(done)
 );
 
-pe #(.address(6))pe6(
+pe #(.address(6),.numPE(`NUMPE),.AddressWidth(`AddressWidth),.DataWidth(`DataWidth),.TotalWidth(`TotalWidth),.PktLmit(`PktLimit),.Pattern(`PATTERN))pe6(
     .clk(clk),
     .rst(rst),
     .i_data(i_pe6_data),
@@ -289,7 +290,7 @@ pe #(.address(6))pe6(
     .done(done)
 );
 
-pe #(.address(7))pe7(
+pe #(.address(7),.numPE(`NUMPE),.AddressWidth(`AddressWidth),.DataWidth(`DataWidth),.TotalWidth(`TotalWidth),.PktLmit(`PktLimit),.Pattern(`PATTERN))pe7(
     .clk(clk),
     .rst(rst),
     .i_data(i_pe7_data),
@@ -301,7 +302,7 @@ pe #(.address(7))pe7(
     .done(done)
 );
 
-pe #(.address(8))pe8(
+pe #(.address(8),.numPE(`NUMPE),.AddressWidth(`AddressWidth),.DataWidth(`DataWidth),.TotalWidth(`TotalWidth),.PktLmit(`PktLimit),.Pattern(`PATTERN))pe8(
     .clk(clk),
     .rst(rst),
     .i_data(i_pe8_data),
@@ -313,7 +314,7 @@ pe #(.address(8))pe8(
     .done(done)
 );
 
-pe #(.address(9))pe9(
+pe #(.address(9),.numPE(`NUMPE),.AddressWidth(`AddressWidth),.DataWidth(`DataWidth),.TotalWidth(`TotalWidth),.PktLmit(`PktLimit),.Pattern(`PATTERN))pe9(
     .clk(clk),
     .rst(rst),
     .i_data(i_pe9_data),
@@ -325,7 +326,7 @@ pe #(.address(9))pe9(
     .done(done)
 );
 
-pe #(.address(10))pe10(
+pe #(.address(10),.numPE(`NUMPE),.AddressWidth(`AddressWidth),.DataWidth(`DataWidth),.TotalWidth(`TotalWidth),.PktLmit(`PktLimit),.Pattern(`PATTERN))pe10(
     .clk(clk),
     .rst(rst),
     .i_data(i_pe10_data),
@@ -337,7 +338,7 @@ pe #(.address(10))pe10(
     .done(done)
 );
 
-pe #(.address(11))pe11(
+pe #(.address(11),.numPE(`NUMPE),.AddressWidth(`AddressWidth),.DataWidth(`DataWidth),.TotalWidth(`TotalWidth),.PktLmit(`PktLimit),.Pattern(`PATTERN))pe11(
     .clk(clk),
     .rst(rst),
     .i_data(i_pe11_data),
@@ -349,7 +350,7 @@ pe #(.address(11))pe11(
     .done(done)
 );
 
-pe #(.address(12))pe12(
+pe #(.address(12),.numPE(`NUMPE),.AddressWidth(`AddressWidth),.DataWidth(`DataWidth),.TotalWidth(`TotalWidth),.PktLmit(`PktLimit),.Pattern(`PATTERN))pe12(
     .clk(clk),
     .rst(rst),
     .i_data(i_pe12_data),
@@ -361,7 +362,7 @@ pe #(.address(12))pe12(
     .done(done)
 );
 
-pe #(.address(13))pe13(
+pe #(.address(13),.numPE(`NUMPE),.AddressWidth(`AddressWidth),.DataWidth(`DataWidth),.TotalWidth(`TotalWidth),.PktLmit(`PktLimit),.Pattern(`PATTERN))pe13(
     .clk(clk),
     .rst(rst),
     .i_data(i_pe13_data),
@@ -373,7 +374,7 @@ pe #(.address(13))pe13(
     .done(done)
 );
 
-pe #(.address(14))pe14(
+pe #(.address(14),.numPE(`NUMPE),.AddressWidth(`AddressWidth),.DataWidth(`DataWidth),.TotalWidth(`TotalWidth),.PktLmit(`PktLimit),.Pattern(`PATTERN))pe14(
     .clk(clk),
     .rst(rst),
     .i_data(i_pe14_data),
@@ -385,7 +386,7 @@ pe #(.address(14))pe14(
     .done(done)
 );
 
-pe #(.address(15))pe15(
+pe #(.address(15),.numPE(`NUMPE),.AddressWidth(`AddressWidth),.DataWidth(`DataWidth),.TotalWidth(`TotalWidth),.PktLmit(`PktLimit),.Pattern(`PATTERN))pe15(
     .clk(clk),
     .rst(rst),
     .i_data(i_pe15_data),
