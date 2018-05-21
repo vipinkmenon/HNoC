@@ -1,10 +1,10 @@
 -- Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2017.3 (win64) Build 2018833 Wed Oct  4 19:58:22 MDT 2017
--- Date        : Sat May 12 10:27:02 2018
+-- Date        : Sat May 12 10:27:01 2018
 -- Host        : DESKTOP-9OFN2NK running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode funcsim
---               C:/Users/vipin.kizheppatt/OneDrive/Reserch/mygit/HNoC/HNoC4PE/project_1.srcs/sources_1/ip/SyncFifo/SyncFifo_sim_netlist.vhdl
+-- Command     : write_vhdl -force -mode funcsim -rename_top SyncFifo -prefix
+--               SyncFifo_ SyncFifo_sim_netlist.vhdl
 -- Design      : SyncFifo
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -28,8 +28,6 @@ entity SyncFifo_xpm_cdc_async_rst is
   attribute INIT_SYNC_FF of SyncFifo_xpm_cdc_async_rst : entity is 0;
   attribute INV_DEF_VAL : string;
   attribute INV_DEF_VAL of SyncFifo_xpm_cdc_async_rst : entity is "1'b1";
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of SyncFifo_xpm_cdc_async_rst : entity is "xpm_cdc_async_rst";
   attribute RST_ACTIVE_HIGH : integer;
   attribute RST_ACTIVE_HIGH of SyncFifo_xpm_cdc_async_rst : entity is 1;
   attribute VERSION : integer;
@@ -91,8 +89,6 @@ entity SyncFifo_dmem is
     Q : in STD_LOGIC_VECTOR ( 3 downto 0 );
     \gpregsm1.curr_fwft_state_reg[0]\ : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of SyncFifo_dmem : entity is "dmem";
 end SyncFifo_dmem;
 
 architecture STRUCTURE of SyncFifo_dmem is
@@ -1070,8 +1066,6 @@ entity SyncFifo_rd_bin_cntr is
     s_aclk : in STD_LOGIC;
     AR : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of SyncFifo_rd_bin_cntr : entity is "rd_bin_cntr";
 end SyncFifo_rd_bin_cntr;
 
 architecture STRUCTURE of SyncFifo_rd_bin_cntr is
@@ -1224,8 +1218,6 @@ entity SyncFifo_rd_fwft is
     m_axis_tready : in STD_LOGIC;
     ram_empty_fb_i_reg : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of SyncFifo_rd_fwft : entity is "rd_fwft";
 end SyncFifo_rd_fwft;
 
 architecture STRUCTURE of SyncFifo_rd_fwft is
@@ -1461,8 +1453,6 @@ entity SyncFifo_rd_status_flags_ss is
     s_aclk : in STD_LOGIC;
     AR : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of SyncFifo_rd_status_flags_ss : entity is "rd_status_flags_ss";
 end SyncFifo_rd_status_flags_ss;
 
 architecture STRUCTURE of SyncFifo_rd_status_flags_ss is
@@ -1524,8 +1514,6 @@ entity SyncFifo_wr_bin_cntr is
     s_aclk : in STD_LOGIC;
     AR : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of SyncFifo_wr_bin_cntr : entity is "wr_bin_cntr";
 end SyncFifo_wr_bin_cntr;
 
 architecture STRUCTURE of SyncFifo_wr_bin_cntr is
@@ -1781,8 +1769,6 @@ entity SyncFifo_wr_status_flags_ss is
     \grstd1.grst_full.grst_f.rst_d2_reg\ : in STD_LOGIC;
     s_axis_tvalid : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of SyncFifo_wr_status_flags_ss : entity is "wr_status_flags_ss";
 end SyncFifo_wr_status_flags_ss;
 
 architecture STRUCTURE of SyncFifo_wr_status_flags_ss is
@@ -1876,8 +1862,6 @@ entity SyncFifo_memory is
     Q : in STD_LOGIC_VECTOR ( 3 downto 0 );
     \gpregsm1.curr_fwft_state_reg[0]\ : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of SyncFifo_memory : entity is "memory";
 end SyncFifo_memory;
 
 architecture STRUCTURE of SyncFifo_memory is
@@ -2616,8 +2600,6 @@ entity SyncFifo_rd_logic is
     AR : in STD_LOGIC_VECTOR ( 0 to 0 );
     m_axis_tready : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of SyncFifo_rd_logic : entity is "rd_logic";
 end SyncFifo_rd_logic;
 
 architecture STRUCTURE of SyncFifo_rd_logic is
@@ -2669,8 +2651,6 @@ entity SyncFifo_reset_blk_ramfifo is
     m_axis_tready : in STD_LOGIC;
     \gpregsm1.curr_fwft_state_reg[1]\ : in STD_LOGIC_VECTOR ( 1 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of SyncFifo_reset_blk_ramfifo : entity is "reset_blk_ramfifo";
 end SyncFifo_reset_blk_ramfifo;
 
 architecture STRUCTURE of SyncFifo_reset_blk_ramfifo is
@@ -2872,8 +2852,6 @@ entity SyncFifo_wr_logic is
     \gc0.count_reg[3]\ : in STD_LOGIC_VECTOR ( 3 downto 0 );
     AR : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of SyncFifo_wr_logic : entity is "wr_logic";
 end SyncFifo_wr_logic;
 
 architecture STRUCTURE of SyncFifo_wr_logic is
@@ -2925,8 +2903,6 @@ entity SyncFifo_fifo_generator_ramfifo is
     s_axis_tvalid : in STD_LOGIC;
     s_axis_tdata : in STD_LOGIC_VECTOR ( 63 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of SyncFifo_fifo_generator_ramfifo : entity is "fifo_generator_ramfifo";
 end SyncFifo_fifo_generator_ramfifo;
 
 architecture STRUCTURE of SyncFifo_fifo_generator_ramfifo is
@@ -3017,8 +2993,6 @@ entity SyncFifo_fifo_generator_top is
     s_axis_tvalid : in STD_LOGIC;
     s_axis_tdata : in STD_LOGIC_VECTOR ( 63 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of SyncFifo_fifo_generator_top : entity is "fifo_generator_top";
 end SyncFifo_fifo_generator_top;
 
 architecture STRUCTURE of SyncFifo_fifo_generator_top is
@@ -3052,8 +3026,6 @@ entity SyncFifo_fifo_generator_v13_2_0_synth is
     s_aresetn : in STD_LOGIC;
     s_axis_tdata : in STD_LOGIC_VECTOR ( 63 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of SyncFifo_fifo_generator_v13_2_0_synth : entity is "fifo_generator_v13_2_0_synth";
 end SyncFifo_fifo_generator_v13_2_0_synth;
 
 architecture STRUCTURE of SyncFifo_fifo_generator_v13_2_0_synth is
@@ -3722,8 +3694,6 @@ entity SyncFifo_fifo_generator_v13_2_0 is
   attribute C_WR_PNTR_WIDTH_WRCH of SyncFifo_fifo_generator_v13_2_0 : entity is 4;
   attribute C_WR_RESPONSE_LATENCY : integer;
   attribute C_WR_RESPONSE_LATENCY of SyncFifo_fifo_generator_v13_2_0 : entity is 1;
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of SyncFifo_fifo_generator_v13_2_0 : entity is "fifo_generator_v13_2_0";
 end SyncFifo_fifo_generator_v13_2_0;
 
 architecture STRUCTURE of SyncFifo_fifo_generator_v13_2_0 is

@@ -1,6 +1,6 @@
 `timescale 1ns/1ps
 
-module pe #(address = 0,numPe=8,PktLmit=20)(
+module pe #(address = 0,PktLmit=20,Pattern="Neighbour",AddressWidth=3,numPE=8)(
 input clk,
 input rst,
 input [37:0] i_data,
@@ -20,32 +20,53 @@ reg [31:0] data;
 integer i=0;
 integer               receive_log_file;
 reg   [100*8:0]       receive_log_file_name = "receive_log.csv";
+integer j;
 reg start=0;
 
 initial
 begin
     receive_log_file = $fopen(receive_log_file_name,"a");
     seed = address;
-    wait(~rst);
-    @(posedge clk);
-    @(posedge clk);
-    @(posedge clk);
-    @(posedge clk);
-    @(posedge clk);
-    @(posedge clk);
-    @(posedge clk);
-    @(posedge clk);
-    @(posedge clk);
-    @(posedge clk);
-    @(posedge clk);
+    @(posedge rst);
+    #100;
     @(posedge clk);
     start = 1;
-    #1;
     repeat(PktLmit)
     begin
         data = PktLmit*address + i;
         i = i+1;
-        peaddress = $urandom(seed)%numPe;
+        if(Pattern == "RANDOM")
+        begin
+           peaddress = $urandom(seed)%numPE;
+        end
+	    else if(Pattern == "COMPLEMENT")
+        begin
+           for(j=0;j<AddressWidth;j=j+1)
+               peaddress[j] = !address[j];
+        end
+        else if(Pattern == "REVERSE")
+        begin
+           for(j=0;j<AddressWidth;j=j+1)
+               peaddress[j] = address[AddressWidth-1-j]; 
+        end
+        else if(Pattern == "Rotation")
+        begin
+           for(j=0;j<AddressWidth;j=j+1)
+               peaddress[j] = address[(j+1)%AddressWidth]; 
+        end
+        else if(Pattern == "Transpose")
+        begin
+           for(j=0;j<AddressWidth;j=j+1)
+               peaddress[j] = address[(j+(AddressWidth/2))%AddressWidth]; 
+        end
+        else if(Pattern == "Tornado")
+        begin
+               peaddress = (address + (numPE+1)/2)%numPE; 
+        end
+        else if(Pattern == "Neighbour")
+        begin
+               peaddress = (address + 1)%numPE; 
+        end    
         seed = seed + 1;
         sendData();
     end
@@ -68,8 +89,8 @@ assign o_data = {1'b1,1'b1,peaddress,1'b0,data};
 
 task sendData;
     begin
-        while(o_data_valid == 1'b0)
-            @(posedge clk);
+        #1;
+        wait(i_data_ready);
         @(posedge clk);
     end
 endtask

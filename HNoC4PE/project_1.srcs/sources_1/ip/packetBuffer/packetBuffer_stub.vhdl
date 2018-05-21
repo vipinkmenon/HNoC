@@ -1,10 +1,10 @@
 -- Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2017.3 (win64) Build 2018833 Wed Oct  4 19:58:22 MDT 2017
--- Date        : Sat May 12 10:17:41 2018
+-- Date        : Sat May 12 10:17:29 2018
 -- Host        : DESKTOP-9OFN2NK running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode synth_stub
---               C:/Users/vipin.kizheppatt/OneDrive/Reserch/mygit/HNoC/HNoC4PE/project_1.srcs/sources_1/ip/packetBuffer/packetBuffer_stub.vhdl
+-- Command     : write_vhdl -force -mode synth_stub -rename_top packetBuffer -prefix
+--               packetBuffer_ packetBuffer_stub.vhdl
 -- Design      : packetBuffer
 -- Purpose     : Stub declaration of top-level module interface
 -- Device      : xc7vx690tffg1761-2

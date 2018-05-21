@@ -1,5 +1,7 @@
 module HNoC #(parameter DataWidth = 32,numPE = 8,AddrWidth=3)(
-input   wire    i_clk,
+input   wire    clk_100,
+input   wire    clk_200,
+input   wire    clk_400,
 input   wire    i_reset,
 //pe 0
 input	wire	[DataWidth+AddrWidth-1:0] i_pe_data0,
@@ -66,19 +68,19 @@ wire [DataWidth+AddrWidth-1:0] Leaf1toCentreHData;
 wire        Leaf1toCentreHDataValid;
 wire        Leaf1toCentreHDataReady;
 
-wire        clk_100;
+/*wire        clk_100;
 wire        clk_200;
-wire        clk_400;
+wire        clk_400;*/
 
 
-clockGen clockGen
+/*clockGen clockGen
    (
     // Clock out ports
     .clk_out1(clk_100),     // output clk_out1
     .clk_out2(clk_200),     // output clk_out2
     .clk_out3(clk_400),     // output clk_out3
    // Clock in ports
-    .clk_in1(i_clk));      // input clk_in1
+    .clk_in1(i_clk));      // input clk_in1*/
 
 
 

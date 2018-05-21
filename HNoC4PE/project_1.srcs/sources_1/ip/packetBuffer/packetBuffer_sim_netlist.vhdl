@@ -1,10 +1,10 @@
 -- Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2017.3 (win64) Build 2018833 Wed Oct  4 19:58:22 MDT 2017
--- Date        : Sat May 12 10:17:41 2018
+-- Date        : Sat May 12 10:17:30 2018
 -- Host        : DESKTOP-9OFN2NK running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode funcsim
---               C:/Users/vipin.kizheppatt/OneDrive/Reserch/mygit/HNoC/HNoC4PE/project_1.srcs/sources_1/ip/packetBuffer/packetBuffer_sim_netlist.vhdl
+-- Command     : write_vhdl -force -mode funcsim -rename_top packetBuffer -prefix
+--               packetBuffer_ packetBuffer_sim_netlist.vhdl
 -- Design      : packetBuffer
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -28,8 +28,6 @@ entity packetBuffer_xpm_cdc_async_rst is
   attribute INIT_SYNC_FF of packetBuffer_xpm_cdc_async_rst : entity is 0;
   attribute INV_DEF_VAL : string;
   attribute INV_DEF_VAL of packetBuffer_xpm_cdc_async_rst : entity is "1'b1";
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of packetBuffer_xpm_cdc_async_rst : entity is "xpm_cdc_async_rst";
   attribute RST_ACTIVE_HIGH : integer;
   attribute RST_ACTIVE_HIGH of packetBuffer_xpm_cdc_async_rst : entity is 1;
   attribute VERSION : integer;
@@ -159,8 +157,6 @@ entity packetBuffer_xpm_cdc_gray is
   attribute DEST_SYNC_FF of packetBuffer_xpm_cdc_gray : entity is 2;
   attribute INIT_SYNC_FF : integer;
   attribute INIT_SYNC_FF of packetBuffer_xpm_cdc_gray : entity is 0;
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of packetBuffer_xpm_cdc_gray : entity is "xpm_cdc_gray";
   attribute REG_OUTPUT : integer;
   attribute REG_OUTPUT of packetBuffer_xpm_cdc_gray : entity is 1;
   attribute SIM_ASSERT_CHK : integer;
@@ -667,8 +663,6 @@ entity packetBuffer_xpm_cdc_single is
   attribute DEST_SYNC_FF of packetBuffer_xpm_cdc_single : entity is 4;
   attribute INIT_SYNC_FF : integer;
   attribute INIT_SYNC_FF of packetBuffer_xpm_cdc_single : entity is 0;
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of packetBuffer_xpm_cdc_single : entity is "xpm_cdc_single";
   attribute SIM_ASSERT_CHK : integer;
   attribute SIM_ASSERT_CHK of packetBuffer_xpm_cdc_single : entity is 0;
   attribute SRC_INPUT_REG : integer;
@@ -827,8 +821,6 @@ entity packetBuffer_dmem is
     \gpregsm1.curr_fwft_state_reg[1]\ : in STD_LOGIC_VECTOR ( 0 to 0 );
     m_aclk : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of packetBuffer_dmem : entity is "dmem";
 end packetBuffer_dmem;
 
 architecture STRUCTURE of packetBuffer_dmem is
@@ -1806,8 +1798,6 @@ entity packetBuffer_rd_bin_cntr is
     m_aclk : in STD_LOGIC;
     \ngwrdrst.grst.g7serrst.gnsckt_wrst.gic_rst.sckt_rd_rst_ic_reg\ : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of packetBuffer_rd_bin_cntr : entity is "rd_bin_cntr";
 end packetBuffer_rd_bin_cntr;
 
 architecture STRUCTURE of packetBuffer_rd_bin_cntr is
@@ -1962,8 +1952,6 @@ entity packetBuffer_rd_fwft is
     WR_PNTR_RD : in STD_LOGIC_VECTOR ( 0 to 0 );
     Q : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of packetBuffer_rd_fwft : entity is "rd_fwft";
 end packetBuffer_rd_fwft;
 
 architecture STRUCTURE of packetBuffer_rd_fwft is
@@ -2211,8 +2199,6 @@ entity packetBuffer_rd_status_flags_as is
     m_aclk : in STD_LOGIC;
     \ngwrdrst.grst.g7serrst.gnsckt_wrst.gic_rst.sckt_rd_rst_ic_reg\ : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of packetBuffer_rd_status_flags_as : entity is "rd_status_flags_as";
 end packetBuffer_rd_status_flags_as;
 
 architecture STRUCTURE of packetBuffer_rd_status_flags_as is
@@ -2267,8 +2253,6 @@ entity packetBuffer_wr_bin_cntr is
     s_aclk : in STD_LOGIC;
     AR : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of packetBuffer_wr_bin_cntr : entity is "wr_bin_cntr";
 end packetBuffer_wr_bin_cntr;
 
 architecture STRUCTURE of packetBuffer_wr_bin_cntr is
@@ -2468,8 +2452,6 @@ entity packetBuffer_wr_status_flags_as is
     Q : in STD_LOGIC_VECTOR ( 0 to 0 );
     RD_PNTR_WR : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of packetBuffer_wr_status_flags_as : entity is "wr_status_flags_as";
 end packetBuffer_wr_status_flags_as;
 
 architecture STRUCTURE of packetBuffer_wr_status_flags_as is
@@ -2559,8 +2541,6 @@ entity packetBuffer_clk_x_pntrs is
     \gic0.gc0.count_d2_reg[3]\ : in STD_LOGIC_VECTOR ( 3 downto 0 );
     m_aclk : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of packetBuffer_clk_x_pntrs : entity is "clk_x_pntrs";
 end packetBuffer_clk_x_pntrs;
 
 architecture STRUCTURE of packetBuffer_clk_x_pntrs is
@@ -2721,8 +2701,6 @@ entity packetBuffer_memory is
     \gic0.gc0.count_d2_reg[3]\ : in STD_LOGIC_VECTOR ( 3 downto 0 );
     \gpregsm1.curr_fwft_state_reg[1]\ : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of packetBuffer_memory : entity is "memory";
 end packetBuffer_memory;
 
 architecture STRUCTURE of packetBuffer_memory is
@@ -3462,8 +3440,6 @@ entity packetBuffer_rd_logic is
     m_axis_tready : in STD_LOGIC;
     WR_PNTR_RD : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of packetBuffer_rd_logic : entity is "rd_logic";
 end packetBuffer_rd_logic;
 
 architecture STRUCTURE of packetBuffer_rd_logic is
@@ -3517,8 +3493,6 @@ entity packetBuffer_reset_blk_ramfifo is
     m_aclk : in STD_LOGIC;
     s_aresetn : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of packetBuffer_reset_blk_ramfifo : entity is "reset_blk_ramfifo";
 end packetBuffer_reset_blk_ramfifo;
 
 architecture STRUCTURE of packetBuffer_reset_blk_ramfifo is
@@ -3834,8 +3808,6 @@ entity packetBuffer_wr_logic is
     RD_PNTR_WR : in STD_LOGIC_VECTOR ( 0 to 0 );
     AR : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of packetBuffer_wr_logic : entity is "wr_logic";
 end packetBuffer_wr_logic;
 
 architecture STRUCTURE of packetBuffer_wr_logic is
@@ -3883,8 +3855,6 @@ entity packetBuffer_fifo_generator_ramfifo is
     m_axis_tready : in STD_LOGIC;
     s_aresetn : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of packetBuffer_fifo_generator_ramfifo : entity is "fifo_generator_ramfifo";
 end packetBuffer_fifo_generator_ramfifo;
 
 architecture STRUCTURE of packetBuffer_fifo_generator_ramfifo is
@@ -3994,8 +3964,6 @@ entity packetBuffer_fifo_generator_top is
     m_axis_tready : in STD_LOGIC;
     s_aresetn : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of packetBuffer_fifo_generator_top : entity is "fifo_generator_top";
 end packetBuffer_fifo_generator_top;
 
 architecture STRUCTURE of packetBuffer_fifo_generator_top is
@@ -4031,8 +3999,6 @@ entity packetBuffer_fifo_generator_v13_2_0_synth is
     m_axis_tready : in STD_LOGIC;
     s_aresetn : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of packetBuffer_fifo_generator_v13_2_0_synth : entity is "fifo_generator_v13_2_0_synth";
 end packetBuffer_fifo_generator_v13_2_0_synth;
 
 architecture STRUCTURE of packetBuffer_fifo_generator_v13_2_0_synth is
@@ -4693,8 +4659,6 @@ entity packetBuffer_fifo_generator_v13_2_0 is
   attribute C_WR_PNTR_WIDTH_WRCH of packetBuffer_fifo_generator_v13_2_0 : entity is 4;
   attribute C_WR_RESPONSE_LATENCY : integer;
   attribute C_WR_RESPONSE_LATENCY of packetBuffer_fifo_generator_v13_2_0 : entity is 1;
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of packetBuffer_fifo_generator_v13_2_0 : entity is "fifo_generator_v13_2_0";
 end packetBuffer_fifo_generator_v13_2_0;
 
 architecture STRUCTURE of packetBuffer_fifo_generator_v13_2_0 is

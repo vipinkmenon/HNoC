@@ -1,10 +1,10 @@
 // Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
-// Tool Version: Vivado v.2017.3 (lin64) Build 2018833 Wed Oct  4 19:58:07 MDT 2017
-// Date        : Thu May 10 15:51:13 2018
-// Host        : vipin-ESPRIMO-P756 running 64-bit Ubuntu 16.04.4 LTS
+// Tool Version: Vivado v.2017.3 (win64) Build 2018833 Wed Oct  4 19:58:22 MDT 2017
+// Date        : Sun May 13 12:03:37 2018
+// Host        : DESKTOP-9OFN2NK running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
-//               /home/vipin/workspace/Research/HNoC/HNoC4PE/project_1.srcs/sources_1/ip/clockGen/clockGen_sim_netlist.v
+//               C:/Users/vipin.kizheppatt/OneDrive/Reserch/mygit/HNoC/HNoC4PE/project_1.srcs/sources_1/ip/clockGen/clockGen_sim_netlist.v
 // Design      : clockGen
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -91,16 +91,16 @@ module clockGen_clockGen_clk_wiz
   (* BOX_TYPE = "PRIMITIVE" *) 
   PLLE2_ADV #(
     .BANDWIDTH("OPTIMIZED"),
-    .CLKFBOUT_MULT(12),
+    .CLKFBOUT_MULT(6),
     .CLKFBOUT_PHASE(0.000000),
-    .CLKIN1_PERIOD(10.000000),
+    .CLKIN1_PERIOD(5.000000),
     .CLKIN2_PERIOD(0.000000),
     .CLKOUT0_DIVIDE(12),
     .CLKOUT0_DUTY_CYCLE(0.500000),
     .CLKOUT0_PHASE(0.000000),
     .CLKOUT1_DIVIDE(6),
     .CLKOUT1_DUTY_CYCLE(0.500000),
-    .CLKOUT1_PHASE(0.000000),
+    .CLKOUT1_PHASE(180.000000),
     .CLKOUT2_DIVIDE(3),
     .CLKOUT2_DUTY_CYCLE(0.500000),
     .CLKOUT2_PHASE(0.000000),

@@ -33,7 +33,7 @@ begin
         data = PktLmit*address + i;
         i = i+1;
         if(Pattern == "RANDOM")
-           peaddress = $urandom(seed)%16;
+           peaddress = $urandom(seed)%numPE;
 	else if(Pattern == "COMPLEMENT")
         begin
            for(j=0;j<AddressWidth;j=j+1)

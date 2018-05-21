@@ -34,7 +34,7 @@ begin
         i = i+1;
         if(Pattern == "RANDOM")
            peaddress = $urandom(seed)%16;
-	else if(Pattern == "COMPLEMENT")
+	    else if(Pattern == "COMPLEMENT")
         begin
            for(j=0;j<AddressWidth;j=j+1)
                peaddress[j] = !address[j];

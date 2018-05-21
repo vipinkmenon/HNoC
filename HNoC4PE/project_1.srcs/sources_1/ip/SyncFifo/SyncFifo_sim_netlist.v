@@ -1,10 +1,10 @@
 // Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2017.3 (win64) Build 2018833 Wed Oct  4 19:58:22 MDT 2017
-// Date        : Sat May 12 10:27:02 2018
+// Date        : Sat May 12 10:27:00 2018
 // Host        : DESKTOP-9OFN2NK running 64-bit major release  (build 9200)
-// Command     : write_verilog -force -mode funcsim
-//               C:/Users/vipin.kizheppatt/OneDrive/Reserch/mygit/HNoC/HNoC4PE/project_1.srcs/sources_1/ip/SyncFifo/SyncFifo_sim_netlist.v
+// Command     : write_verilog -force -mode funcsim -rename_top SyncFifo -prefix
+//               SyncFifo_ SyncFifo_sim_netlist.v
 // Design      : SyncFifo
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -605,8 +605,8 @@ module SyncFifo
 endmodule
 
 (* DEF_VAL = "1'b0" *) (* DEST_SYNC_FF = "2" *) (* INIT_SYNC_FF = "0" *) 
-(* INV_DEF_VAL = "1'b1" *) (* ORIG_REF_NAME = "xpm_cdc_async_rst" *) (* RST_ACTIVE_HIGH = "1" *) 
-(* VERSION = "0" *) (* XPM_MODULE = "TRUE" *) (* xpm_cdc = "ASYNC_RST" *) 
+(* INV_DEF_VAL = "1'b1" *) (* RST_ACTIVE_HIGH = "1" *) (* VERSION = "0" *) 
+(* XPM_MODULE = "TRUE" *) (* xpm_cdc = "ASYNC_RST" *) 
 module SyncFifo_xpm_cdc_async_rst
    (src_arst,
     dest_clk,
@@ -642,7 +642,6 @@ module SyncFifo_xpm_cdc_async_rst
         .Q(arststages_ff[1]));
 endmodule
 
-(* ORIG_REF_NAME = "dmem" *) 
 module SyncFifo_dmem
    (dout_i,
     s_aclk,
@@ -1370,7 +1369,6 @@ module SyncFifo_dmem
         .R(1'b0));
 endmodule
 
-(* ORIG_REF_NAME = "fifo_generator_ramfifo" *) 
 module SyncFifo_fifo_generator_ramfifo
    (wr_rst_busy,
     s_axis_tready,
@@ -1462,7 +1460,6 @@ module SyncFifo_fifo_generator_ramfifo
         .wr_rst_busy(wr_rst_busy));
 endmodule
 
-(* ORIG_REF_NAME = "fifo_generator_top" *) 
 module SyncFifo_fifo_generator_top
    (wr_rst_busy,
     s_axis_tready,
@@ -1572,7 +1569,7 @@ endmodule
 (* C_WR_DEPTH_WRCH = "16" *) (* C_WR_FREQ = "1" *) (* C_WR_PNTR_WIDTH = "10" *) 
 (* C_WR_PNTR_WIDTH_AXIS = "4" *) (* C_WR_PNTR_WIDTH_RACH = "4" *) (* C_WR_PNTR_WIDTH_RDCH = "10" *) 
 (* C_WR_PNTR_WIDTH_WACH = "4" *) (* C_WR_PNTR_WIDTH_WDCH = "10" *) (* C_WR_PNTR_WIDTH_WRCH = "4" *) 
-(* C_WR_RESPONSE_LATENCY = "1" *) (* ORIG_REF_NAME = "fifo_generator_v13_2_0" *) 
+(* C_WR_RESPONSE_LATENCY = "1" *) 
 module SyncFifo_fifo_generator_v13_2_0
    (backup,
     backup_marker,
@@ -2592,7 +2589,6 @@ module SyncFifo_fifo_generator_v13_2_0
         .wr_rst_busy(wr_rst_busy));
 endmodule
 
-(* ORIG_REF_NAME = "fifo_generator_v13_2_0_synth" *) 
 module SyncFifo_fifo_generator_v13_2_0_synth
    (wr_rst_busy,
     m_axis_tdata,
@@ -2641,7 +2637,6 @@ module SyncFifo_fifo_generator_v13_2_0_synth
         .O(inverted_reset__0));
 endmodule
 
-(* ORIG_REF_NAME = "memory" *) 
 module SyncFifo_memory
    (m_axis_tdata,
     E,
@@ -3192,7 +3187,6 @@ module SyncFifo_memory
         .R(1'b0));
 endmodule
 
-(* ORIG_REF_NAME = "rd_bin_cntr" *) 
 module SyncFifo_rd_bin_cntr
    (Q,
     \gpr1.dout_i_reg[1] ,
@@ -3306,7 +3300,6 @@ module SyncFifo_rd_bin_cntr
         .Q(Q[3]));
 endmodule
 
-(* ORIG_REF_NAME = "rd_fwft" *) 
 module SyncFifo_rd_fwft
    (out,
     RAM_RD_EN,
@@ -3496,7 +3489,6 @@ module SyncFifo_rd_fwft
         .O(m_axis_tvalid));
 endmodule
 
-(* ORIG_REF_NAME = "rd_logic" *) 
 module SyncFifo_rd_logic
    (out,
     \gpregsm1.user_valid_reg ,
@@ -3555,7 +3547,6 @@ module SyncFifo_rd_logic
         .s_aclk(s_aclk));
 endmodule
 
-(* ORIG_REF_NAME = "rd_status_flags_ss" *) 
 module SyncFifo_rd_status_flags_ss
    (out,
     ram_empty_fb_i_reg_0,
@@ -3597,7 +3588,6 @@ module SyncFifo_rd_status_flags_ss
         .Q(ram_empty_i));
 endmodule
 
-(* ORIG_REF_NAME = "reset_blk_ramfifo" *) 
 module SyncFifo_reset_blk_ramfifo
    (out,
     ram_full_fb_i_reg,
@@ -3747,7 +3737,6 @@ module SyncFifo_reset_blk_ramfifo
         .O(wr_rst_busy));
 endmodule
 
-(* ORIG_REF_NAME = "wr_bin_cntr" *) 
 module SyncFifo_wr_bin_cntr
    (ram_full_comb,
     ram_empty_i_reg,
@@ -3965,7 +3954,6 @@ module SyncFifo_wr_bin_cntr
         .O(ram_full_fb_i_i_3_n_0));
 endmodule
 
-(* ORIG_REF_NAME = "wr_logic" *) 
 module SyncFifo_wr_logic
    (E,
     s_axis_tready,
@@ -4034,7 +4022,6 @@ module SyncFifo_wr_logic
         .s_axis_tvalid(s_axis_tvalid));
 endmodule
 
-(* ORIG_REF_NAME = "wr_status_flags_ss" *) 
 module SyncFifo_wr_status_flags_ss
    (out,
     E,

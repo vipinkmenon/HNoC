@@ -1,5 +1,7 @@
-module HNoC #(parameter DataWidth = 32,numPE = 4,AddrWidth=2)(
-input   wire    i_clk,
+module HNoC #(parameter DataWidth = 32,numPE = 4,AddrWidth=2)(////
+//input   wire    i_clk,
+input   wire    clk_100,
+input   wire    clk_200,
 input   wire    i_reset,
 //pe 0
 input	wire	[DataWidth+AddrWidth-1:0] i_pe_data0,
@@ -31,12 +33,12 @@ output	wire	o_pe_data_valid3,
 input   wire	i_pe_data_ready3
 );
 
-wire        clk_100;
+/*wire        clk_100;
 wire        clk_200;
-wire        clk_400;
+wire        clk_400;*/
 
 
-clockGen clockGen
+/*clockGen clockGen
    (
     // Clock out ports
     .clk_out1(clk_100),     // output clk_out1
@@ -44,6 +46,7 @@ clockGen clockGen
     .clk_out3(clk_400),     // output clk_out3
    // Clock in ports
     .clk_in1(i_clk));      // input clk_in1
+*/
 
 CentreH #(.DataWidth(DataWidth+AddrWidth),.sw1bottomMin(0),.sw1bottomMax(0),.sw1topMin(1),.sw1topMax(1),.sw2bottomMin(2),.sw2bottomMax(2),.sw2topMin(3),.sw2topMax(3))
 CH (

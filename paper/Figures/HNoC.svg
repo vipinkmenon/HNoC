@@ -10,11 +10,11 @@
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    width="84.712776mm"
-   height="46.601295mm"
-   viewBox="0 0 84.712776 46.601295"
+   height="48.610474mm"
+   viewBox="0 0 84.712776 48.610473"
    version="1.1"
    id="svg3875"
-   inkscape:version="0.92.3 (unknown)"
+   inkscape:version="0.92.1 r15371"
    sodipodi:docname="HNoC.svg">
   <defs
      id="defs3869" />
@@ -26,16 +26,16 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="2.8"
-     inkscape:cx="222.50161"
-     inkscape:cy="98.909313"
+     inkscape:cx="162.47302"
+     inkscape:cy="93.451998"
      inkscape:document-units="mm"
-     inkscape:current-layer="g4958"
+     inkscape:current-layer="g5067"
      showgrid="false"
      inkscape:snap-global="false"
-     inkscape:window-width="1855"
-     inkscape:window-height="1056"
-     inkscape:window-x="65"
-     inkscape:window-y="24"
+     inkscape:window-width="1920"
+     inkscape:window-height="1001"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
      inkscape:window-maximized="1"
      fit-margin-top="0"
      fit-margin-left="0"
@@ -44,8 +44,8 @@
     <inkscape:grid
        type="xygrid"
        id="grid4450"
-       originx="33.064648"
-       originy="-167.82534" />
+       originx="33.064646"
+       originy="-165.81616" />
   </sodipodi:namedview>
   <metadata
      id="metadata3872">
@@ -187,14 +187,14 @@
          height="0.38747326"
          width="0.38747326"
          id="rect4553-3"
-         style="fill:#ff0000;fill-opacity:1;stroke:#ff0000;stroke-width:0.26500002;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+         style="fill:#00ff00;fill-opacity:1;stroke:#00ff00;stroke-width:0.26500002;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
       <rect
          y="105.92235"
          x="47.487389"
          height="0.38747326"
          width="0.38747326"
          id="rect4553-3-5"
-         style="fill:#ff0000;fill-opacity:1;stroke:#ff0000;stroke-width:0.26500002;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+         style="fill:#00ff00;fill-opacity:1;stroke:#00ff00;stroke-width:0.26500002;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
     </g>
     <g
        transform="translate(21.162007,0.07388057)"
@@ -288,7 +288,7 @@
              height="0.38747326"
              width="0.38747326"
              id="rect4871"
-             style="fill:#ff0000;fill-opacity:1;stroke:#ff0000;stroke-width:0.26445445;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+             style="fill:#00ff00;fill-opacity:1;stroke:#00ff00;stroke-width:0.26445445;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
         </g>
         <g
            id="g4865"
@@ -305,7 +305,7 @@
              id="path4858"
              inkscape:connector-curvature="0" />
           <rect
-             style="fill:#ff0000;fill-opacity:1;stroke:#ff0000;stroke-width:0.26445445;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+             style="fill:#00ff00;fill-opacity:1;stroke:#00ff00;stroke-width:0.26445445;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
              id="rect4860"
              width="0.38747326"
              height="0.38747326"
@@ -579,6 +579,24 @@
            height="0.38323095"
            x="-13.683304"
            y="133.87297" />
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:0;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+           x="-12.464054"
+           y="137.7668"
+           id="text4983-8"><tspan
+             sodipodi:role="line"
+             id="tspan4981-1"
+             x="-12.464054"
+             y="137.7668"
+             style="font-size:2.11666656px;stroke-width:0.26458332">Type-3 Switch</tspan></text>
+        <rect
+           style="fill:#00ff00;fill-opacity:1;stroke:#00ff00;stroke-width:0.26499999;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           id="rect4852-2-3"
+           width="0.43397623"
+           height="0.38323095"
+           x="-13.683304"
+           y="136.93675" />
       </g>
     </g>
   </g>

@@ -1,4 +1,4 @@
-`timescale 1ns/1ps
+`timescale 1ps/1ps
 
 module pe #(address = 0,numPE=4,AddressWidth=2,DataWidth=32,TotalWidth=35,PktLmit=100,Pattern="Random")(
 input clk,
@@ -65,7 +65,7 @@ begin
         seed = seed + 1;
         sendData({peaddress,data});
     end
-    o_data_valid <= 1'b0;
+    #150 o_data_valid <= 1'b0;
 end
 
 always @(posedge clk)
@@ -82,7 +82,7 @@ end
 task sendData;
     input [TotalWidth-1:0] data;
     begin
-        o_data_valid <= 1'b1;
+        #150 o_data_valid <= 1'b1;
         o_data <= data;
         @(posedge clk);
         while(i_data_ready == 1'b0)

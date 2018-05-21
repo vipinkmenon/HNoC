@@ -49,7 +49,7 @@
 
 `include "connect_parameters.v"
 `define NUMPE 8
-`define PktLmit 100
+`define PktLmit 50
 `define expectedPkts `NUMPE*`PktLmit
 
 module CONNECT_testbench_sample_peek();
@@ -90,6 +90,8 @@ module CONNECT_testbench_sample_peek();
   
   reg done = 0;
   reg [31:0] receivedPkts=0;
+  
+  integer start,stop,delay;
 
   // Generate Clock
   initial Clk = 0;
@@ -102,7 +104,8 @@ module CONNECT_testbench_sample_peek();
     Rst_n = 1; // perform reset (active low) 
     #(5*ClkPeriod+HalfClkPeriod); 
     Rst_n = 0; 
-    #(HalfClkPeriod);
+    wait(send_flit[0]);
+    start = $time;
   end
 
 
@@ -119,6 +122,9 @@ module CONNECT_testbench_sample_peek();
         if(receivedPkts == `expectedPkts)
         begin
             done = 1;
+            stop = $time;
+            $display("Start time %d Stop time %d",start,stop);
+            $display("Throughput : %f",`expectedPkts*1.0/((stop-start)/ClkPeriod));
             #1000;
             $stop;
         end

@@ -1,10 +1,10 @@
 // Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2017.3 (win64) Build 2018833 Wed Oct  4 19:58:22 MDT 2017
-// Date        : Sat May 12 10:17:41 2018
+// Date        : Sat May 12 10:17:29 2018
 // Host        : DESKTOP-9OFN2NK running 64-bit major release  (build 9200)
-// Command     : write_verilog -force -mode funcsim
-//               C:/Users/vipin.kizheppatt/OneDrive/Reserch/mygit/HNoC/HNoC4PE/project_1.srcs/sources_1/ip/packetBuffer/packetBuffer_sim_netlist.v
+// Command     : write_verilog -force -mode funcsim -rename_top packetBuffer -prefix
+//               packetBuffer_ packetBuffer_sim_netlist.v
 // Design      : packetBuffer
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -608,8 +608,8 @@ module packetBuffer
 endmodule
 
 (* DEF_VAL = "1'b0" *) (* DEST_SYNC_FF = "2" *) (* INIT_SYNC_FF = "0" *) 
-(* INV_DEF_VAL = "1'b1" *) (* ORIG_REF_NAME = "xpm_cdc_async_rst" *) (* RST_ACTIVE_HIGH = "1" *) 
-(* VERSION = "0" *) (* XPM_MODULE = "TRUE" *) (* xpm_cdc = "ASYNC_RST" *) 
+(* INV_DEF_VAL = "1'b1" *) (* RST_ACTIVE_HIGH = "1" *) (* VERSION = "0" *) 
+(* XPM_MODULE = "TRUE" *) (* xpm_cdc = "ASYNC_RST" *) 
 module packetBuffer_xpm_cdc_async_rst
    (src_arst,
     dest_clk,
@@ -683,10 +683,9 @@ module packetBuffer_xpm_cdc_async_rst__1
         .Q(arststages_ff[1]));
 endmodule
 
-(* DEST_SYNC_FF = "2" *) (* INIT_SYNC_FF = "0" *) (* ORIG_REF_NAME = "xpm_cdc_gray" *) 
-(* REG_OUTPUT = "1" *) (* SIM_ASSERT_CHK = "0" *) (* SIM_LOSSLESS_GRAY_CHK = "0" *) 
-(* VERSION = "0" *) (* WIDTH = "4" *) (* XPM_MODULE = "TRUE" *) 
-(* xpm_cdc = "GRAY" *) 
+(* DEST_SYNC_FF = "2" *) (* INIT_SYNC_FF = "0" *) (* REG_OUTPUT = "1" *) 
+(* SIM_ASSERT_CHK = "0" *) (* SIM_LOSSLESS_GRAY_CHK = "0" *) (* VERSION = "0" *) 
+(* WIDTH = "4" *) (* XPM_MODULE = "TRUE" *) (* xpm_cdc = "GRAY" *) 
 module packetBuffer_xpm_cdc_gray
    (src_clk,
     src_in_bin,
@@ -1041,9 +1040,9 @@ module packetBuffer_xpm_cdc_gray__1
         .R(1'b0));
 endmodule
 
-(* DEST_SYNC_FF = "4" *) (* INIT_SYNC_FF = "0" *) (* ORIG_REF_NAME = "xpm_cdc_single" *) 
-(* SIM_ASSERT_CHK = "0" *) (* SRC_INPUT_REG = "0" *) (* VERSION = "0" *) 
-(* XPM_MODULE = "TRUE" *) (* xpm_cdc = "SINGLE" *) 
+(* DEST_SYNC_FF = "4" *) (* INIT_SYNC_FF = "0" *) (* SIM_ASSERT_CHK = "0" *) 
+(* SRC_INPUT_REG = "0" *) (* VERSION = "0" *) (* XPM_MODULE = "TRUE" *) 
+(* xpm_cdc = "SINGLE" *) 
 module packetBuffer_xpm_cdc_single
    (src_clk,
     src_in,
@@ -1145,7 +1144,6 @@ module packetBuffer_xpm_cdc_single__1
         .R(1'b0));
 endmodule
 
-(* ORIG_REF_NAME = "clk_x_pntrs" *) 
 module packetBuffer_clk_x_pntrs
    (ram_full_fb_i_reg,
     RD_PNTR_WR,
@@ -1292,7 +1290,6 @@ module packetBuffer_clk_x_pntrs
         .src_in_bin(\gic0.gc0.count_d2_reg[3] ));
 endmodule
 
-(* ORIG_REF_NAME = "dmem" *) 
 module packetBuffer_dmem
    (dout_i,
     s_aclk,
@@ -2023,7 +2020,6 @@ module packetBuffer_dmem
         .R(1'b0));
 endmodule
 
-(* ORIG_REF_NAME = "fifo_generator_ramfifo" *) 
 module packetBuffer_fifo_generator_ramfifo
    (wr_rst_busy,
     m_axis_tdata,
@@ -2136,7 +2132,6 @@ module packetBuffer_fifo_generator_ramfifo
         .wr_rst_busy(wr_rst_busy));
 endmodule
 
-(* ORIG_REF_NAME = "fifo_generator_top" *) 
 module packetBuffer_fifo_generator_top
    (wr_rst_busy,
     m_axis_tdata,
@@ -2250,7 +2245,7 @@ endmodule
 (* C_WR_DEPTH_WRCH = "16" *) (* C_WR_FREQ = "1" *) (* C_WR_PNTR_WIDTH = "10" *) 
 (* C_WR_PNTR_WIDTH_AXIS = "4" *) (* C_WR_PNTR_WIDTH_RACH = "4" *) (* C_WR_PNTR_WIDTH_RDCH = "10" *) 
 (* C_WR_PNTR_WIDTH_WACH = "4" *) (* C_WR_PNTR_WIDTH_WDCH = "10" *) (* C_WR_PNTR_WIDTH_WRCH = "4" *) 
-(* C_WR_RESPONSE_LATENCY = "1" *) (* ORIG_REF_NAME = "fifo_generator_v13_2_0" *) 
+(* C_WR_RESPONSE_LATENCY = "1" *) 
 module packetBuffer_fifo_generator_v13_2_0
    (backup,
     backup_marker,
@@ -3272,7 +3267,6 @@ module packetBuffer_fifo_generator_v13_2_0
         .wr_rst_busy(wr_rst_busy));
 endmodule
 
-(* ORIG_REF_NAME = "fifo_generator_v13_2_0_synth" *) 
 module packetBuffer_fifo_generator_v13_2_0_synth
    (wr_rst_busy,
     m_axis_tdata,
@@ -3319,7 +3313,6 @@ module packetBuffer_fifo_generator_v13_2_0_synth
         .wr_rst_busy(wr_rst_busy));
 endmodule
 
-(* ORIG_REF_NAME = "memory" *) 
 module packetBuffer_memory
    (m_axis_tdata,
     E,
@@ -3874,7 +3867,6 @@ module packetBuffer_memory
         .R(1'b0));
 endmodule
 
-(* ORIG_REF_NAME = "rd_bin_cntr" *) 
 module packetBuffer_rd_bin_cntr
    (Q,
     \src_gray_ff_reg[3] ,
@@ -3988,7 +3980,6 @@ module packetBuffer_rd_bin_cntr
         .Q(Q[3]));
 endmodule
 
-(* ORIG_REF_NAME = "rd_fwft" *) 
 module packetBuffer_rd_fwft
    (ram_empty_fb_i_reg,
     E,
@@ -4194,7 +4185,6 @@ module packetBuffer_rd_fwft
         .O(ram_empty_fb_i_reg));
 endmodule
 
-(* ORIG_REF_NAME = "rd_logic" *) 
 module packetBuffer_rd_logic
    (Q,
     ram_empty_fb_i_reg,
@@ -4257,7 +4247,6 @@ module packetBuffer_rd_logic
         .\src_gray_ff_reg[3] (\src_gray_ff_reg[3] ));
 endmodule
 
-(* ORIG_REF_NAME = "rd_status_flags_as" *) 
 module packetBuffer_rd_status_flags_as
    (out,
     \dest_out_bin_ff_reg[2] ,
@@ -4299,7 +4288,6 @@ module packetBuffer_rd_status_flags_as
         .Q(ram_empty_i));
 endmodule
 
-(* ORIG_REF_NAME = "reset_blk_ramfifo" *) 
 module packetBuffer_reset_blk_ramfifo
    (AR,
     \syncstages_ff_reg[0] ,
@@ -4529,7 +4517,6 @@ module packetBuffer_reset_blk_ramfifo
         .O(inverted_reset));
 endmodule
 
-(* ORIG_REF_NAME = "wr_bin_cntr" *) 
 module packetBuffer_wr_bin_cntr
    (Q,
     \gic0.gc0.count_d2_reg[3]_0 ,
@@ -4678,7 +4665,6 @@ module packetBuffer_wr_bin_cntr
         .Q(Q[3]));
 endmodule
 
-(* ORIG_REF_NAME = "wr_logic" *) 
 module packetBuffer_wr_logic
    (Q,
     ram_full_fb_i_reg,
@@ -4738,7 +4724,6 @@ module packetBuffer_wr_logic
         .\src_gray_ff_reg[3] (\src_gray_ff_reg[3] ));
 endmodule
 
-(* ORIG_REF_NAME = "wr_status_flags_as" *) 
 module packetBuffer_wr_status_flags_as
    (ram_full_fb_i_reg_0,
     E,
