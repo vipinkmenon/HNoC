@@ -5,14 +5,24 @@
       \toprule
       Noc & \# of PEs & LUTs & FFs & Fmax \\
       \midrule
+      \midrule
       Connect & 8      & 3660 & 912 & 150  \\
       Connect & 16     & 12431 & 3040 & 135 \\
       Connect & 32     & 37047 & 8512 & 94 \\    
-      
-      HNoC & 4         & 866  & 1470 & 204,404\\
-      HNoC & 8         & 2528 & 4466 & 203,390,455\\
-      HNoC & 16        & 5239 & 8870 & 203,351,443 \\
-      HNoC & 32        & 10046 & 18360 & 203,339,422\\
+      \midrule
+      AsyncBTree & 4         & 860  & 1470 & 487,425\\
+      AsyncBTree & 8         & 2528 & 4466 & 504,361,429\\
+      AsyncBTree & 16        & 5270 & 8870 & 461,393,433 \\
+      AsyncBTree & 32        & 10046 & 18360 & 460,387,377\\
+      \midrule
+      SyncBTree (With out Root) &  4         &  791 & 1062 & 404\\
+      SyncBTree (With out Root) &  8         &  2267 & 3242 & 401\\
+      SyncBTree (With out Root) &  16        &  4877 & 6830 & 397\\
+      SyncBTree (With out Root) &  32        &  9215 & 14280 & 375\\
+      \midrule      
+      SyncBTree (With Root) &  4         &  1139 & 1593 & 411\\
+      SyncBTree (With Root) &  8         &  2588 & 3751 & 418\\
+      SyncBTree (With Root) &  16         &  5172 & 7379 & 368\\ 
       \bottomrule
     \end{tabular}
     %\vspace{-5mm}

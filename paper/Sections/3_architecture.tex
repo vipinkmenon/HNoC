@@ -1,11 +1,11 @@
 \section{Architecture}
 \label{sec:arch}
 
-An AsyncBTree tries to achieve better performance compared to a conventional binary trees and binary fat trees in terms of resource utilization and throughput by applying FPGA and topology specific optimizations and using asynchronous links between different tree levels.
+An AsyncBTree tries to achieve better performance compared to a conventional binary tree and binary fat tree in terms of resource utilization and throughput by applying FPGA and topology specific optimizations and using asynchronous links between different tree levels.
 Fig.~\ref{fig:btree} shows the architecture of an AsyncBTree utilizing different kind of optimized switches at different levels.
 The detailed architecture of the switches are discussed in Section~\ref{sec:switch}.
 The binary tree is placed and routed in the FPGA as an H-tree for efficient resource utilization and better floor-planning.
-Such placement also supports partial reconfiguration of a portion of the NoC in efficient manner.
+Such placement also supports partial reconfiguration of a portion of the NoC in an efficient manner.
 As the first optimization, the root node of the tree is removed and the switches at level-1 are directly connected.
 Since the connectivity of the root node is only 2, in practical systems they act as a transparent switch.
 They could be useful where packets are injected to the NoC through the root node by making its connectivity into 3.
