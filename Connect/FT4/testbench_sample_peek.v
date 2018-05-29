@@ -48,7 +48,7 @@
 `timescale 1ns / 1ps
 
 `include "connect_parameters.v"
-`define NUMPE 8
+`define NUMPE 4
 `define PktLmit 100
 `define expectedPkts `NUMPE*`PktLmit
 
@@ -298,7 +298,7 @@ pe #(.address(3),.PktLmit(`PktLmit))pe3(
 
 pe #(.address(4),.PktLmit(`PktLmit))pe4(
     .clk(Clk),
-    .rst(!Rst_n),
+    .rst(1'b0),
     .i_data(flit_out[4]),
     .i_data_valid(flit_out[4][37]),
     .o_data_ready(o_pe4_data_ready),
@@ -310,7 +310,7 @@ pe #(.address(4),.PktLmit(`PktLmit))pe4(
 
 pe #(.address(5),.PktLmit(`PktLmit))pe5(
     .clk(Clk),
-    .rst(!Rst_n),
+    .rst(1'b0),
     .i_data(flit_out[5]),
     .i_data_valid(flit_out[5][37]),
     .o_data_ready(o_pe5_data_ready),
@@ -322,7 +322,7 @@ pe #(.address(5),.PktLmit(`PktLmit))pe5(
 
 pe #(.address(6),.PktLmit(`PktLmit))pe6(
     .clk(Clk),
-    .rst(!Rst_n),
+    .rst(1'b0),
     .i_data(flit_out[6]),
     .i_data_valid(flit_out[6][37]),
     .o_data_ready(o_pe6_data_ready),
@@ -334,7 +334,7 @@ pe #(.address(6),.PktLmit(`PktLmit))pe6(
 
 pe #(.address(7),.PktLmit(`PktLmit))pe7(
     .clk(Clk),
-    .rst(!Rst_n),
+    .rst(1'b0),
     .i_data(flit_out[7]),
     .i_data_valid(flit_out[7][37]),
     .o_data_ready(o_pe7_data_ready),

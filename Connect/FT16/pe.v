@@ -1,12 +1,12 @@
 `timescale 1ns/1ps
 
-module pe #(address = 0,PktLmit=20,Pattern="REVERSE",AddressWidth=3,numPE=8)(
+module pe #(address = 0,PktLmit=20,Pattern="REVERSE",AddressWidth=4,numPE=16)(
 input clk,
 input rst,
-input [37:0] i_data,
+input [38:0] i_data,
 input i_data_valid,
 output o_data_ready,
-output [37:0] o_data,
+output [38:0] o_data,
 output wire o_data_valid,
 input i_data_ready,
 input done
@@ -14,7 +14,7 @@ input done
 
 integer receivedPkts = 0;
 assign o_data_ready = 1'b1;
-reg [2:0] peaddress = 3;
+reg [3:0] peaddress = 3;
 integer seed;
 reg [31:0] data;
 integer i=0;

@@ -1,6 +1,6 @@
 `timescale 1ns/1ps
 
-module pe #(address = 0,PktLmit=20,Pattern="REVERSE",AddressWidth=3,numPE=8)(
+module pe #(address = 0,PktLmit=20,Pattern="Tornado",AddressWidth=2,numPE=4)(
 input clk,
 input rst,
 input [37:0] i_data,
