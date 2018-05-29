@@ -1,4 +1,4 @@
-module HNoC #(parameter DataWidth = 32,numPE = 8,AddrWidth=3)(
+module BTree #(parameter DataWidth = 32,numPE = 8,AddrWidth=3)(
 input   wire    clk_100,
 input   wire    i_reset,
 //pe 0

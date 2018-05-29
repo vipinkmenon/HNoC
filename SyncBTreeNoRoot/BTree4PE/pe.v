@@ -13,6 +13,7 @@ input done
 );
 
 integer receivedPkts = 0;
+integer counter=0;
 assign o_data_ready = 1'b1;
 reg [AddressWidth-1:0] peaddress;
 integer seed;
@@ -21,6 +22,10 @@ integer i=0;
 integer               receive_log_file;
 reg   [100*8:0]       receive_log_file_name = "receive_log.csv";
 integer j;
+integer latency;
+
+always @(posedge clk)
+    counter <= counter + 1;
 
 initial
 begin
@@ -30,7 +35,7 @@ begin
     wait(~rst);
     repeat(PktLmit)
     begin
-        data = PktLmit*address + i;
+        data = counter;
         i = i+1;
         if(Pattern == "RANDOM")
            peaddress = $urandom(seed)%16;
@@ -72,7 +77,8 @@ always @(posedge clk)
 begin
     if(i_data_valid)
     begin
-       $fwrite(receive_log_file,"%0d,%0d,%d\n",address,i_data[DataWidth+:AddressWidth],i_data[DataWidth-1:0]);
+       latency = counter - i_data[DataWidth-1:0];
+       $fwrite(receive_log_file,"%0d,%0d,%d,%d\n",address,i_data[DataWidth+:AddressWidth],i_data[DataWidth-1:0],latency);
        $fflush(receive_log_file);
        receivedPkts = receivedPkts + 1;
     end
