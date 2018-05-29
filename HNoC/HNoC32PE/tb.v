@@ -6,7 +6,7 @@
 `define DataWidth 32
 `define AddressWidth $clog2(`NUMPE)
 `define TotalWidth `DataWidth+`AddressWidth
-`define PATTERN "RANDOM"
+`define PATTERN "REVERSE"
 `define Period1 10000
 `define Period2 5000
 `define Period3 2500
@@ -97,6 +97,7 @@ initial
 begin
     clk_100 = 0;
     receive_log_file = $fopen(receive_log_file_name,"w");
+    $fwrite(receive_log_file,"PE Address,Pkt Address,Inject Time,Latency\n");
     forever
     begin
         clk_100 = ~clk_100;

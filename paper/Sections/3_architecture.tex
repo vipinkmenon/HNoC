@@ -1,6 +1,7 @@
 \section{Architecture}
 \label{sec:arch}
 
+
 An AsyncBTree tries to achieve better performance compared to a conventional binary tree and binary fat tree in terms of resource utilization and throughput by applying FPGA and topology specific optimizations and using asynchronous links between different tree levels.
 Fig.~\ref{fig:btree} shows the architecture of an AsyncBTree utilizing different kind of optimized switches at different levels.
 The detailed architecture of the switches are discussed in Section~\ref{sec:switch}.
@@ -89,7 +90,15 @@ Due to the deterministic routing policy and since the routing is at flit-level, 
 \end{figure}
 
 \section{Flow control}
+
+\begin{figure}[t]
+\centering
+   \includegraphics[width=\columnwidth]{Figures/axi.pdf}
+   \caption{AXI4-Stream protocol}
+   \label{fig:axi}
+\end{figure}
+
 The current AsyncBTree implementation does not include virtual channels and flow control is achieved through at electrical signaling level.
 The interface between switches as well as switches and PEs confirm to AXI4-stream interface.
 Such interface also enables seamless integration of several vendor supported IP cores directly with the NoC.
-As per AXI4-stream protocol, a successful data transfer happens only when the \emph{valid} signal from the transmitter and \emph{ready} signal from the receiver are asserted as shown in Fig.~\ref{axi}.
+As per AXI4-stream protocol, a successful data transfer happens only when the \emph{valid} signal from the transmitter and \emph{ready} signal from the receiver are asserted as shown in Fig.~\ref{fig:axi}.

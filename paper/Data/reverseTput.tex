@@ -1,0 +1,15 @@
+%\documentclass{article}
+\documentclass{standalone}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.7}
+\pgfplotsset{every axis/.append style={font=\LARGE,semithick,tick style={thick}}}
+\begin{document}
+    %\begin{figure}
+        \centering
+        \begin{tikzpicture}[scale=2.0]
+            \begin{axis}[width=\textwidth,height=0.6\textwidth,xlabel=Number of PEs ,ylabel= Throughput (packets/sec),legend pos=south east,xmin=0,xtick={4,8,16,32},xticklabels={4,8,16,32},legend cell align=left]
+                \addplot [color = green,thick,mark=*]table[x=NumPE,y=Tput] {HNocReverse.txt};
+            \end{axis}
+        \end{tikzpicture}%
+    %\end{figure}
+\end{document}

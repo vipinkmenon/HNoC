@@ -1,4 +1,4 @@
-`timescale 1ns/1ps
+`timescale 1ps/1ps
 
 `define NUMPE 8
 `define PktLimit 100
@@ -6,13 +6,16 @@
 `define DataWidth 32
 `define AddressWidth $clog2(`NUMPE)
 `define TotalWidth `DataWidth+`AddressWidth
-`define PATTERN "Neighbour"
-`define Period 10
-
+`define PATTERN "Tornado"
+`define Period1 10000
+`define Period2 5000
+`define Period3 2500
 
 module tb();
 
-reg clk;
+reg clk100;
+reg clk200;
+reg clk400;
 reg rst;
 
 reg[31:0] receivedPkts=0;
@@ -45,26 +48,47 @@ reg done;
 
 initial
 begin
-    clk = 0;
+    clk100 = 0;
     receive_log_file = $fopen(receive_log_file_name,"w");
+    $fwrite(receive_log_file,"PE Address,Pkt Address,Inject Time,Latency\n");
     forever
     begin
-        clk = ~clk;
-        #(`Period/2);
+        clk100 = ~clk100;
+        #(`Period1/2);
+    end
+end
+
+initial
+begin
+    clk200 = 0;
+    forever
+    begin
+        clk200 = ~clk200;
+        #(`Period2/2);
+    end
+end
+
+initial
+begin
+    clk400 = 0;
+    forever
+    begin
+        clk400 = ~clk400;
+        #(`Period3/2);
     end
 end
 
 initial
 begin
     rst = 1;
-    #100;
-    @(posedge clk);
-    @(posedge clk);
-    @(posedge clk);
-    @(posedge clk);
-    @(posedge clk);
-    @(posedge clk);
-    @(posedge clk);
+    #100000;
+    @(posedge clk100);
+    @(posedge clk100);
+    @(posedge clk100);
+    @(posedge clk100);
+    @(posedge clk100);
+    @(posedge clk100);
+    @(posedge clk100);
     rst = 0;
     wait(i_pe0_data_ready);
     start = $time;
@@ -72,7 +96,9 @@ end
 
 HNoC #(.DataWidth(`DataWidth),.numPE(`NUMPE),.AddrWidth(`AddressWidth))
     HNoC(
-    .i_clk(clk),
+    .clk_100(clk100),
+    .clk_200(clk200),
+    .clk_400(clk400),
     .i_reset(rst),
     
     .i_pe_data0(o_pe0_data),
@@ -135,7 +161,7 @@ HNoC #(.DataWidth(`DataWidth),.numPE(`NUMPE),.AddrWidth(`AddressWidth))
 
 
 pe #(.address(0),.numPE(`NUMPE),.AddressWidth(`AddressWidth),.DataWidth(`DataWidth),.TotalWidth(`TotalWidth),.PktLmit(`PktLimit),.Pattern(`PATTERN))pe0(
-    .clk(clk),
+    .clk(clk100),
     .rst(rst),
     .i_data(i_pe0_data),
     .i_data_valid(i_pe0_data_valid),
@@ -147,7 +173,7 @@ pe #(.address(0),.numPE(`NUMPE),.AddressWidth(`AddressWidth),.DataWidth(`DataWid
 );
 
 pe #(.address(1),.numPE(`NUMPE),.AddressWidth(`AddressWidth),.DataWidth(`DataWidth),.TotalWidth(`TotalWidth),.PktLmit(`PktLimit),.Pattern(`PATTERN))pe1(
-    .clk(clk),
+    .clk(clk100),
     .rst(rst),
     .i_data(i_pe1_data),
     .i_data_valid(i_pe1_data_valid),
@@ -159,7 +185,7 @@ pe #(.address(1),.numPE(`NUMPE),.AddressWidth(`AddressWidth),.DataWidth(`DataWid
 );
 
 pe #(.address(2),.numPE(`NUMPE),.AddressWidth(`AddressWidth),.DataWidth(`DataWidth),.TotalWidth(`TotalWidth),.PktLmit(`PktLimit),.Pattern(`PATTERN))pe2(
-    .clk(clk),
+    .clk(clk100),
     .rst(rst),
     .i_data(i_pe2_data),
     .i_data_valid(i_pe2_data_valid),
@@ -171,7 +197,7 @@ pe #(.address(2),.numPE(`NUMPE),.AddressWidth(`AddressWidth),.DataWidth(`DataWid
 );
 
 pe #(.address(3),.numPE(`NUMPE),.AddressWidth(`AddressWidth),.DataWidth(`DataWidth),.TotalWidth(`TotalWidth),.PktLmit(`PktLimit),.Pattern(`PATTERN))pe3(
-    .clk(clk),
+    .clk(clk100),
     .rst(rst),
     .i_data(i_pe3_data),
     .i_data_valid(i_pe3_data_valid),
@@ -183,7 +209,7 @@ pe #(.address(3),.numPE(`NUMPE),.AddressWidth(`AddressWidth),.DataWidth(`DataWid
 );
 
 pe #(.address(4),.numPE(`NUMPE),.AddressWidth(`AddressWidth),.DataWidth(`DataWidth),.TotalWidth(`TotalWidth),.PktLmit(`PktLimit),.Pattern(`PATTERN))pe4(
-    .clk(clk),
+    .clk(clk100),
     .rst(rst),
     .i_data(i_pe4_data),
     .i_data_valid(i_pe4_data_valid),
@@ -195,7 +221,7 @@ pe #(.address(4),.numPE(`NUMPE),.AddressWidth(`AddressWidth),.DataWidth(`DataWid
 );
 
 pe #(.address(5),.numPE(`NUMPE),.AddressWidth(`AddressWidth),.DataWidth(`DataWidth),.TotalWidth(`TotalWidth),.PktLmit(`PktLimit),.Pattern(`PATTERN))pe5(
-    .clk(clk),
+    .clk(clk100),
     .rst(rst),
     .i_data(i_pe5_data),
     .i_data_valid(i_pe5_data_valid),
@@ -207,7 +233,7 @@ pe #(.address(5),.numPE(`NUMPE),.AddressWidth(`AddressWidth),.DataWidth(`DataWid
 );
 
 pe #(.address(6),.numPE(`NUMPE),.AddressWidth(`AddressWidth),.DataWidth(`DataWidth),.TotalWidth(`TotalWidth),.PktLmit(`PktLimit),.Pattern(`PATTERN))pe6(
-    .clk(clk),
+    .clk(clk100),
     .rst(rst),
     .i_data(i_pe6_data),
     .i_data_valid(i_pe6_data_valid),
@@ -219,7 +245,7 @@ pe #(.address(6),.numPE(`NUMPE),.AddressWidth(`AddressWidth),.DataWidth(`DataWid
 );
 
 pe #(.address(7),.numPE(`NUMPE),.AddressWidth(`AddressWidth),.DataWidth(`DataWidth),.TotalWidth(`TotalWidth),.PktLmit(`PktLimit),.Pattern(`PATTERN))pe7(
-    .clk(clk),
+    .clk(clk100),
     .rst(rst),
     .i_data(i_pe7_data),
     .i_data_valid(i_pe7_data_valid),
@@ -230,7 +256,7 @@ pe #(.address(7),.numPE(`NUMPE),.AddressWidth(`AddressWidth),.DataWidth(`DataWid
     .done(done)
 );
 
-always @(posedge clk)
+always @(posedge clk100)
 begin
     if(rst)
         receivedPkts = 0;
@@ -243,7 +269,7 @@ begin
             done = 1;
             stop = $time;
             $display("Start time %d Stop time %d",start,stop);
-            $display("Throughput : %f",`expectedPkts*1.0/((stop-start)/`Period));
+            $display("Throughput : %f",`expectedPkts*1.0/((stop-start)/`Period1));
             #1000;
             $fclose(receive_log_file_name);
             $stop;
