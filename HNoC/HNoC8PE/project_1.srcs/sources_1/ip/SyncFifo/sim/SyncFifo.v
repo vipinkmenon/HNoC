@@ -201,7 +201,7 @@ output wire [63 : 0] m_axis_tdata;
     .C_WRCH_TYPE(0),
     .C_RACH_TYPE(0),
     .C_RDCH_TYPE(0),
-    .C_AXIS_TYPE(0),
+    .C_AXIS_TYPE(1),
     .C_IMPLEMENTATION_TYPE_WACH(2),
     .C_IMPLEMENTATION_TYPE_WDCH(1),
     .C_IMPLEMENTATION_TYPE_WRCH(2),
@@ -291,7 +291,7 @@ output wire [63 : 0] m_axis_tdata;
     .C_REG_SLICE_MODE_WRCH(0),
     .C_REG_SLICE_MODE_RACH(0),
     .C_REG_SLICE_MODE_RDCH(0),
-    .C_REG_SLICE_MODE_AXIS(0)
+    .C_REG_SLICE_MODE_AXIS(1)
   ) inst (
     .backup(1'D0),
     .backup_marker(1'D0),

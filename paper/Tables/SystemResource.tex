@@ -3,27 +3,22 @@
   \caption{OpenNoc module-level resource utilization} 
   \begin{tabular}{l|l|l|l|l}
       \toprule
-      Noc & \# of PEs & LUTs & FFs & Fmax \\
+      NoC & \# of PEs & LUTs & FFs & Fmax \\
       \midrule
       \midrule
-      Connect & 8      & 3660 & 912 & 150  \\
-      Connect & 16     & 12431 & 3040 & 135 \\
-      Connect & 32     & 37047 & 8512 & 94 \\    
+      Fat Tree & 8      & 3660 & 912 & 150   \\
+      Fat Tree & 16     & 12431 & 3040 & 135 \\
+      Fat Tree & 32     & 37047 & 8512 & 94  \\    
       \midrule
-      AsyncBTree & 4         & 860  & 1470 & 487,425\\
-      AsyncBTree & 8         & 2528 & 4466 & 504,361,429\\
-      AsyncBTree & 16        & 5270 & 8870 & 461,393,433 \\
+      AsyncBTree & 4         & 760  & 1350 & 481,416\\
+      AsyncBTree & 8         & 2242 & 4100 & 506,407,418\\
+      AsyncBTree & 16        & 4212 & 7506 & 483,386,416 \\
       AsyncBTree & 32        & 10046 & 18360 & 460,387,377\\
       \midrule
-      SyncBTree (With out Root) &  4         &  791 & 1062 & 404\\
-      SyncBTree (With out Root) &  8         &  2267 & 3242 & 401\\
-      SyncBTree (With out Root) &  16        &  4877 & 6830 & 383\\
-      SyncBTree (With out Root) &  32        &  9215 & 14280 & 375\\
-      \midrule      
-      SyncBTree (With Root) &  4         &  1139 & 1593 & 411\\
-      SyncBTree (With Root) &  8         &  2588 & 3751 & 418\\
-      SyncBTree (With Root) &  16         &  5188 & 7379 & 391\\ 
-      SyncBTree (With Root) &  32         &  9400 & 14608 & 380\\ 
+      SyncBTree  &  4         &  522 & 510 & 450\\
+      SyncBTree  &  8         &  1616 & 1566 & 407\\
+      SyncBTree  &  16        &  3603 & 3726 & 420\\
+      SyncBTree  &  32        &  6077 & 6850 & 425\\
       \bottomrule
     \end{tabular}
     %\vspace{-5mm}

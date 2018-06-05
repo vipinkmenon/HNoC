@@ -1854,30 +1854,6 @@ module mkNetworkSimple(CLK,
 		       EN_send_ports_3_getNonFullVCs,
 		       send_ports_3_getNonFullVCs,
 
-		       send_ports_4_putFlit_flit_in,
-		       EN_send_ports_4_putFlit,
-
-		       EN_send_ports_4_getNonFullVCs,
-		       send_ports_4_getNonFullVCs,
-
-		       send_ports_5_putFlit_flit_in,
-		       EN_send_ports_5_putFlit,
-
-		       EN_send_ports_5_getNonFullVCs,
-		       send_ports_5_getNonFullVCs,
-
-		       send_ports_6_putFlit_flit_in,
-		       EN_send_ports_6_putFlit,
-
-		       EN_send_ports_6_getNonFullVCs,
-		       send_ports_6_getNonFullVCs,
-
-		       send_ports_7_putFlit_flit_in,
-		       EN_send_ports_7_putFlit,
-
-		       EN_send_ports_7_getNonFullVCs,
-		       send_ports_7_getNonFullVCs,
-
 		       EN_recv_ports_0_getFlit,
 		       recv_ports_0_getFlit,
 
@@ -1902,45 +1878,14 @@ module mkNetworkSimple(CLK,
 		       recv_ports_3_putNonFullVCs_nonFullVCs,
 		       EN_recv_ports_3_putNonFullVCs,
 
-		       EN_recv_ports_4_getFlit,
-		       recv_ports_4_getFlit,
-
-		       recv_ports_4_putNonFullVCs_nonFullVCs,
-		       EN_recv_ports_4_putNonFullVCs,
-
-		       EN_recv_ports_5_getFlit,
-		       recv_ports_5_getFlit,
-
-		       recv_ports_5_putNonFullVCs_nonFullVCs,
-		       EN_recv_ports_5_putNonFullVCs,
-
-		       EN_recv_ports_6_getFlit,
-		       recv_ports_6_getFlit,
-
-		       recv_ports_6_putNonFullVCs_nonFullVCs,
-		       EN_recv_ports_6_putNonFullVCs,
-
-		       EN_recv_ports_7_getFlit,
-		       recv_ports_7_getFlit,
-
-		       recv_ports_7_putNonFullVCs_nonFullVCs,
-		       EN_recv_ports_7_putNonFullVCs,
-
 		       recv_ports_info_0_getRecvPortID,
 
 		       recv_ports_info_1_getRecvPortID,
 
 		       recv_ports_info_2_getRecvPortID,
 
-		       recv_ports_info_3_getRecvPortID,
-
-		       recv_ports_info_4_getRecvPortID,
-
-		       recv_ports_info_5_getRecvPortID,
-
-		       recv_ports_info_6_getRecvPortID,
-
-		       recv_ports_info_7_getRecvPortID);
+		       recv_ports_info_3_getRecvPortID
+  );
   input  CLK;
   input  RST_N;
 
@@ -1976,38 +1921,6 @@ module mkNetworkSimple(CLK,
   input  EN_send_ports_3_getNonFullVCs;
   output [1 : 0] send_ports_3_getNonFullVCs;
 
-  // action method send_ports_4_putFlit
-  input  [37 : 0] send_ports_4_putFlit_flit_in;
-  input  EN_send_ports_4_putFlit;
-
-  // actionvalue method send_ports_4_getNonFullVCs
-  input  EN_send_ports_4_getNonFullVCs;
-  output [1 : 0] send_ports_4_getNonFullVCs;
-
-  // action method send_ports_5_putFlit
-  input  [37 : 0] send_ports_5_putFlit_flit_in;
-  input  EN_send_ports_5_putFlit;
-
-  // actionvalue method send_ports_5_getNonFullVCs
-  input  EN_send_ports_5_getNonFullVCs;
-  output [1 : 0] send_ports_5_getNonFullVCs;
-
-  // action method send_ports_6_putFlit
-  input  [37 : 0] send_ports_6_putFlit_flit_in;
-  input  EN_send_ports_6_putFlit;
-
-  // actionvalue method send_ports_6_getNonFullVCs
-  input  EN_send_ports_6_getNonFullVCs;
-  output [1 : 0] send_ports_6_getNonFullVCs;
-
-  // action method send_ports_7_putFlit
-  input  [37 : 0] send_ports_7_putFlit_flit_in;
-  input  EN_send_ports_7_putFlit;
-
-  // actionvalue method send_ports_7_getNonFullVCs
-  input  EN_send_ports_7_getNonFullVCs;
-  output [1 : 0] send_ports_7_getNonFullVCs;
-
   // actionvalue method recv_ports_0_getFlit
   input  EN_recv_ports_0_getFlit;
   output [37 : 0] recv_ports_0_getFlit;
@@ -2039,39 +1952,7 @@ module mkNetworkSimple(CLK,
   // action method recv_ports_3_putNonFullVCs
   input  [1 : 0] recv_ports_3_putNonFullVCs_nonFullVCs;
   input  EN_recv_ports_3_putNonFullVCs;
-
-  // actionvalue method recv_ports_4_getFlit
-  input  EN_recv_ports_4_getFlit;
-  output [37 : 0] recv_ports_4_getFlit;
-
-  // action method recv_ports_4_putNonFullVCs
-  input  [1 : 0] recv_ports_4_putNonFullVCs_nonFullVCs;
-  input  EN_recv_ports_4_putNonFullVCs;
-
-  // actionvalue method recv_ports_5_getFlit
-  input  EN_recv_ports_5_getFlit;
-  output [37 : 0] recv_ports_5_getFlit;
-
-  // action method recv_ports_5_putNonFullVCs
-  input  [1 : 0] recv_ports_5_putNonFullVCs_nonFullVCs;
-  input  EN_recv_ports_5_putNonFullVCs;
-
-  // actionvalue method recv_ports_6_getFlit
-  input  EN_recv_ports_6_getFlit;
-  output [37 : 0] recv_ports_6_getFlit;
-
-  // action method recv_ports_6_putNonFullVCs
-  input  [1 : 0] recv_ports_6_putNonFullVCs_nonFullVCs;
-  input  EN_recv_ports_6_putNonFullVCs;
-
-  // actionvalue method recv_ports_7_getFlit
-  input  EN_recv_ports_7_getFlit;
-  output [37 : 0] recv_ports_7_getFlit;
-
-  // action method recv_ports_7_putNonFullVCs
-  input  [1 : 0] recv_ports_7_putNonFullVCs_nonFullVCs;
-  input  EN_recv_ports_7_putNonFullVCs;
-
+  
   // value method recv_ports_info_0_getRecvPortID
   output [2 : 0] recv_ports_info_0_getRecvPortID;
 
@@ -2084,17 +1965,6 @@ module mkNetworkSimple(CLK,
   // value method recv_ports_info_3_getRecvPortID
   output [2 : 0] recv_ports_info_3_getRecvPortID;
 
-  // value method recv_ports_info_4_getRecvPortID
-  output [2 : 0] recv_ports_info_4_getRecvPortID;
-
-  // value method recv_ports_info_5_getRecvPortID
-  output [2 : 0] recv_ports_info_5_getRecvPortID;
-
-  // value method recv_ports_info_6_getRecvPortID
-  output [2 : 0] recv_ports_info_6_getRecvPortID;
-
-  // value method recv_ports_info_7_getRecvPortID
-  output [2 : 0] recv_ports_info_7_getRecvPortID;
 
   // signals for module outputs
   wire [37 : 0] recv_ports_0_getFlit,
@@ -3161,15 +3031,11 @@ module mkNetworkSimple(CLK,
   assign net_routers_routeTable_1_rt_ifc_banks_banks_rf_3$WE = 1'b0 ;
 
   // submodule net_routers_routeTable_2_rt_ifc_banks_banks_rf
-  assign net_routers_routeTable_2_rt_ifc_banks_banks_rf$ADDR_1 =
-	     send_ports_4_putFlit_flit_in[35:33] ;
   assign net_routers_routeTable_2_rt_ifc_banks_banks_rf$ADDR_IN = 3'h0 ;
   assign net_routers_routeTable_2_rt_ifc_banks_banks_rf$D_IN = 2'h0 ;
   assign net_routers_routeTable_2_rt_ifc_banks_banks_rf$WE = 1'b0 ;
 
   // submodule net_routers_routeTable_2_rt_ifc_banks_banks_rf_1
-  assign net_routers_routeTable_2_rt_ifc_banks_banks_rf_1$ADDR_1 =
-	     send_ports_5_putFlit_flit_in[35:33] ;
   assign net_routers_routeTable_2_rt_ifc_banks_banks_rf_1$ADDR_IN = 3'h0 ;
   assign net_routers_routeTable_2_rt_ifc_banks_banks_rf_1$D_IN = 2'h0 ;
   assign net_routers_routeTable_2_rt_ifc_banks_banks_rf_1$WE = 1'b0 ;
@@ -3189,15 +3055,11 @@ module mkNetworkSimple(CLK,
   assign net_routers_routeTable_2_rt_ifc_banks_banks_rf_3$WE = 1'b0 ;
 
   // submodule net_routers_routeTable_3_rt_ifc_banks_banks_rf
-  assign net_routers_routeTable_3_rt_ifc_banks_banks_rf$ADDR_1 =
-	     send_ports_6_putFlit_flit_in[35:33] ;
   assign net_routers_routeTable_3_rt_ifc_banks_banks_rf$ADDR_IN = 3'h0 ;
   assign net_routers_routeTable_3_rt_ifc_banks_banks_rf$D_IN = 2'h0 ;
   assign net_routers_routeTable_3_rt_ifc_banks_banks_rf$WE = 1'b0 ;
 
   // submodule net_routers_routeTable_3_rt_ifc_banks_banks_rf_1
-  assign net_routers_routeTable_3_rt_ifc_banks_banks_rf_1$ADDR_1 =
-	     send_ports_7_putFlit_flit_in[35:33] ;
   assign net_routers_routeTable_3_rt_ifc_banks_banks_rf_1$ADDR_IN = 3'h0 ;
   assign net_routers_routeTable_3_rt_ifc_banks_banks_rf_1$D_IN = 2'h0 ;
   assign net_routers_routeTable_3_rt_ifc_banks_banks_rf_1$WE = 1'b0 ;
@@ -3393,92 +3255,40 @@ module mkNetworkSimple(CLK,
   assign net_routers_router_core_1$EN_out_ports_3_putNonFullVCs = 1'd1 ;
 
   // submodule net_routers_router_core_2
-  assign net_routers_router_core_2$in_ports_0_putRoutedFlit_flit_in =
-	     { send_ports_4_putFlit_flit_in,
-	       net_routers_routeTable_2_rt_ifc_banks_banks_rf$D_OUT_1 } ;
-  assign net_routers_router_core_2$in_ports_1_putRoutedFlit_flit_in =
-	     { send_ports_5_putFlit_flit_in,
-	       net_routers_routeTable_2_rt_ifc_banks_banks_rf_1$D_OUT_1 } ;
   assign net_routers_router_core_2$in_ports_2_putRoutedFlit_flit_in =
 	     { net_routers_router_core_4$out_ports_2_getFlit,
 	       net_routers_routeTable_2_rt_ifc_banks_banks_rf_2$D_OUT_1 } ;
   assign net_routers_router_core_2$in_ports_3_putRoutedFlit_flit_in =
 	     { net_routers_router_core_5$out_ports_2_getFlit,
 	       net_routers_routeTable_2_rt_ifc_banks_banks_rf_3$D_OUT_1 } ;
-  assign net_routers_router_core_2$out_ports_0_putNonFullVCs_nonFullVCs =
-	     recv_ports_4_putNonFullVCs_nonFullVCs ;
-  assign net_routers_router_core_2$out_ports_1_putNonFullVCs_nonFullVCs =
-	     recv_ports_5_putNonFullVCs_nonFullVCs ;
   assign net_routers_router_core_2$out_ports_2_putNonFullVCs_nonFullVCs =
 	     net_routers_router_core_4$in_ports_2_getNonFullVCs ;
   assign net_routers_router_core_2$out_ports_3_putNonFullVCs_nonFullVCs =
 	     net_routers_router_core_5$in_ports_2_getNonFullVCs ;
-  assign net_routers_router_core_2$EN_in_ports_0_putRoutedFlit =
-	     EN_send_ports_4_putFlit ;
-  assign net_routers_router_core_2$EN_in_ports_0_getNonFullVCs =
-	     EN_send_ports_4_getNonFullVCs ;
-  assign net_routers_router_core_2$EN_in_ports_1_putRoutedFlit =
-	     EN_send_ports_5_putFlit ;
-  assign net_routers_router_core_2$EN_in_ports_1_getNonFullVCs =
-	     EN_send_ports_5_getNonFullVCs ;
   assign net_routers_router_core_2$EN_in_ports_2_putRoutedFlit = 1'd1 ;
   assign net_routers_router_core_2$EN_in_ports_2_getNonFullVCs = 1'd1 ;
   assign net_routers_router_core_2$EN_in_ports_3_putRoutedFlit = 1'd1 ;
   assign net_routers_router_core_2$EN_in_ports_3_getNonFullVCs = 1'd1 ;
-  assign net_routers_router_core_2$EN_out_ports_0_getFlit =
-	     EN_recv_ports_4_getFlit ;
-  assign net_routers_router_core_2$EN_out_ports_0_putNonFullVCs =
-	     EN_recv_ports_4_putNonFullVCs ;
-  assign net_routers_router_core_2$EN_out_ports_1_getFlit =
-	     EN_recv_ports_5_getFlit ;
-  assign net_routers_router_core_2$EN_out_ports_1_putNonFullVCs =
-	     EN_recv_ports_5_putNonFullVCs ;
   assign net_routers_router_core_2$EN_out_ports_2_getFlit = 1'd1 ;
   assign net_routers_router_core_2$EN_out_ports_2_putNonFullVCs = 1'd1 ;
   assign net_routers_router_core_2$EN_out_ports_3_getFlit = 1'd1 ;
   assign net_routers_router_core_2$EN_out_ports_3_putNonFullVCs = 1'd1 ;
 
   // submodule net_routers_router_core_3
-  assign net_routers_router_core_3$in_ports_0_putRoutedFlit_flit_in =
-	     { send_ports_6_putFlit_flit_in,
-	       net_routers_routeTable_3_rt_ifc_banks_banks_rf$D_OUT_1 } ;
-  assign net_routers_router_core_3$in_ports_1_putRoutedFlit_flit_in =
-	     { send_ports_7_putFlit_flit_in,
-	       net_routers_routeTable_3_rt_ifc_banks_banks_rf_1$D_OUT_1 } ;
   assign net_routers_router_core_3$in_ports_2_putRoutedFlit_flit_in =
 	     { net_routers_router_core_4$out_ports_3_getFlit,
 	       net_routers_routeTable_3_rt_ifc_banks_banks_rf_2$D_OUT_1 } ;
   assign net_routers_router_core_3$in_ports_3_putRoutedFlit_flit_in =
 	     { net_routers_router_core_5$out_ports_3_getFlit,
 	       net_routers_routeTable_3_rt_ifc_banks_banks_rf_3$D_OUT_1 } ;
-  assign net_routers_router_core_3$out_ports_0_putNonFullVCs_nonFullVCs =
-	     recv_ports_6_putNonFullVCs_nonFullVCs ;
-  assign net_routers_router_core_3$out_ports_1_putNonFullVCs_nonFullVCs =
-	     recv_ports_7_putNonFullVCs_nonFullVCs ;
   assign net_routers_router_core_3$out_ports_2_putNonFullVCs_nonFullVCs =
 	     net_routers_router_core_4$in_ports_3_getNonFullVCs ;
   assign net_routers_router_core_3$out_ports_3_putNonFullVCs_nonFullVCs =
 	     net_routers_router_core_5$in_ports_3_getNonFullVCs ;
-  assign net_routers_router_core_3$EN_in_ports_0_putRoutedFlit =
-	     EN_send_ports_6_putFlit ;
-  assign net_routers_router_core_3$EN_in_ports_0_getNonFullVCs =
-	     EN_send_ports_6_getNonFullVCs ;
-  assign net_routers_router_core_3$EN_in_ports_1_putRoutedFlit =
-	     EN_send_ports_7_putFlit ;
-  assign net_routers_router_core_3$EN_in_ports_1_getNonFullVCs =
-	     EN_send_ports_7_getNonFullVCs ;
   assign net_routers_router_core_3$EN_in_ports_2_putRoutedFlit = 1'd1 ;
   assign net_routers_router_core_3$EN_in_ports_2_getNonFullVCs = 1'd1 ;
   assign net_routers_router_core_3$EN_in_ports_3_putRoutedFlit = 1'd1 ;
   assign net_routers_router_core_3$EN_in_ports_3_getNonFullVCs = 1'd1 ;
-  assign net_routers_router_core_3$EN_out_ports_0_getFlit =
-	     EN_recv_ports_6_getFlit ;
-  assign net_routers_router_core_3$EN_out_ports_0_putNonFullVCs =
-	     EN_recv_ports_6_putNonFullVCs ;
-  assign net_routers_router_core_3$EN_out_ports_1_getFlit =
-	     EN_recv_ports_7_getFlit ;
-  assign net_routers_router_core_3$EN_out_ports_1_putNonFullVCs =
-	     EN_recv_ports_7_putNonFullVCs ;
   assign net_routers_router_core_3$EN_out_ports_2_getFlit = 1'd1 ;
   assign net_routers_router_core_3$EN_out_ports_2_putNonFullVCs = 1'd1 ;
   assign net_routers_router_core_3$EN_out_ports_3_getFlit = 1'd1 ;

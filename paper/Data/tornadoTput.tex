@@ -10,6 +10,7 @@
             \begin{axis}[width=\textwidth,height=0.6\textwidth,xlabel=Number of PEs ,ylabel= Throughput (packets/sec),legend pos=south east,xmin=0,xtick={4,8,16,32},xticklabels={4,8,16,32},legend cell align=left]
                 \addplot [color = green,thick,mark=*]table[x=NumPE,y=Tput] {HNocTornado.txt};
                 \addplot [color = red,thick,mark=*]table[x=NumPE,y=Tput] {BtreeTornado.txt};
+                \addplot [color = blue,thick,mark=*]table[x=NumPE,y=Tput] {BftTornado.txt};
             \end{axis}
         \end{tikzpicture}%
     %\end{figure}

@@ -1,7 +1,7 @@
 // Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2017.3 (lin64) Build 2018833 Wed Oct  4 19:58:07 MDT 2017
-// Date        : Mon May 28 11:33:55 2018
+// Date        : Fri Jun  1 16:09:22 2018
 // Host        : vipin-ESPRIMO-P756 running 64-bit Ubuntu 16.04.4 LTS
 // Command     : write_verilog -force -mode synth_stub
 //               /home/vipin/workspace/Research/HNoC/HNoC/HNoC16PE/project_1.srcs/sources_1/ip/SyncFifo/SyncFifo_stub.v

@@ -30,8 +30,8 @@
  */
 
 
-`define NUM_USER_SEND_PORTS 8
-`define NUM_USER_RECV_PORTS 8
+`define NUM_USER_SEND_PORTS 4
+`define NUM_USER_RECV_PORTS 4
 `define NUM_ROUTERS 6
 `define NUM_IN_PORTS 4
 `define NUM_OUT_PORTS 4
