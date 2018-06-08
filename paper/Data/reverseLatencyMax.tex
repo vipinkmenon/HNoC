@@ -1,0 +1,20 @@
+%\documentclass{article}
+\documentclass{standalone}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.7}
+\pgfplotsset{every axis/.append style={font=\LARGE,semithick,tick style={thick}}}
+\begin{document}
+    %\begin{figure}
+        \centering
+        \begin{tikzpicture}[scale=2.0]
+            \begin{semilogyaxis}[width=\textwidth,height=0.6\textwidth,xlabel=Number of PEs ,ylabel= Worst Latency (ns),legend pos=north west,ymax=100,xtick={4,8,16,32},xticklabels={4,8,16,32},legend cell align=left]
+                \addplot [color = green,thick,mark=*]table[x=NumPE,y=Latency] {HNocReverseMax.txt};
+                \addlegendentry{Async Bin. tree}
+                \addplot [color = red,thick,mark=*]table[x=NumPE,y=Latency] {BTreeReverseMax.txt};
+                \addlegendentry{Binary tree}
+                \addplot [color = blue,thick,mark=*]table[x=NumPE,y=Latency] {BftReverseMax.txt};
+                \addlegendentry{Fat tree}
+            \end{semilogyaxis}
+        \end{tikzpicture}%
+    %\end{figure}
+\end{document}

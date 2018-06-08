@@ -7,10 +7,13 @@
     %\begin{figure}
         \centering
         \begin{tikzpicture}[scale=2.0]
-            \begin{axis}[width=\textwidth,height=0.6\textwidth,xlabel=Number of PEs ,ylabel= Throughput (packets/sec),legend pos=south east,xmin=0,xtick={4,8,16,32},xticklabels={4,8,16,32},legend cell align=left]
+            \begin{axis}[width=\textwidth,height=0.6\textwidth,xlabel=Number of PEs ,ylabel= Throughput (packets/cycle),legend pos=north west,xmin=0,xtick={4,8,16,32},xticklabels={4,8,16,32},legend cell align=left]
                 \addplot [color = green,thick,mark=*]table[x=NumPE,y=Tput] {HNocRandom.txt};
+				\addlegendentry{Async Bin. tree}
                 \addplot [color = red,thick,mark=*]table[x=NumPE,y=Tput] {BtreeRandom.txt};
+				\addlegendentry{Binary tree}
                 \addplot [color = blue,thick,mark=*]table[x=NumPE,y=Tput] {BftRandom.txt};
+				\addlegendentry{Fat tree}
             \end{axis}
         \end{tikzpicture}%
     %\end{figure}
