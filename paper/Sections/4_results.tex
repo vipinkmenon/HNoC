@@ -21,7 +21,30 @@
 \caption{Maximum latency of different Binary NoC architectures with varying size corresponding to different traffic patterns}
 \end{figure*}
 
+
+\begin{figure*}[!h]
+\centering     %%% not \center
+\subfigure[Random]{\label{fig:randtput}\includegraphics[width=0.5\columnwidth]{Data/randomTputMax.pdf}}
+\subfigure[Tornado]{\label{fig:torndadotput}\includegraphics[width=0.5\columnwidth]{Data/tornadoTputMax.pdf}}
+\subfigure[Complement]{\label{fig:complementtput}\includegraphics[width=0.5\columnwidth]{Data/complementTputMax.pdf}}
+\subfigure[Reverse]{\label{fig:reversetput}\includegraphics[width=0.5\columnwidth]{Data/reverseTputMax.pdf}}
+%\caption{Throughput of different Binary NoC architectures with varying size corresponding to different traffic patterns}
+%\end{figure*}
+
+%\begin{figure*}[!h]
+%\centering     %%% not \center
+\subfigure[Random]{\label{fig:rndlatency}\includegraphics[width=0.5\columnwidth]{Data/randomLatencyMax.pdf}}
+\subfigure[Tornado]{\label{fig:tornadolatency}\includegraphics[width=0.5\columnwidth]{Data/tornadoLatencyMax.pdf}}
+\subfigure[Complement]{\label{fig:complementlatency}\includegraphics[width=0.5\columnwidth]{Data/complementLatencyMax.pdf}}
+\subfigure[Reverse]{\label{fig:reverselatency}\includegraphics[width=0.5\columnwidth]{Data/reverseLatencyMax.pdf}}
+\caption{Maximum latency of different Binary NoC architectures with varying size corresponding to different traffic patterns}
+\end{figure*}
+
 Table~\ref{table:systemResourceConsumption} compares the resource utilization and the maximum frequency of operation for HNoC and CONNECT for different number of PEs
 \input Tables/SystemResource
 
-
+\begin{figure}[t]
+\centering
+   \includegraphics[width=\columnwidth]{Data/tputVsCost.pdf}
+   \caption{Throughput vs cost}
+\end{figure}
