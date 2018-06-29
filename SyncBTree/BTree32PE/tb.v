@@ -141,7 +141,7 @@ begin
 end
 
 BTree #(.DataWidth(`DataWidth),.numPE(`NUMPE),.AddrWidth(`AddressWidth))
-    HNoC(
+    BTree(
     .clk_100(clk_100),
     .i_reset(rst),
     

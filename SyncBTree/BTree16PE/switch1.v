@@ -5,21 +5,21 @@ bottomMax = 0,
 topMin = 1,
 topMax = 1
 )(
-input	wire	i_sclk,
+input	wire	i_clk,
 input	wire	i_reset,
 //top
 input	wire	[DataWidth-1:0] i_data1,
 input	wire	i_data_valid1,
 output	wire	o_data_ready1,
 output	wire	[DataWidth-1:0] o_data1,
-output	wire 	o_data_valid1,
+output	reg 	o_data_valid1,
 input   wire	i_data_ready1,
 //bottom
 input	wire	[DataWidth-1:0] i_data2,
 input	wire	i_data_valid2,
 output	wire	o_data_ready2,
 output	wire	[DataWidth-1:0] o_data2,
-output	wire 	o_data_valid2,
+output	reg 	o_data_valid2,
 input	wire	i_data_ready2,
 //right
 input	wire	[DataWidth-1:0] i_data3,
@@ -52,14 +52,6 @@ reg [1:0] currTopBuffer;
 reg [1:0] currBottomBuffer;
 reg [1:0] currRightBuffer;
 
-wire [DataWidth-1:0] outBuffer1Data;
-reg  outBuffer1DataValid;
-wire outBuffer1DataReady;
-
-wire [DataWidth-1:0] outBuffer2Data;
-reg  outBuffer2DataValid;
-wire outBuffer2DataReady;
-
 assign buffer1Top = bufferDataAvail[1] & (bufferData[1][DataWidth-1-:AddrWidth] >= topMin) & (bufferData[1][DataWidth-1-:AddrWidth] <= topMax);
 assign buffer2Top = bufferDataAvail[2] & (bufferData[2][DataWidth-1-:AddrWidth] >= topMin) & (bufferData[2][DataWidth-1-:AddrWidth] <= topMax); 
 assign buffer3Top = bufferDataAvail[3] & (bufferData[3][DataWidth-1-:AddrWidth] >= topMin) & (bufferData[3][DataWidth-1-:AddrWidth] <= topMax);  
@@ -76,9 +68,9 @@ assign buffer3Right = bufferDataAvail[3] & ~buffer3Top & ~buffer3Bottom;
 always @(*)
 begin
     if(currTopBuffer == 1 & buffer1Top)
-        buffer1Rdy = outBuffer1DataReady;
+        buffer1Rdy = i_data_ready1;
     else if(currBottomBuffer == 1 & buffer1Bottom)
-        buffer1Rdy = outBuffer2DataReady;
+        buffer1Rdy = i_data_ready2;
     else if(currRightBuffer == 1 & buffer1Right)
         buffer1Rdy = i_data_ready3;
     else
@@ -89,9 +81,9 @@ end
 always @(*)
 begin
     if(currTopBuffer == 2 & buffer2Top)
-        buffer2Rdy = outBuffer1DataReady;
+        buffer2Rdy = i_data_ready1;
     else if(currBottomBuffer == 2 & buffer2Bottom)
-        buffer2Rdy = outBuffer2DataReady;
+        buffer2Rdy = i_data_ready2;
     else if(currRightBuffer == 2 & buffer2Right)
         buffer2Rdy = i_data_ready3;
     else
@@ -102,9 +94,9 @@ end
 always @(*)
 begin
     if(currTopBuffer == 3 & buffer3Top)
-        buffer3Rdy = outBuffer1DataReady;
+        buffer3Rdy = i_data_ready1;
     else if(currBottomBuffer == 3 & buffer3Bottom)
-        buffer3Rdy = outBuffer2DataReady;
+        buffer3Rdy = i_data_ready2;
     else if(currRightBuffer == 3 & buffer3Right)
         buffer3Rdy = i_data_ready3;
     else
@@ -115,16 +107,16 @@ always @(*)
 begin
     case(currTopBuffer)
         1:begin
-            outBuffer1DataValid = buffer1Top;
+            o_data_valid1 = buffer1Top;
         end
         2:begin
-            outBuffer1DataValid = buffer2Top;
+            o_data_valid1 = buffer2Top;
         end
         3:begin
-            outBuffer1DataValid = buffer3Top;
+            o_data_valid1 = buffer3Top;
         end
         default:begin
-            outBuffer1DataValid = 0;
+            o_data_valid1 = 0;
         end
     endcase
 end
@@ -133,16 +125,16 @@ always @(*)
 begin
     case(currBottomBuffer)
         1:begin
-            outBuffer2DataValid = buffer1Bottom;
+            o_data_valid2 = buffer1Bottom;
         end
         2:begin
-            outBuffer2DataValid = buffer2Bottom;
+            o_data_valid2 = buffer2Bottom;
         end
         3:begin
-            outBuffer2DataValid = buffer3Bottom;
+            o_data_valid2 = buffer3Bottom;
         end
         default:begin
-            outBuffer2DataValid = 0;
+            o_data_valid2 = 0;
         end
     endcase
 end
@@ -166,12 +158,12 @@ begin
 end
 
 
-assign outBuffer1Data = bufferData[currTopBuffer];
-assign outBuffer2Data = bufferData[currBottomBuffer];
+assign o_data1 = bufferData[currTopBuffer];
+assign o_data2 = bufferData[currBottomBuffer];
 assign o_data3 = bufferData[currRightBuffer];
 
 
-always @(posedge i_sclk)
+always @(posedge i_clk)
 begin
     case(currTopBuffer)
         1:begin
@@ -206,7 +198,7 @@ end
 
 
 
-always @(posedge i_sclk)
+always @(posedge i_clk)
 begin
     case(currBottomBuffer)
         1:begin
@@ -240,7 +232,7 @@ begin
 end
 
 
-always @(posedge i_sclk)
+always @(posedge i_clk)
 begin
     case(currRightBuffer)
         1:begin
@@ -273,11 +265,11 @@ begin
     endcase
 end
 
-//Interface to Top input
-packetBuffer topIn (
+
+SyncFifo buff1 (
   .wr_rst_busy(),      // output wire wr_rst_busy
   .rd_rst_busy(),      // output wire rd_rst_busy
-  .s_aclk(i_sclk),                // input wire s_aclk
+  .s_aclk(i_clk),                // input wire s_aclk
   .s_aresetn(!i_reset),          // input wire s_aresetn
   .s_axis_tvalid(i_data_valid1),  // input wire s_axis_tvalid
   .s_axis_tready(o_data_ready1),  // output wire s_axis_tready
@@ -287,11 +279,10 @@ packetBuffer topIn (
   .m_axis_tdata(bufferData[1])    // output wire [31 : 0] m_axis_tdata
 );
 
-//Interface to Bottom input
-packetBuffer BottomIn (
+SyncFifo buff2 (
   .wr_rst_busy(),      // output wire wr_rst_busy
   .rd_rst_busy(),      // output wire rd_rst_busy
-  .s_aclk(i_sclk),                // input wire s_aclk
+  .s_aclk(i_clk),                // input wire s_aclk
   .s_aresetn(!i_reset),          // input wire s_aresetn
   .s_axis_tvalid(i_data_valid2),  // input wire s_axis_tvalid
   .s_axis_tready(o_data_ready2),  // output wire s_axis_tready
@@ -301,11 +292,10 @@ packetBuffer BottomIn (
   .m_axis_tdata(bufferData[2])    // output wire [31 : 0] m_axis_tdata
 );
 
-//Interface to Right input
-SyncFifo RightIn (
+SyncFifo buff3 (
   .wr_rst_busy(),      // output wire wr_rst_busy
   .rd_rst_busy(),      // output wire rd_rst_busy
-  .s_aclk(i_sclk),                // input wire s_aclk
+  .s_aclk(i_clk),                // input wire s_aclk
   .s_aresetn(!i_reset),          // input wire s_aresetn
   .s_axis_tvalid(i_data_valid3),  // input wire s_axis_tvalid
   .s_axis_tready(o_data_ready3),  // output wire s_axis_tready
@@ -314,36 +304,5 @@ SyncFifo RightIn (
   .m_axis_tready(buffer3Rdy),  // input wire m_axis_tready
   .m_axis_tdata(bufferData[3])    // output wire [31 : 0] m_axis_tdata
 );
-
-//Interface to Top output
-packetBuffer TopOut (
-  .wr_rst_busy(),      // output wire wr_rst_busy
-  .rd_rst_busy(),      // output wire rd_rst_busy
-  .s_aclk(i_sclk),                // input wire s_aclk
-  .s_aresetn(!i_reset),          // input wire s_aresetn
-  .s_axis_tvalid(outBuffer1DataValid),  // input wire s_axis_tvalid
-  .s_axis_tready(outBuffer1DataReady),  // output wire s_axis_tready
-  .s_axis_tdata(outBuffer1Data),    // input wire [31 : 0] s_axis_tdata
-  .m_axis_tvalid(o_data_valid1),  // output wire m_axis_tvalid
-  .m_axis_tready(i_data_ready1),  // input wire m_axis_tready
-  .m_axis_tdata(o_data1)    // output wire [31 : 0] m_axis_tdata
-);
-
-
-//Interface to Bottom output
-packetBuffer BottomOut (
-  .wr_rst_busy(),      // output wire wr_rst_busy
-  .rd_rst_busy(),      // output wire rd_rst_busy
-  .s_aclk(i_sclk),                // input wire s_aclk
-  .s_aresetn(!i_reset),          // input wire s_aresetn
-  .s_axis_tvalid(outBuffer2DataValid),  // input wire s_axis_tvalid
-  .s_axis_tready(outBuffer2DataReady),  // output wire s_axis_tready
-  .s_axis_tdata(outBuffer2Data),    // input wire [31 : 0] s_axis_tdata
-  .m_axis_tvalid(o_data_valid2),  // output wire m_axis_tvalid
-  .m_axis_tready(i_data_ready2),  // input wire m_axis_tready
-  .m_axis_tdata(o_data2)    // output wire [31 : 0] m_axis_tdata
-);
-
-
 
 endmodule

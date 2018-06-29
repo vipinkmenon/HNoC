@@ -285,19 +285,12 @@ wire        Leaf4toCentreH2DataValid;
 wire        Leaf4toCentreH2DataReady;
 
 
-wire [DataWidth+AddrWidth-1:0] CH1toCSData;
-wire        CH1toCSDataValid;
-wire        CH1toCSDataReady;
-wire [DataWidth+AddrWidth-1:0] CStoCH1Data;
-wire        CStoCH1DataValid;
-wire        CStoCH1DataReady;
-
-wire [DataWidth+AddrWidth-1:0] CH2toCSData;
-wire        CH2toCSDataValid;
-wire        CH2toCSDataReady;
-wire [DataWidth+AddrWidth-1:0] CStoCH2Data;
-wire        CStoCH2DataValid;
-wire        CStoCH2DataReady;
+wire [DataWidth+AddrWidth-1:0] centreH1toH2Data;
+wire        centreH1toH2DataValid;
+wire        centreH1toH2DataReady;
+wire [DataWidth+AddrWidth-1:0] centreH2toeH1Data;
+wire        centreH2toeH1DataValid;
+wire        centreH2toeH1DataReady;
 
 
 HLeaf #(.DataWidth(DataWidth+AddrWidth),.AddrWidth(AddrWidth),.sw1bottomMin(0),.sw1bottomMax(0),.sw1topMin(1),.sw1topMax(1),.sw2bottomMin(0),
@@ -483,46 +476,12 @@ CH1 (
     .o_bottomRight_data(centreH1toLeaf4Data),
     .o_bottomRight_data_valid(centreH1toLeaf4DataValid),
     .i_bottomRight_data_ready(centreH1toLeaf4DataReady),
-    .i_centre_data(CStoCH1Data),
-    .i_centre_data_valid(CStoCH1DataValid),
-    .o_centre_data_ready(CStoCH1DataReady),
-    .o_centre_data(CH1toCSData),
-    .o_centre_data_valid(CH1toCSDataValid),
-    .i_centre_data_ready(CH1toCSDataReady)
-);
-
-
-switchSingleClock #(
-.DataWidth(DataWidth+AddrWidth),
-.AddrWidth(AddrWidth),
-.bottomMin(0),
-.bottomMax(15),
-.topMin(16),
-.topMax(31)
-)sw2(
-    .i_clk(clk_100),
-    .i_reset(i_reset),
-    //top
-    .i_data1(CH2toCSData),
-    .i_data_valid1(CH2toCSDataValid),
-    .o_data_ready1(CH2toCSDataReady),
-    .o_data1(CStoCH2Data),
-    .o_data_valid1(CStoCH2DataValid),
-    .i_data_ready1(CStoCH2DataReady),
-    //bottom
-    .i_data2(CH1toCSData),
-    .i_data_valid2(CH1toCSDataValid),
-    .o_data_ready2(CH1toCSDataReady),
-    .o_data2(CStoCH1Data),
-    .o_data_valid2(CStoCH1DataValid),
-    .i_data_ready2(CStoCH1DataReady),
-    //right
-    .i_data3(),
-    .i_data_valid3(1'b0),
-    .o_data_ready3(),
-    .o_data3(),
-    .o_data_valid3(),
-    .i_data_ready3(1'b1)
+    .i_centre_data(centreH2toeH1Data),
+    .i_centre_data_valid(centreH2toeH1DataValid),
+    .o_centre_data_ready(centreH2toeH1DataReady),
+    .o_centre_data(centreH1toH2Data),
+    .o_centre_data_valid(centreH1toH2DataValid),
+    .i_centre_data_ready(centreH1toH2DataReady)
 );
 
 
@@ -708,13 +667,12 @@ CH2 (
     .o_bottomRight_data(centreH2toLeaf4Data),
     .o_bottomRight_data_valid(centreH2toLeaf4DataValid),
     .i_bottomRight_data_ready(centreH2toLeaf4DataReady),
-    .i_centre_data(CStoCH2Data),
-    .i_centre_data_valid(CStoCH2DataValid),
-    .o_centre_data_ready(CStoCH2DataReady),
-    .o_centre_data(CH2toCSData),
-    .o_centre_data_valid(CH2toCSDataValid),
-    .i_centre_data_ready(CH2toCSDataReady)
+    .i_centre_data(centreH1toH2Data),
+    .i_centre_data_valid(centreH1toH2DataValid),
+    .o_centre_data_ready(centreH1toH2DataReady),
+    .o_centre_data(centreH2toeH1Data),
+    .o_centre_data_valid(centreH2toeH1DataValid),
+    .i_centre_data_ready(centreH2toeH1DataReady)
 );
-
 
 endmodule

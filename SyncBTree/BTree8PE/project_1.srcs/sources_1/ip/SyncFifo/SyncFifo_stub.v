@@ -1,11 +1,11 @@
 // Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2017.3 (lin64) Build 2018833 Wed Oct  4 19:58:07 MDT 2017
-// Date        : Mon May 28 12:48:16 2018
+// Date        : Wed May 30 17:48:06 2018
 // Host        : vipin-ESPRIMO-P756 running 64-bit Ubuntu 16.04.4 LTS
-// Command     : write_verilog -force -mode synth_stub -rename_top SyncFifo -prefix
-//               SyncFifo_ packetBuffer_stub.v
-// Design      : packetBuffer
+// Command     : write_verilog -force -mode synth_stub
+//               /home/vipin/workspace/Research/HNoC/SyncBTreeNoRoot/Minimal/BTree8PE/project_1.srcs/sources_1/ip/SyncFifo/SyncFifo_stub.v
+// Design      : SyncFifo
 // Purpose     : Stub declaration of top-level module interface
 // Device      : xc7vx690tffg1761-2
 // --------------------------------------------------------------------------------

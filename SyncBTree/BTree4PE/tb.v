@@ -7,7 +7,7 @@
 `define AddressWidth $clog2(`NUMPE)
 `define TotalWidth `DataWidth+`AddressWidth
 `define PATTERN "RANDOM"
-`define Period1 5000
+`define Period1 10000
 `define Period2 2500
 
 
@@ -74,10 +74,9 @@ begin
     start = $time;
 end
 
-HNoC #(.DataWidth(`DataWidth),.numPE(`NUMPE),.AddrWidth(`AddressWidth))
-    HNoC(
+BTree #(.DataWidth(`DataWidth),.numPE(`NUMPE),.AddrWidth(`AddressWidth))
+    BTree(
     .clk_100(clk100),
-    .clk_200(clk200),
     .i_reset(rst),
     
     .i_pe_data0(o_pe0_data),

@@ -60,7 +60,7 @@ switch1 #(
 .topMin(sw1topMin),
 .topMax(sw1topMax)
 )sw1(
-    .i_sclk(i_sclk),
+    .i_clk(i_sclk),
     .i_reset(i_reset),
     //top
     .i_data1(i_topLeft_data),
@@ -126,7 +126,7 @@ switch1 #(
 .topMin(sw3topMin),
 .topMax(sw3topMax)
 )sw3(
-    .i_sclk(i_sclk),
+    .i_clk(i_sclk),
     .i_reset(i_reset),
     //top
     .i_data1(i_topRight_data),

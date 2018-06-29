@@ -86,9 +86,9 @@ begin
     start = $time;
 end
 
-HNoC #(.DataWidth(`DataWidth),.numPE(`NUMPE),.AddrWidth(`AddressWidth))
-    HNoC(
-    .i_clk(clk),
+BTree #(.DataWidth(`DataWidth),.numPE(`NUMPE),.AddrWidth(`AddressWidth))
+    BTree(
+    .clk_100(clk),
     .i_reset(rst),
     
     .i_pe_data0(o_pe0_data),

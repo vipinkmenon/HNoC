@@ -66,13 +66,6 @@ wire [DataWidth+AddrWidth-1:0] Leaf1toCentreHData;
 wire        Leaf1toCentreHDataValid;
 wire        Leaf1toCentreHDataReady;
 
-wire [DataWidth+AddrWidth-1:0] centreHtoLeaf2Data;
-wire        centreHtoLeaf2DataValid;
-wire        centreHtoLeaf2DataReady;
-wire [DataWidth+AddrWidth-1:0] Leaf2toCentreHData;
-wire        Leaf2toCentreHDataValid;
-wire        Leaf2toCentreHDataReady;
-
 /*wire        clk_100;
 wire        clk_200;
 wire        clk_400;*/
@@ -127,39 +120,6 @@ L1 (
 );
 
 
-switch2 #(
-.DataWidth(DataWidth),
-.AddrWidth(AddrWidth),
-.bottomMin(0),
-.bottomMax(3),
-.topMin(4),
-.topMax(7)
-)sw2(
-    .i_sclk(clk_100),
-    .i_reset(i_reset),
-    //top
-    .i_data1(Leaf2toCentreHData),
-    .i_data_valid1(Leaf2toCentreHDataValid),
-    .o_data_ready1(Leaf2toCentreHDataReady),
-    .o_data1(centreHtoLeaf2Data),
-    .o_data_valid1(centreHtoLeaf2DataValid),
-    .i_data_ready1(centreHtoLeaf2DataReady),
-    //bottom
-    .i_data2(Leaf1toCentreHData),
-    .i_data_valid2(Leaf1toCentreHDataValid),
-    .o_data_ready2(Leaf1toCentreHDataReady),
-    .o_data2(centreHtoLeaf1Data),
-    .o_data_valid2(centreHtoLeaf1DataValid),
-    .i_data_ready2(centreHtoLeaf1DataReady),
-    //right
-    .i_data3(0),
-    .i_data_valid3(1'b0),
-    .o_data_ready3(),
-    .o_data3(),
-    .o_data_valid3(),
-    .i_data_ready3(1'b1)
-);
-
 
 HLeaf #(.DataWidth(DataWidth+AddrWidth),.AddrWidth(AddrWidth),.sw1bottomMin(4),.sw1bottomMax(4),.sw1topMin(5),.sw1topMax(5),.sw2bottomMin(4),
 .sw2bottomMax(5),.sw2topMin(6),.sw2topMax(7),.sw3bottomMin(6),.sw3bottomMax(6),.sw3topMin(7),.sw3topMax(7))
@@ -190,12 +150,12 @@ L2 (
     .o_bottomRight_data(o_pe_data6),
     .o_bottomRight_data_valid(o_pe_data_valid6),
     .i_bottomRight_data_ready(i_pe_data_ready6),
-    .i_centre_data(centreHtoLeaf2Data),
-    .i_centre_data_valid(centreHtoLeaf2DataValid),
-    .o_centre_data_ready(centreHtoLeaf2DataReady),
-    .o_centre_data(Leaf2toCentreHData),
-    .o_centre_data_valid(Leaf2toCentreHDataValid),
-    .i_centre_data_ready(Leaf2toCentreHDataReady)
+    .i_centre_data(Leaf1toCentreHData),
+    .i_centre_data_valid(Leaf1toCentreHDataValid),
+    .o_centre_data_ready(Leaf1toCentreHDataReady),
+    .o_centre_data(centreHtoLeaf1Data),
+    .o_centre_data_valid(centreHtoLeaf1DataValid),
+    .i_centre_data_ready(centreHtoLeaf1DataReady)
 );
 
 endmodule

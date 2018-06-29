@@ -60,7 +60,7 @@ switch1 #(
 .topMin(sw1topMin),
 .topMax(sw1topMax)
 )sw1(
-    .i_sclk(i_sclk),
+    .i_clk(i_sclk),
     .i_reset(i_reset),
     //top
     .i_data1(i_topLeft_data),
@@ -85,7 +85,7 @@ switch1 #(
     .i_data_ready3(switch1to2dataReady)
 );
 
-switch2 #(
+switchSingleClock #(
 .DataWidth(DataWidth),
 .AddrWidth(AddrWidth),
 .bottomMin(sw2bottomMin),
@@ -93,7 +93,7 @@ switch2 #(
 .topMin(sw2topMin),
 .topMax(sw2topMax)
 )sw2(
-    .i_sclk(i_sclk),
+    .i_clk(i_sclk),
     .i_reset(i_reset),
     //top
     .i_data1(switch3to2data),
@@ -126,7 +126,7 @@ switch1 #(
 .topMin(sw3topMin),
 .topMax(sw3topMax)
 )sw3(
-    .i_sclk(i_sclk),
+    .i_clk(i_sclk),
     .i_reset(i_reset),
     //top
     .i_data1(i_topRight_data),

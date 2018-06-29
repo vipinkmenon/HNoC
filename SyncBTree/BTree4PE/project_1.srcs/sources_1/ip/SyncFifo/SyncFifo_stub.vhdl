@@ -1,10 +1,10 @@
 -- Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
--- Tool Version: Vivado v.2017.3 (win64) Build 2018833 Wed Oct  4 19:58:22 MDT 2017
--- Date        : Sat May 12 10:27:00 2018
--- Host        : DESKTOP-9OFN2NK running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode synth_stub -rename_top SyncFifo -prefix
---               SyncFifo_ SyncFifo_stub.vhdl
+-- Tool Version: Vivado v.2017.3 (lin64) Build 2018833 Wed Oct  4 19:58:07 MDT 2017
+-- Date        : Wed May 30 17:26:50 2018
+-- Host        : vipin-ESPRIMO-P756 running 64-bit Ubuntu 16.04.4 LTS
+-- Command     : write_vhdl -force -mode synth_stub
+--               /home/vipin/workspace/Research/HNoC/SyncBTreeNoRoot/Minimal/BTree4PE/project_1.srcs/sources_1/ip/SyncFifo/SyncFifo_stub.vhdl
 -- Design      : SyncFifo
 -- Purpose     : Stub declaration of top-level module interface
 -- Device      : xc7vx690tffg1761-2

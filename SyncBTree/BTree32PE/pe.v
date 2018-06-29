@@ -1,6 +1,6 @@
-`timescale 1ns/1ps
+`timescale 1ps/1ps
 
-module pe #(address = 0,numPE=8,AddressWidth=3,DataWidth=32,TotalWidth=35,PktLmit=100,Pattern="Random")(
+module pe #(address = 0,numPE=4,AddressWidth=2,DataWidth=32,TotalWidth=35,PktLmit=100,Pattern="Random")(
 input clk,
 input rst,
 input [TotalWidth-1:0] i_data,
@@ -13,6 +13,7 @@ input done
 );
 
 integer receivedPkts = 0;
+integer counter=0;
 assign o_data_ready = 1'b1;
 reg [AddressWidth-1:0] peaddress;
 integer seed;
@@ -21,6 +22,10 @@ integer i=0;
 integer               receive_log_file;
 reg   [100*8:0]       receive_log_file_name = "receive_log.csv";
 integer j;
+integer latency;
+
+always @(posedge clk)
+    counter <= counter + 1;
 
 initial
 begin
@@ -30,7 +35,6 @@ begin
     wait(~rst);
     repeat(PktLmit)
     begin
-        data = PktLmit*address + i;
         i = i+1;
         if(Pattern == "RANDOM")
            peaddress = $urandom(seed)%numPE;
@@ -63,16 +67,17 @@ begin
                peaddress = (address + 1)%numPE; 
         end    
         seed = seed + 1;
-        sendData({peaddress,data});
+        sendData(peaddress);
     end
-    o_data_valid <= 1'b0;
+    #150 o_data_valid <= 1'b0;
 end
 
 always @(posedge clk)
 begin
     if(i_data_valid)
     begin
-       $fwrite(receive_log_file,"%0d,%0d,%d\n",address,i_data[DataWidth+:AddressWidth],i_data[DataWidth-1:0]);
+       latency = counter - i_data[DataWidth-1:0]-1;
+       $fwrite(receive_log_file,"%0d,%0d,%d,%d\n",address,i_data[DataWidth+:AddressWidth],i_data[DataWidth-1:0],latency);
        $fflush(receive_log_file);
        receivedPkts = receivedPkts + 1;
     end
@@ -80,13 +85,18 @@ end
 
 
 task sendData;
-    input [TotalWidth-1:0] data;
+    input [AddressWidth-1:0] address;
     begin
-        o_data_valid <= 1'b1;
-        o_data <= data;
+        #150 o_data_valid <= 1'b1;
+        data = counter;
+        o_data <= ({peaddress,data});
         @(posedge clk);
         while(i_data_ready == 1'b0)
+        begin
             @(posedge clk);
+            data = counter;
+            o_data <= ({peaddress,data});
+        end
     end
 endtask
 
