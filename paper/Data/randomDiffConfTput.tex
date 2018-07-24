@@ -1,0 +1,29 @@
+%\documentclass{article}
+\documentclass{standalone}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.7}
+\pgfplotsset{every axis/.append style={font=\LARGE,semithick,tick style={thick}}}
+\begin{document}
+    %\begin{figure}
+        \centering
+        \begin{tikzpicture}[scale=2.0]
+            \begin{axis}[width=\textwidth,height=0.6\textwidth,xlabel=Number of PEs ,ylabel= Throughput (Million Packets/sec),legend pos=north west,xmin=0,xtick={4,8,16,32},xticklabels={4,8,16,32},legend cell align=left,legend style={font=\footnotesize}]
+                \addplot [color = green,thick,mark=*]table[x=NumPE,y=Tput] {HNocRandomMax.txt};
+				\addlegendentry{Async BTree}
+				\addplot [color = orange,thick,mark=*]table[x=NumPE,y=Tput] {BftRandomMax.txt};
+				\addlegendentry{Fat Tree}
+                \addplot [color = red,thick,mark=+]table[x=NumPE,y=Tput] {ConnectMeshPerf.txt};
+				\addlegendentry{Mesh}
+                \addplot [color = blue,thick,mark=o]table[x=NumPE,y=Tput] {ConnectFullPerf.txt};
+				\addlegendentry{FullyConnected}	
+				\addplot [color =
+brown,thick,mark=o]table[x=NumPE,y=Tput] {BTreeRandomMax.txt};
+				\addlegendentry{Sync BTree}
+                \addplot [color =
+black,thick,mark=o]table[x=NumPE,y=Tput] {OpenNocPerf.txt};
+				\addlegendentry{Torus}
+				
+            \end{axis}
+        \end{tikzpicture}%
+    %\end{figure}
+\end{document}
