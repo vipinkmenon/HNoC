@@ -1,6 +1,33 @@
 \section{Introduction}
+Network on Chip (NoC) architectures enable high performance, scalable and power efficient multi-core systems for modern compute and communication intensive applications.
+Researchers have proposed different NoC topologies such as mesh, ring, torus, binary trees, star etc. each having varying degrees of quality of service, bandwidth and latency~\cite{Dally2003}.
+Despite their simple architecture and routing algorithms, binary trees are generally not attractive for NoC implementations.
+It is mainly because of its lower bisection bandwidth of a single link.
+Fat trees are proposed as a remedy to improve the bandwidth by adding more number of links when moving towards the root node.
+This solution works well in traditional interconnect networks such as computer networks~\cite{Shainer2011}.
+In an NoC environment, their advantage may be limited since more complex switches have to be used in higher hierarchy which limits the over all clock performance thus bringing down the overall system performance. 
+
+Theoretically instead of increasing the link width between tree levels, increasing the clock frequency between them should provide the same benefit.
+In traditional computer networks this may not be possible since the network interfaces operate on predefined standards which restricts the frequency of operation.
+Modern FPGAs support asynchronous FIFOs (FIFOs operating at different read and write clocks), which makes the implementation of such switches easier.
+These switches have architecture simpler than fat tree switches and supports better clock frequencies.
+But they are more resource intensive compared to traditional trees since asynchronous FIFOs consume more flip flops and LUTs.
+
+
+\begin{figure}[t]
+\centering
+   \includegraphics[width=0.9\columnwidth]{Figures/HNoC.pdf}
+   \caption{(a)A binary tree topology utilizing switches operating at different clock frequencies (b) The tree as an H-tree for better floorplanning on the FPGA}
+   \label{fig:btree}
+   \vspace{-5 mm}
+\end{figure}
+
+Although asynchronous NoCs are proposed before for integrated circuits, a quantitative analysis is missing in the literature especially for FPGA implementations.
+In this paper we present a quantitative analysis of different tree topologies namely the binary tree, binary fat tree and asynchronous binary tree when targeting FPGA based NoC implementation. 
 The main contributions of this work are
 \begin{itemize}
-\item Detailed design of an open-source locally synchronous - globally asynchronous binary tree based NoC implementation targeting Xilinx FPGAs
-\item Performance evaluation of the proposed infrastructure with the state-of-the-art open source binary fat tree (CONNECT)
+\item Detailed design of an open-source globally asynchronous-locally synchronous (GALS) binary tree based NoC implementation targeting Xilinx FPGAs
+\item Performance evaluation of the proposed infrastructure with traditional binary trees and the state-of-the-art open source binary fat tree (CONNECT)
+\item Discusses the trade-off points for the three implementations when targeting FPGAs
 \end{itemize}
+The remainder of this paper is organized as, Section~\ref{sec:arch} discusses the architecture of the proposed NoC, Section~\ref{sec:result} discussed the performance metrics and ~\ref{sec:conclusion} concludes the paper and gives the future research directions.

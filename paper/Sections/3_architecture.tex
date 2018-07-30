@@ -7,6 +7,7 @@ Fig.~\ref{fig:btree} shows the architecture of an AsyncBTree utilizing different
 The detailed architecture of the switches are discussed in Section~\ref{sec:switch}.
 The binary tree is placed and routed in the FPGA as an H-tree for efficient resource utilization and better floor-planning.
 Such placement also supports partial reconfiguration of a portion of the NoC in an efficient manner.
+
 As the first optimization, the root node of the tree is removed and the switches at level-1 are directly connected.
 Since the connectivity of the root node is only 2, in practical systems they act as a transparent switch.
 They could be useful where packets are injected to the NoC through the root node by making its connectivity into 3.
@@ -17,14 +18,7 @@ Removing the root node helps in reducing the resource utilization.
 
 \begin{figure}[t]
 \centering
-   \includegraphics[width=\columnwidth]{Figures/HNoC.pdf}
-   \caption{(a)A binary tree topology utilizing switches operating at different clock frequencies (b) The tree as an H-tree for better floorplanning on the FPGA}
-   \label{fig:btree}
-\end{figure}
-
-\begin{figure}[t]
-\centering
-   \includegraphics[width=\columnwidth]{Figures/switch1_2.pdf}
+   \includegraphics[width=0.7\columnwidth]{Figures/switch1_2.pdf}
    \caption{Architecture of the different switches used in the AsyncBTree. (a) Type-1 switch used with the leaf nodes (PEs), with complete cross bar switch and asynchrnous 
    FIFOs with receive and transmit interfaces (b) Type-2 switch used in intermediate nodes with partial crossbar switch and synchronous FIFOs (c) Type-3 switches used in intermediate
    switches with partial cross bar and asynchrnous FIFOs with receive and transmit interfaces.}
@@ -82,23 +76,23 @@ If the destination address is with in the range of left sub-tree, it is routed l
 If the address is not within these ranges, the packet is routed towards the parent node.
 Due to the deterministic routing policy and since the routing is at flit-level, the NoC is free of dead or livelocks.
 
-\begin{figure}[t]
-\centering
-   \includegraphics[width=\columnwidth]{Figures/pckt_structure.pdf}
-   \caption{Packet structure}
-   \label{fig:packet}
-\end{figure}
+%\begin{figure}[t]
+%\centering
+%   \includegraphics[width=0.7\columnwidth]{Figures/pckt_structure.pdf}
+%   \caption{Packet structure}
+%   \label{fig:packet}
+%\end{figure}
+%
+%\section{Flow control}
 
-\section{Flow control}
-
-\begin{figure}[t]
-\centering
-   \includegraphics[width=\columnwidth]{Figures/axi.pdf}
-   \caption{AXI4-Stream protocol}
-   \label{fig:axi}
-\end{figure}
+%\begin{figure}[t]
+%\centering
+%   \includegraphics[width=0.7\columnwidth]{Figures/axi.pdf}
+%   \caption{AXI4-Stream protocol}
+%   \label{fig:axi}
+%\end{figure}
 
 The current AsyncBTree implementation does not include virtual channels and flow control is achieved through at electrical signaling level.
 The interface between switches as well as switches and PEs confirm to AXI4-stream interface.
 Such interface also enables seamless integration of several vendor supported IP cores directly with the NoC.
-As per AXI4-stream protocol, a successful data transfer happens only when the \emph{valid} signal from the transmitter and \emph{ready} signal from the receiver are asserted as shown in Fig.~\ref{fig:axi}.
+As per AXI4-stream protocol, a successful data transfer happens only when the \emph{valid} signal from the transmitter and \emph{ready} signal from the receiver are asserted simultaneously.
