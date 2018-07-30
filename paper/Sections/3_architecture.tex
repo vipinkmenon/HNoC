@@ -2,18 +2,17 @@
 \label{sec:arch}
 
 
-An AsyncBTree tries to achieve better performance compared to a conventional binary tree and binary fat tree in terms of resource utilization and throughput by applying FPGA and topology specific optimizations and using asynchronous links between different tree levels.
+An AsyncBTree (asynchronous binary tree) tries to achieve better performance compared to a conventional binary tree and binary fat tree in terms of resource utilization and throughput by applying FPGA and topology specific optimizations and using asynchronous links between different tree levels.
 Fig.~\ref{fig:btree} shows the architecture of an AsyncBTree utilizing different kind of optimized switches at different levels.
 The detailed architecture of the switches are discussed in Section~\ref{sec:switch}.
 The binary tree is placed and routed in the FPGA as an H-tree for efficient resource utilization and better floor-planning.
 Such placement also supports partial reconfiguration of a portion of the NoC in an efficient manner.
-
 As the first optimization, the root node of the tree is removed and the switches at level-1 are directly connected.
 Since the connectivity of the root node is only 2, in practical systems they act as a transparent switch.
-They could be useful where packets are injected to the NoC through the root node by making its connectivity into 3.
-For FPGAs external interfaces such as PCI express and Ethernet are used for injecting packets.
-The hard-macros corresponding to these interfaces are situated along the periphery of the chips.
-Thus it will provide better clock performance when the packets are injected from one the leaf nodes which incorporates one of these hard macros.
+%They could be useful where packets are injected to the NoC through the root node by making its connectivity into 3.
+%For FPGAs external interfaces such as PCI express and Ethernet are used for injecting packets.
+%The hard-macros corresponding to these interfaces are situated along the periphery of the chips.
+%Thus it will provide better clock performance when the packets are injected from one the leaf nodes which incorporates one of these hard macros.
 Removing the root node helps in reducing the resource utilization.
 
 \begin{figure}[t]
@@ -23,6 +22,7 @@ Removing the root node helps in reducing the resource utilization.
    FIFOs with receive and transmit interfaces (b) Type-2 switch used in intermediate nodes with partial crossbar switch and synchronous FIFOs (c) Type-3 switches used in intermediate
    switches with partial cross bar and asynchrnous FIFOs with receive and transmit interfaces.}
    \label{fig:switchArch}
+   \vspace{-5mm}
 \end{figure}
 
 \subsection{Switches}
@@ -41,10 +41,9 @@ The asynchronous FIFOs receive data from the downstream ports on Clock 1 signal.
 The received packets are routed to the appropriate output ports by an arbitrator through a cross-bar switch.
 The read side of the receive FIFO, the write side of the transmit FIFO, the arbitrator and the cross bar works on Clock 2 signal, whose frequency will be much higher than that of Clock 1.
 In order to match the performance of a binary fat tree, Clock 2 frequency should be twice as that of Clock 1.
-
 Type-1 switches implement a full cross bar, which enables loop back of packets at the switch level.
 The arbitrator internally uses flit-level round-robin arbitration scheme to select the input port when more than one port requests for the same output port.
-If a single input port is requesting for a particular output port, it is given the port access until all the flits are sent out.
+%If a single input port is requesting for a particular output port, it is given the port access until all the flits are sent out.
 
 Fig.~\ref{fig:switchArch}(b) shows the architecture of a type-2 switch.
 Type-2 switches are synchronous in nature and are similar to the switches of traditional binary trees.
@@ -53,25 +52,24 @@ Since these switches are used only in intermediate levels, there is no necessity
 This simplifies the switch design and helps in reducing resource utilization.
 
 Type-3 switches (Fig.~\ref{fig:switchArch}(b)) are similar to type-1 switches except that they implement only a partial cross-bar similar to type-2 switches.
-Type-2 and type-3 switches can be interchangeably used in the proposed architecture. 
+%Type-2 and type-3 switches can be interchangeably used in the proposed architecture. 
 Theoretically to match the performance of a binary fat tree, AsyncBTrees should be implementing type-3 switches at every level with increasing clock frequencies.
 But in practical scenarios, doubling clock frequency at each level is not possible in FPGAs as the tree size increases.
 The maximum frequency supported by modern devices are in the order of hundredes of megahertz.
 Hence for practical implementations, AsyncBTrees increases the clock frequency only for alternative levels. 
 Although asynchronous FIFOs can operate using same clock signal for read and write interfaces, the resource utilization of an asynchronous FIFOs is much more than its synchronous counter part for a given FIFO size.
-It is because of the presence of additional circuitry for managing clock domain crossing between the read and write interfaces.
-For reducing resource consumption, levels which operates on synchronous clock uses type-3 switches and levels which operate on asynchronous clock uses type-2 switches.
+%It is because of the presence of additional circuitry for managing clock domain crossing between the read and write interfaces.
+For reducing resource consumption, levels which operates on synchronous clock uses type-2 switches and levels which operate on asynchronous clock uses type-3 switches.
 
 \subsection{Routing}
 \label{sec:routing}
-AyncBTree uses fixed routing based on the destination address of the packet header~\ref{fig:packet}.
+AyncBTree uses fixed routing based on the destination address of the packet header.
 The routing is flit level routing meaning each packet is expected to have the destination PE address in the packet header.
-Larger packets are sent as multiple flits.
-One major advantage of binary trees is the multiple packets sent from one PE to another will be always delivered in the sent order.
-In other packet switched networks such as mesh or torus, the packets could be delivered in out of order depending on the routing algorithms.
-In this case additional logic is required for packet reassembly and packet numbers also have to be inserted into the payload.
-
-The routing table of each switch in AsyncBTree contains four entries corresponding to the smallest and largest PE addresses in its left sub-tree and right sub-tree.
+%Larger packets are sent as multiple flits.
+%One major advantage of binary trees is the multiple packets sent from one PE to another will be always delivered in the sent order.
+%In other packet switched networks such as mesh or torus, the packets could be delivered in out of order depending on the routing algorithms.
+%In this case additional logic is required for packet reassembly and packet numbers also have to be inserted into the payload.
+The routing table of each switch in AsyncBTree contains four entries corresponding to the smallest and largest PE addresses in its left and right sub-trees.
 If the destination address is with in the range of left sub-tree, it is routed left and if it is with in the range of right sub-tree the packet is sent right.
 If the address is not within these ranges, the packet is routed towards the parent node.
 Due to the deterministic routing policy and since the routing is at flit-level, the NoC is free of dead or livelocks.
@@ -92,7 +90,35 @@ Due to the deterministic routing policy and since the routing is at flit-level, 
 %   \label{fig:axi}
 %\end{figure}
 
+\begin{figure*}[t]
+\centering    %%% not \center
+\subfigure[Random]{\includegraphics[width=0.55\columnwidth]{Data/randomTput.pdf}}
+\subfigure[Tornado]{\includegraphics[width=0.55\columnwidth]{Data/tornadoTput.pdf}}
+%\subfigure[Complement]{\label{fig:complementtput}\includegraphics[width=0.5\columnwidth]{Data/complementTput.pdf}}
+\subfigure[Reverse]{\includegraphics[width=0.55\columnwidth]{Data/reverseTput.pdf}}
+\vspace{-3mm}
+\caption{Throughput of different Binary NoC architectures with varying size corresponding to different traffic patterns}
+\label{fig:tput}
+\vspace{-5mm}
+\end{figure*}
+
+\begin{figure*}[t]
+\centering     %%% not \center
+\subfigure[Random]{\includegraphics[width=0.55\columnwidth]{Data/randomLatency.pdf}}
+\subfigure[Tornado]{\includegraphics[width=0.55\columnwidth]{Data/tornadoLatency.pdf}}
+%\subfigure[Complement]{\label{fig:complementlatency}\includegraphics[width=0.5\columnwidth]{Data/complementLatency.pdf}}
+\subfigure[Reverse]{\includegraphics[width=0.55\columnwidth]{Data/reverseLatency.pdf}}
+\vspace{-3mm}
+\caption{Maximum latency of different Binary NoC architectures with varying size corresponding to different traffic patterns}
+\label{fig:latency}
+\vspace{-5mm}
+\end{figure*}
+
+
 The current AsyncBTree implementation does not include virtual channels and flow control is achieved through at electrical signaling level.
 The interface between switches as well as switches and PEs confirm to AXI4-stream interface.
 Such interface also enables seamless integration of several vendor supported IP cores directly with the NoC.
 As per AXI4-stream protocol, a successful data transfer happens only when the \emph{valid} signal from the transmitter and \emph{ready} signal from the receiver are asserted simultaneously.
+
+For comparison purpose, following the same design principles, we implemented traditional (synchronous) binary trees also.
+They follow the same arbitration and routing architecture except that all asynchronous FIFOs are replaced with synchronous counterparts.

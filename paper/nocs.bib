@@ -1,32 +1,56 @@
+% This file was created with JabRef 2.10.
 % Encoding: UTF-8
 
-@InProceedings{papa_connect_fpga2012,
-  author    = {Papamichael, Michael K and Hoe, James C},
-  title     = {{CONNECT}: re-examining conventional wisdom for designing nocs in the context of {FPGAs}},
-  booktitle = {Proceedings of the ACM/SIGDA international symposium on Field Programmable Gate Arrays},
-  year      = {2012},
-  pages     = {37--46},
-  annote    = {First sentence is very peculiar.... Looks like I had observed similar ASIC/ Fpga trends... Virtual channels are rubbish... Deep pipelining may be tricky - increases latency.... Section 3 does well to frame the Fpga argument... Can it deliver? So the dumb compile does let sota run faster... Did frequency results use floor planning? It would be useful to see how this holds up against the anti- pipelining argument... Higher radix networks support higher load? High level bits... * Ok, so the setup Fpga vs. ASIC was nice. * However, delivery on these claims was a bit unimpressive.... * Scaling trends need better explanations... * VC case not justified..... * tree beat mesh :) what is B/W of the fat tree? 10% larger, 10% slower.... 10% higher load support.... * experimental results use random traffic... Do Virtual Channels even matter for FPGAs???? - extrapolating from Table 2, we can end up 20-30% smaller than smallest VC case... - remembering story from 2006/11 when switching gears to PhD....},
+
+@Book{Dally2003,
+  Title                    = {Principles and Practices of Interconnection Networks},
+  Author                   = {Dally, William and Towles, Brian},
+  Publisher                = {Morgan Kaufmann Publishers Inc.},
+  Year                     = {2003},
+
+  Address                  = {San Francisco, CA, USA},
+
+  ISBN                     = {0122007514}
 }
 
-@Electronic{hnoc,
-  url = {Blanked for review},
+@Article{Leiserson1985,
+  Title                    = {Fat-trees: Universal networks for hardware-efficient supercomputing},
+  Author                   = {C. E. Leiserson},
+  Journal                  = {IEEE Transactions on Computers},
+  Year                     = {1985},
+
+  Month                    = {Oct},
+  Number                   = {10},
+  Pages                    = {892-901},
+  Volume                   = {C-34},
+
+  Doi                      = {10.1109/TC.1985.6312192},
+  ISSN                     = {0018-9340},
+  Keywords                 = {computer networks;finite element analysis;parallel processing;trees (mathematics);fat trees;finite-element analysis;general-purpose parallel supercomputer;hardware size;hardware-efficient supercomputing;simultaneous communication;three-dimensional VLSI model;universal networks;universality theorem;Channel capacity;Hardware;Program processors;Routing;Switches;Wires;Fat-trees;VLSI theory;interconnection networks;parallel supercomputing;routing networks;universality},
+  Owner                    = {vipin},
+  Timestamp                = {2018.07.30}
+}
+
+@InProceedings{papa_connect_fpga2012,
+  Title                    = {{CONNECT}: re-examining conventional wisdom for designing nocs in the context of {FPGAs}},
+  Author                   = {Papamichael, Michael K and Hoe, James C},
+  Booktitle                = {Proceedings of the ACM/SIGDA international symposium on Field Programmable Gate Arrays},
+  Year                     = {2012},
+  Pages                    = {37--46},
+
+  Annote                   = {First sentence is very peculiar.... Looks like I had observed similar ASIC/ Fpga trends... Virtual channels are rubbish... Deep pipelining may be tricky - increases latency.... Section 3 does well to frame the Fpga argument... Can it deliver? So the dumb compile does let sota run faster... Did frequency results use floor planning? It would be useful to see how this holds up against the anti- pipelining argument... Higher radix networks support higher load? High level bits... * Ok, so the setup Fpga vs. ASIC was nice. * However, delivery on these claims was a bit unimpressive.... * Scaling trends need better explanations... * VC case not justified..... * tree beat mesh :) what is B/W of the fat tree? 10% larger, 10% slower.... 10% higher load support.... * experimental results use random traffic... Do Virtual Channels even matter for FPGAs???? - extrapolating from Table 2, we can end up 20-30% smaller than smallest VC case... - remembering story from 2006/11 when switching gears to PhD....}
 }
 
 @TechReport{Shainer2011,
-  author      = {G. Shainer},
-  title       = {Networks: Topologies How to Design},
-  institution = {HPC Advisory Council},
-  year        = {2011},
+  Title                    = {Networks: Topologies How to Design},
+  Author                   = {G. Shainer},
+  Institution              = {HPC Advisory Council},
+  Year                     = {2011}
 }
 
-@Book{Dally2003,
-  title     = {Principles and Practices of Interconnection Networks},
-  publisher = {Morgan Kaufmann Publishers Inc.},
-  year      = {2003},
-  author    = {Dally, William and Towles, Brian},
-  address   = {San Francisco, CA, USA},
-  isbn      = {0122007514},
+@Electronic{hnoc,
+  Url                      = {https://github.com/dsdnu/TreeNoC}
 }
 
-@Comment{jabref-meta: databaseType:bibtex;}
+@comment{jabref-meta: databaseType:bibtex;}
+

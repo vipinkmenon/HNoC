@@ -1,7 +1,7 @@
 \section{Conclusion}
 \label{sec:conclusion}
-In this paper we discussed the implementation of an asynchronous binary tree based NoC architecture targeting FPGA implementation.
-Analysis shows that FPGA archtiecture specific optimization can provide high clock performance and low resource consumption for such implementation compared to traditional fat-tree based implementations.
-It also shows the advantage of fixed size interface to PEs compared to variable size interface when targeting the NoC for partial reconfiguration.
-Implementation of the proposed architecture is provided as an open source enabling other researchers to verify its functionality and to use in practical NoC-based applications~\cite{hnoc}.
-In the future we will be anayzing the effect of GALS-based implementation of other network topologies when targeting FPGA implementations.
+In this paper we discussed the implementation of an asynchronous binary tree based NoC architecture targeting FPGA implementation and compared with other tree and mesh implementations.
+It could be seen that for low performance applications, binary trees are best suitable due to their high throughput to resource utilization ratio.
+For high-performance large NoC sizes, mesh topology is the ideal candidate.
+For high-performance small NoC sizes, AsyncBtree is a suitable candidate.
+Implementation of AsyncBtree and binary tree are provided as open source which could complement the CONNECT NoC platform~\cite{hnoc}.
