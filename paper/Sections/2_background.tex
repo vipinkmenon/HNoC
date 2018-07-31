@@ -5,15 +5,15 @@ In this approach each processing element (PE) is connected to a switch and multi
 A PE could be a processor core, a DSP core or an IP block.
 The network infrastructure helps in routing data from one PE to another in the form of data packets. 
 Based on how the switches are interconnected, there are different NoC topologies such as mesh, torus, tree, ring, star, BFT etc.
-In a mesh topology every switch, except the ones on the edges, is connected to 4 other neighbouring switches.
+In a mesh topology every switch, except the ones on the edges, is connected to 4 other neighboring switches.
 A torus topology is similar to mesh but cyclic in nature.
 In a binary tree, switches are arranged in a hierarchy.
 Each switch has a parent node and two child nodes.
 Unlike mesh and torus where each switch has a corresponding PE, in a tree topology only the switches at the bottom most level are connected to PEs.
 
-An important network performance parameter is the bisection bandwidth.
+For interconnected networks, an important performance parameter is the bisection bandwidth.
 It is defined as the minimum bandwidth between two equal partitions of the network.
-For a mesh topology, it is $\sqrt{n}*B$, where n is the number of switches in the network and B is the bandwidth of a single link between switches.
+For a mesh topology, it is $\sqrt{n}*B$, where n is the number of switches and B is the bandwidth of a single link.
 For torus, it is twice that of mesh but for a binary tree, it is only B.
 To address this issue, instead of using a single link between switches more links can be used between them as we go higher in the tree hierarchy.
 Such topology is called a fat tree~\cite{Leiserson1985}. 

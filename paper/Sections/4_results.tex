@@ -10,7 +10,7 @@ The designs are simulated as well as implemented with Vivado 2017.3 targeting Xi
 Table~\ref{table:systemResourceConsumption} compares the resource utilization and the maximum frequency of operation for the binary tree, AsyncBTree, and fat tree for different network sizes.
 As expected binary trees are least resource intensive due to their simple switch architecture.
 AsyncBTree consumes 45\% to 65\% more LUTs and about 165\% more flip flops compared to the binary tree implementation.
-The multiple frequencies in the HNoC column represent the maximum clock frequency supported at different tree levels.
+The multiple frequencies in the AsyncBTree rows represent the maximum clock frequency supported at different tree levels.
 At the lowest level (switches connected to PEs), the clock performance is better than that of binary trees but deteriorates as going higher in the hierarchy.
 This could be because of the additional pipelining present inside the asynchronous FIFOs.
 This also means if AsyncBTree is used as a synchronous NoC (all tree levels are clocked by a single clock source), its resource consumption and performance will be worse than a binary tree. 
@@ -20,7 +20,7 @@ AsyncBTree requires more flip flops due to the presence of asynchronous FIFOs.
 For fat trees, the impact due to complex switches can be clearly seen in the clock performance, where they are not even able to achieve 200 MHz for a high-end FPGA.
 Due to the low clock performance of the NoC, the PEs also have to be under-clocked in most scenarios for overall synchronous operations.
 %Otherwise synchronization FIFOs have to be inserted between PEs and the NoC switches, which will further increase the resource utilization.
-Considering the fact that the number of LUTs available in 7-series Xilinx FPGAs are half of that of number of flip-flops, HNoC is much lite compared fat trees at the same time given more than 4$\times$ clock performance.
+Considering the fact that the number of LUTs available in 7-series Xilinx FPGAs are half of that of number of flip-flops, AsyncBTree is much lite compared fat trees at the same time given more than 4$\times$ clock performance.
 
 
 \begin{figure*}[t]
@@ -49,8 +49,8 @@ Considering the fact that the number of LUTs available in 7-series Xilinx FPGAs 
 
 Fig.~\ref{fig:tput} and~\ref{fig:latency} compares the throughput and latency of the three implementations with different NoC sizes for different traffic patterns such as random, tornado and reverse.
 In each case, the PE to switch interface is clocked at the lowest frequency supported by the three implementations.
-For HNoC upper levels are clocked at double the frequency of lower levels, but limited by maximum supported frequency shown in Table~\ref{table:systemResourceConsumption}.
-It could be seen that for NoC size up to 8 PEs, HNoC performance is better than or comparable to that of fat trees.
+For AsyncBTree upper levels are clocked at double the frequency of lower levels, but limited by maximum supported frequency shown in Table~\ref{table:systemResourceConsumption}.
+It could be seen that for NoC size up to 8 PEs, AsyncBTree performance is better than or comparable to that of fat trees.
 For larger tree sizes, fat trees perform better since the clock frequencies cannot be scaled beyond a limit.
 If PEs run at lower clock frequencies ($\sim$50 MHz), AsyncBTree can provide better performance for NoC with up to 16 PEs. 
 
@@ -63,7 +63,7 @@ Several FPGA-based multi-processor systems have 8 core or less thus AsyncBTree c
 
 Fig.~\ref{fig:tputPerf} compares the performance of each NoC compared to their resource utilization.
 Synchronous binary trees clearly have an upper hand in this regard.
-AsyncBtree give moderately high throughput by consuming relatively less resources.
+AsyncBTree give moderately high throughput by consuming relatively less resources.
 But for larger NoC size, mesh topology is still the suitable candidate.
 
 
