@@ -1,16 +1,28 @@
 \section{Background}
-\label{sec:background}
-Network on chip is an interconnect approach that helps different IPs and subsystems in a chip to communicate with each other in an efficient and scalable manner. 
+\label{sec_background}
+
+Demand for high performance and low power consumption have pushed engineers to integrate many computing resources such as GPUs, DSPs, memories and various IP blocks into a single chip referred as system on a chip (SoC). 
+As the number of resources increase, their interconnection poses several challenges. 
+Previously most of the SoC applications used a shared-bus interconnect because of its low cost and simplicity.
+But it has its own limitations such as non-scalability and increased wire delays. 
+At a specific instance, only one master can control the bus and an arbitrator is needed to manage concurrent bus requests.
+This deteriorates the overall system performance as more number of resources are interconnected. In order to overcome this, an on-chip packet-switched network called Network-on-Chip was proposed.
+
+Network on chip is an interconnect approach that helps different IPs and subsystems in an SoC to communicate with each other in a scalable manner. 
 In this approach each processing element (PE) is connected to a switch and multiple switches are interconnected to form a network.
 A PE could be a processor core, a DSP core or an IP block.
 The network infrastructure helps in routing data from one PE to another in the form of data packets. 
-Based on how the switches are interconnected, there are different NoC topologies such as mesh, torus, tree, ring, star, BFT etc.
-In a mesh topology every switch, except the ones on the edges, is connected to 4 other neighboring switches.
-A torus topology is similar to mesh but cyclic in nature.
-In a binary tree, switches are arranged in a hierarchy.
-Each switch has a parent node and two child nodes.
-Unlike mesh and torus where each switch has a corresponding PE, in a tree topology only the switches at the bottom most level are connected to PEs.
+This architecture enables concurrent communication between multiple PEs by exploiting hardware parallelism.
 
+%
+%Based how switches are interconnected, there are different NoC topologies such as mesh, torus, star, ring, butterfly fat tree (BFT) etc. 
+%Mesh topology is a 2D arrangement of switches where each switch is connected to its neighbouring  switches and its corresponding PE. 
+%Switches along the edges have 2 or 3 connections as there are only 2 or 3 switches adjacent to it. 
+%Torus topology is similar to mesh but it is cyclic in nature. 
+%Here all the switches, including the ones along the edges, will have four connections as shown in Fig.~\ref{fig:torus}. 
+%Top most switches are connected to the bottommost and rightmost switches to the leftmost. 
+%Star topology has a central hub to which all the switches are connected. 
+%Communication between PE's is done through the central hub. 
 There have been previous efforts to develop open-source NoC architectures specifically targeting FPGAs.
 CONNECT NoC generator is the most popular among them~\cite{papa_connect_fpga2012}.
 CONNECT is inspired by the fact that FPGAs have a large routing infrastructure available when compared to memory and logic elements and tries to exploit it. 
@@ -27,12 +39,3 @@ Researchers have claimed to develop lean NoCs targeting FPGAs but are not public
 The main motivation for this work is to provide a lite-weight NoC implementation with standard communication interface and high clock performance.
 We aim to provide an end-to-end solution where NoC developers can easily interface it with a host computer for data communication.
 We call this platform as OpenNoC.
-
-For interconnected networks, an important performance parameter is the bisection bandwidth.
-It is defined as the minimum bandwidth between two equal partitions of the network.
-For a mesh topology, it is $\sqrt{n}*B$, where n is the number of switches and B is the bandwidth of a single link.
-For torus, it is twice that of mesh but for a binary tree, it is only B.
-To address this issue, instead of using a single link between switches more links can be used between them as we go higher in the tree hierarchy.
-Such topology is called a fat tree~\cite{Leiserson1985}. 
-Although this will improve the bisection bandwidth, the switches in the upper hierarchy becomes more and more complex.
-We analyze whether using asynchronous switches with same link width can provide similar performance of fat trees while keeping relatively simpler switches.
