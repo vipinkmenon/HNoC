@@ -7,12 +7,16 @@
     %\begin{figure}
         \centering
         \begin{tikzpicture}[scale=2.0]
-            \begin{semilogyaxis}[width=\textwidth,height=0.6\textwidth,xlabel=Number of PEs ,ylabel= Worst Latency (ns),legend pos=north west,ymax=10,xtick={4,8,16,32},xticklabels={4,8,16,32},legend cell align=left]
+            \begin{semilogyaxis}[width=\textwidth,height=0.6\textwidth,xlabel=Number of PEs ,ylabel= Worst Latency (ns),legend style={font=\small},legend pos=south east,ymax=10,xtick={4,8,16,32},xticklabels={4,8,16,32},legend cell align=left]
                 \addplot [color = green,thick,mark=*]table[x=NumPE,y=Latency] {HNocRandomMax.txt};
 				\addlegendentry{Async Bin. tree}
                 \addplot [color = red,thick,mark=*]table[x=NumPE,y=Latency] {BtreeRandomMax.txt};
 				\addlegendentry{Binary tree}
                 \addplot [color = blue,thick,mark=*]table[x=NumPE,y=Latency] {BftRandomMax.txt};
+				\addlegendentry{Fat tree}
+				\addplot [color = black,thick,mark=*]table[x=NumPE,y=Latency] {MeshRandomMax.txt};
+				\addlegendentry{Fat tree}
+				\addplot [color = brown,thick,mark=*]table[x=NumPE,y=Latency] {TorusRandomMax.txt};
 				\addlegendentry{Fat tree}
             \end{semilogyaxis}
         \end{tikzpicture}%

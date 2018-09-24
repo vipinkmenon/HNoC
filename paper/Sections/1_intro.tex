@@ -11,16 +11,8 @@ This limits the overall clock performance thus bringing down the system performa
 Theoretically instead of increasing the link width between tree levels, increasing the clock frequency between them should provide the same benefit.
 In traditional networks this may not be possible since the network interfaces operate on predefined standards which restricts the frequency of operation.
 Modern FPGAs support asynchronous FIFOs, which makes the implementation of asynchronous switches easier.
-These switches have architecture simpler than fat tree switches and supports better clock frequencies.
+These switches have simpler architecture than fat tree switches and support better clock frequency.
 But they are more resource intensive compared to traditional binary trees.
-
-
-\begin{figure}[t]
-\centering
-   \includegraphics[width=\columnwidth]{Figures/HNoC.pdf}
-   \caption{(a)A binary tree topology utilizing switches operating at different clock frequencies (b) The tree as an H-tree for better floorplanning on the FPGA}
-   \label{fig:btree}
-\end{figure}
 
 Although asynchronous NoCs are proposed before for integrated circuits, a quantitative analysis is missing in the literature especially for FPGA implementations~\cite{Bjerregaard2005, USP2011}.
 In this paper we present a quantitative analysis of different tree topologies namely the binary tree, binary fat tree and asynchronous binary tree when targeting FPGA based NoC implementation. 

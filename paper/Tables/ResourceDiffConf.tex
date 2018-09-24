@@ -1,0 +1,21 @@
+\begin{table}[!t]
+  \centering
+  \caption{Resource utilization and maximum clock performance of mesh and torus NoC topologies with different configurations} 
+  \begin{tabular}{l|c|l|l|l}
+      \toprule
+      NoC & \# of PEs & LUTs & FFs & Fmax (MHz) \\
+	  \midrule
+	  Torus  & 4  & 3763 & 960   & 164\\
+	  Torus  & 8  & 7615 & 1920  & 164\\
+	  Torus  & 16  & 15365 & 3840 & 149\\
+	  Torus  & 32  & 32689 & 7680 & 141\\
+	  \midrule
+	  Mesh  & 4  & 1337 & 576   & 215\\
+	  Mesh  & 8  & 3940 & 1344  & 179\\
+	  Mesh  & 16  & 10471 & 3072 & 165\\
+	  Mesh  & 32  & 23798 & 6528 & 158\\
+	  %Connect Mesh  & 8$\times$8  & 68292 & 15360 & 132\\  
+      \bottomrule
+    \end{tabular}
+	\label{table:NocResourceUtilisation}
+\end{table}

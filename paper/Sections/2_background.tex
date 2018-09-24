@@ -11,22 +11,13 @@ In a binary tree, switches are arranged in a hierarchy.
 Each switch has a parent node and two child nodes.
 Unlike mesh and torus where each switch has a corresponding PE, in a tree topology only the switches at the bottom most level are connected to PEs.
 
-There have been previous efforts to develop open-source NoC architectures specifically targeting FPGAs.
-CONNECT NoC generator is the most popular among them~\cite{papa_connect_fpga2012}.
-CONNECT is inspired by the fact that FPGAs have a large routing infrastructure available when compared to memory and logic elements and tries to exploit it. 
-It supports different NoC topologies and uses a single stage pipeline mechanism  to minimize hardware and latency. 
-It has low operating frequency and is still quite resource intensive as seen in Section~\ref{sec_results}. 
-Split-merge is another NoC infrastructure developed at University of Pennsylvania~\cite{Huan2012}.
-It tries to overcome the limited clock performance of CONNECT at the expense of few more resources.
-Both CONNECT and Split-merge use credit based traffic control and requires the application developer to have special logic to manage credits.
 
-Presently available open-source architectures are capable of providing relatively high throughput but are quite resource intensive.
-Split-merge source code is available in BlueSpec and is challenging to customize.
-Both NoCs use custom PE interfaces making it difficult to interface off-the-shelf IP cores.
-Researchers have claimed to develop lean NoCs targeting FPGAs but are not publicly available~\cite{hoplite_fpl2015}.
-The main motivation for this work is to provide a lite-weight NoC implementation with standard communication interface and high clock performance.
-We aim to provide an end-to-end solution where NoC developers can easily interface it with a host computer for data communication.
-We call this platform as OpenNoC.
+\begin{figure}[t]
+\centering
+   \includegraphics[width=\columnwidth]{Figures/HNoC.pdf}
+   \caption{(a)A binary tree topology utilizing switches operating at different clock frequencies (b) The tree as an H-tree for better floorplanning on the FPGA}
+   \label{fig:btree}
+\end{figure}
 
 For interconnected networks, an important performance parameter is the bisection bandwidth.
 It is defined as the minimum bandwidth between two equal partitions of the network.
@@ -35,4 +26,17 @@ For torus, it is twice that of mesh but for a binary tree, it is only B.
 To address this issue, instead of using a single link between switches more links can be used between them as we go higher in the tree hierarchy.
 Such topology is called a fat tree~\cite{Leiserson1985}. 
 Although this will improve the bisection bandwidth, the switches in the upper hierarchy becomes more and more complex.
-We analyze whether using asynchronous switches with same link width can provide similar performance of fat trees while keeping relatively simpler switches.
+In this work we analyze whether using asynchronous switches with same link width can provide similar performance of fat trees while keeping relatively simpler switches.
+
+There have been previous efforts to develop NoC architectures specifically targeting FPGAs.
+CONNECT NoC generator is the most popular among them~\cite{papa_connect_fpga2012}.
+CONNECT is inspired by the fact that FPGAs have a large routing infrastructure available compared to memory and logic elements and tries to exploit it. 
+It supports different NoC topologies and uses a single stage pipeline mechanism  to minimize hardware and latency. 
+It has low operating frequency and is still quite resource intensive as seen in Section~\ref{sec:result}. 
+Split-merge is another NoC infrastructure developed at University of Pennsylvania~\cite{Huan2012}.
+It tries to overcome the limited clock performance of CONNECT at the expense of few more resources.
+
+To the best of our knowledge, there have been no previous efforts to implement asynchronous switch-based NoCs targeting FPGAs. 
+In this work we give a quantitative analysis of the performance of asynchronous binary trees.
+We compare their performance with traditional and fat trees as well as other popular FPGA NoCs.
+The binary tree implementations are available as open-source for other researchers to verify and to improvise the designs.

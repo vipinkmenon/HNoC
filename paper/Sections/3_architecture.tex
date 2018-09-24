@@ -71,7 +71,7 @@ The routing is flit level routing meaning each packet is expected to have the de
 The routing table of each switch in AsyncBTree contains four entries corresponding to the smallest and largest PE addresses in its left and right sub-trees.
 If the destination address is within the range of left sub-tree, it is routed left and if it is within the range of right sub-tree the packet is sent right.
 If the address is not within these ranges, the packet is routed towards the parent node.
-Due to the deterministic routing policy and since the routing is at flit-level, the NoC is free of dead or live locks.
+Due to the deterministic routing policy and since the routing is at packet-level, the NoC is free of dead or live locks.
 
 %\begin{figure}[t]
 %\centering
@@ -82,30 +82,32 @@ Due to the deterministic routing policy and since the routing is at flit-level, 
 %
 %\section{Flow control}
 
-%\begin{figure}[t]
-%\centering
-%   \includegraphics[width=0.7\columnwidth]{Figures/axi.pdf}
-%   \caption{AXI4-Stream protocol}
-%   \label{fig:axi}
-%\end{figure}
+\begin{figure}[t]
+\centering
+   \includegraphics[width=\columnwidth]{Figures/axi.pdf}
+   \caption{AXI4-Stream protocol}
+   \label{fig:axi}
+\end{figure}
 
 \begin{figure*}[t]
 \centering    %%% not \center
-\subfigure[Random]{\includegraphics[width=0.55\columnwidth]{Data/randomTput.pdf}}
-\subfigure[Tornado]{\includegraphics[width=0.55\columnwidth]{Data/tornadoTput.pdf}}
+\subfigure[Random]{\includegraphics[width=0.65\columnwidth]{Data/randomTput.pdf}}
+\subfigure[Tornado]{\includegraphics[width=0.65\columnwidth]{Data/tornadoTput.pdf}}
 %\subfigure[Complement]{\label{fig:complementtput}\includegraphics[width=0.5\columnwidth]{Data/complementTput.pdf}}
-\subfigure[Reverse]{\includegraphics[width=0.55\columnwidth]{Data/reverseTput.pdf}}
-\caption{Throughput of different Binary NoC architectures with varying size corresponding to different traffic patterns}
+\subfigure[Reverse]{\includegraphics[width=0.65\columnwidth]{Data/reverseTput.pdf}}
+\caption{Throughput of different Binary NoC architectures with varying size corresponding to different traffic patterns when all of them 
+are clocked at the same clock frequency}
 \label{fig:tput}
 \end{figure*}
 
 \begin{figure*}[t]
 \centering     %%% not \center
-\subfigure[Random]{\includegraphics[width=0.55\columnwidth]{Data/randomLatency.pdf}}
-\subfigure[Tornado]{\includegraphics[width=0.55\columnwidth]{Data/tornadoLatency.pdf}}
+\subfigure[Random]{\includegraphics[width=0.65\columnwidth]{Data/randomLatency.pdf}}
+\subfigure[Tornado]{\includegraphics[width=0.65\columnwidth]{Data/tornadoLatency.pdf}}
 %\subfigure[Complement]{\label{fig:complementlatency}\includegraphics[width=0.5\columnwidth]{Data/complementLatency.pdf}}
-\subfigure[Reverse]{\includegraphics[width=0.55\columnwidth]{Data/reverseLatency.pdf}}
-\caption{Maximum latency of different Binary NoC architectures with varying size corresponding to different traffic patterns}
+\subfigure[Reverse]{\includegraphics[width=0.65\columnwidth]{Data/reverseLatency.pdf}}
+\caption{Throughput of different Binary NoC architectures with varying size corresponding to different traffic patterns when all of them 
+are clocked at the same clock frequency}
 \label{fig:latency}
 \end{figure*}
 
@@ -113,7 +115,7 @@ Due to the deterministic routing policy and since the routing is at flit-level, 
 The current AsyncBTree implementation does not include virtual channels and flow control is achieved through at electrical signaling level.
 The interface between switches as well as switches and PEs confirm to AXI4-stream interface.
 Such interface also enables seamless integration of several vendor supported IP cores directly with the NoC.
-As per AXI4-stream protocol, a successful data transfer happens only when the \emph{valid} signal from the transmitter and \emph{ready} signal from the receiver are asserted simultaneously.
+As per AXI4-stream protocol, a successful data transfer happens only when the \emph{valid} signal from the transmitter and \emph{ready} signal from the receiver are asserted simultaneously as shown in Fig.~\ref{fig:axi}.
 
 For comparison purpose, following the same design principles, we implemented traditional (synchronous) binary trees also.
 They follow the same arbitration and routing architecture except that all asynchronous FIFOs are replaced with synchronous counterparts.
