@@ -4,7 +4,8 @@ Network on chip is an interconnect approach that helps different IPs and subsyst
 In this approach each processing element (PE) is connected to a switch and multiple switches are interconnected to form a network.
 A PE could be a processor core, a DSP core or an IP block.
 The network infrastructure helps in routing data from one PE to another in the form of data packets. 
-Based on how the switches are interconnected, there are different NoC topologies such as mesh, torus, tree, ring, star, BFT etc.
+Based on how the switches are interconnected, there are different NoC topologies such as mesh, torus, tree, ring, star, BFT etc. as shown in Fig.~\ref{fig:topologies}.
+
 In a mesh topology every switch, except the ones on the edges, is connected to 4 other neighboring switches.
 A torus topology is similar to mesh but cyclic in nature.
 In a binary tree, switches are arranged in a hierarchy.
@@ -14,9 +15,9 @@ Unlike mesh and torus where each switch has a corresponding PE, in a tree topolo
 
 \begin{figure}[t]
 \centering
-   \includegraphics[width=\columnwidth]{Figures/HNoC.pdf}
-   \caption{(a)A binary tree topology utilizing switches operating at different clock frequencies (b) The tree as an H-tree for better floorplanning on the FPGA}
-   \label{fig:btree}
+   \includegraphics[width=\columnwidth]{Figures/topologies.pdf}
+   \caption{Different NoC topologies}
+   \label{fig:topologies}
 \end{figure}
 
 For interconnected networks, an important performance parameter is the bisection bandwidth.
@@ -35,6 +36,14 @@ It supports different NoC topologies and uses a single stage pipeline mechanism 
 It has low operating frequency and is still quite resource intensive as seen in Section~\ref{sec:result}. 
 Split-merge is another NoC infrastructure developed at University of Pennsylvania~\cite{Huan2012}.
 It tries to overcome the limited clock performance of CONNECT at the expense of few more resources.
+
+\begin{figure}[t]
+\centering
+   \includegraphics[width=\columnwidth]{Figures/HNoC.pdf}
+   \caption{(a)A binary tree topology utilizing switches operating at different clock frequencies (b) The tree as an H-tree for better floorplanning on the FPGA}
+   \label{fig:btree}
+\end{figure}
+
 
 To the best of our knowledge, there have been no previous efforts to implement asynchronous switch-based NoCs targeting FPGAs. 
 In this work we give a quantitative analysis of the performance of asynchronous binary trees.
