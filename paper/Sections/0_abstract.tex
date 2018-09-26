@@ -1,10 +1,10 @@
 \begin{abstract}
 Binary tree topology generally fails to attract network on chip (NoC) implementations due to its low bisection bandwidth.
 Fat trees are proposed to alleviate this issue by using increasingly thicker links to connect switches towards the root node.
-This scheme is very efficient in interconnected networks such as in computer networks, which use generic switches for interconnecting compute nodes.
-In an NoC context, especially for field programmable gate arrays (FPGAs), fat trees require more complex switches as we move higher in the hierarchy which restricts the maximum clock frequency at which the network can operate.
-This can offset the higher bandwidth achieved through using fatter links.
-In this paper we discuss the implementation of a binary tree based NoC, which achieves better bandwidth by varying the clock frequency between the switches as we move higher in the hierarchy.
-This scheme enables using simpler switch architecture enabling higher maximum frequency of operation.
-The effect on bandwidth and resource requirement of this architecture is compared with other FPGA-based NoCs for different number of nodes and different network traffic patterns.
+This scheme is very efficient in interconnected networks such as in computer networks, which use generic switches for interconnection.
+In an NoC context, especially for field programmable gate arrays (FPGAs), fat trees require more complex switches as we move higher in the hierarchy.
+This restricts the maximum clock frequency at which the network operates and offsets the higher bandwidth achieved through using fatter links.
+In this paper we discuss the implementation of a binary tree-based NoC, which achieves better bandwidth by varying the clock frequency between the switches as we move higher in the hierarchy.
+This scheme enables using simpler switch architecture thus supporting higher maximum frequency of operation.
+The effect on bandwidth and resource requirement of this architecture is compared with other FPGA-based NoCs for different network sizes and traffic patterns.
 \end{abstract}

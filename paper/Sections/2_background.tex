@@ -10,7 +10,7 @@ In a mesh topology every switch, except the ones on the edges, is connected to 4
 A torus topology is similar to mesh but cyclic in nature.
 In a binary tree, switches are arranged in a hierarchy.
 Each switch has a parent node and two child nodes.
-Unlike mesh and torus where each switch has a corresponding PE, in a tree topology only the switches at the bottom most level are connected to PEs.
+Unlike mesh and torus where each switch has a corresponding PE, in a tree topology only the switches at the bottom most level~(leaf nodes) are connected to PEs.
 
 
 \begin{figure}[t]
@@ -22,9 +22,9 @@ Unlike mesh and torus where each switch has a corresponding PE, in a tree topolo
 
 For interconnected networks, an important performance parameter is the bisection bandwidth.
 It is defined as the minimum bandwidth between two equal partitions of the network.
-For a mesh topology, it is $\sqrt{n}*B$, where n is the number of switches and B is the bandwidth of a single link.
-For torus, it is twice that of mesh but for a binary tree, it is only B.
-To address this issue, instead of using a single link between switches more links can be used between them as we go higher in the tree hierarchy.
+For a mesh topology, it is $\sqrt{n}*B$, where \emph{n} is the number of switches and \emph{B} is the bandwidth of a single link.
+For torus, it is twice that of mesh but for a binary tree, it is only \emph{B}.
+To address this issue, instead of using a single link between switches, more links can be used between them as we go higher in the tree hierarchy.
 Such topology is called a fat tree~\cite{Leiserson1985}. 
 Although this will improve the bisection bandwidth, the switches in the upper hierarchy becomes more and more complex.
 In this work we analyze whether using asynchronous switches with same link width can provide similar performance of fat trees while keeping relatively simpler switches.
