@@ -6,23 +6,23 @@ An AsyncBTree (asynchronous binary tree) tries to achieve better performance com
 Fig.~\ref{fig:btree} shows the architecture of an AsyncBTree utilizing different kind of optimized switches at different levels.
 The detailed architecture of the switches are discussed in Section~\ref{sec:switch}.
 The binary tree is placed and routed in the FPGA as an H-tree for efficient resource utilization and better floor-planning.
-%Such placement also supports partial reconfiguration of a portion of the NoC in an efficient manner.
-As the first optimization, the root node of the tree is removed and the switches at level-1 are directly connected.
-Since the connectivity of the root node is only 2, in practical systems they act as a transparent switch.
-%They could be useful where packets are injected to the NoC through the root node by making its connectivity into 3.
-%For FPGAs external interfaces such as PCI express and Ethernet are used for injecting packets.
-%The hard-macros corresponding to these interfaces are situated along the periphery of the chips.
-%Thus it will provide better clock performance when the packets are injected from one the leaf nodes which incorporates one of these hard macros.
-Removing the root node helps in reducing the resource utilization.
+Such placement also supports partial reconfiguration of a portion of the NoC in an efficient manner.
 
 \begin{figure}[t]
 \centering
-   \includegraphics[width=\columnwidth]{Figures/switch1_2.pdf}
-   \caption{Architecture of the different switches used in the AsyncBTree. (a) Type-1 switch used with the leaf nodes (PEs), with complete cross bar switch and asynchronous 
-   FIFOs with receive and transmit interfaces (b) Type-2 switch used in intermediate nodes with partial crossbar switch and synchronous FIFOs (c) Type-3 switches used in intermediate
-   switches with partial cross bar and asynchronous FIFOs with receive and transmit interfaces.}
-   \label{fig:switchArch}
+   \includegraphics[width=\columnwidth]{Figures/axi.pdf}
+   \caption{AXI4-Stream protocol}
+   \label{fig:axi}
 \end{figure}
+
+As the first optimization, the root node of the tree is removed and the switches at level-1 are directly connected.
+Since the connectivity of the root node is only 2, in practical systems they act as a transparent switch.
+They could be useful where packets are injected to the NoC through the root node by making its connectivity into 3.
+For FPGAs external interfaces such as PCI express and Ethernet are used for injecting packets.
+The hard-macros corresponding to these interfaces are situated along the periphery of the chips.
+Thus it will provide better clock performance when the packets are injected from one the leaf nodes which incorporates one of these hard macros.
+Removing the root node helps in reducing the resource utilization.
+
 
 \subsection{Switches}
 \label{sec:switch}
@@ -82,12 +82,6 @@ Due to the deterministic routing policy and since the routing is at packet-level
 %
 %\section{Flow control}
 
-\begin{figure}[t]
-\centering
-   \includegraphics[width=\columnwidth]{Figures/axi.pdf}
-   \caption{AXI4-Stream protocol}
-   \label{fig:axi}
-\end{figure}
 
 \begin{figure*}[t]
 \centering    %%% not \center
