@@ -112,6 +112,30 @@ are clocked at the same clock frequency}
 \end{figure*}
 
 
+
+\begin{figure*}[t]
+\centering     %%% not \center
+\subfigure[Random]{\label{fig:randtput}\includegraphics[width=0.65\columnwidth]{Data/randomTputMax.pdf}}
+\subfigure[Tornado]{\label{fig:torndadotput}\includegraphics[width=0.65\columnwidth]{Data/tornadoTputMax.pdf}}
+%\subfigure[Complement]{\label{fig:complementtput}\includegraphics[width=0.5\columnwidth]{Data/complementTputMax.pdf}}
+\subfigure[Reverse]{\label{fig:reversetput}\includegraphics[width=0.65\columnwidth]{Data/reverseTputMax.pdf}}
+\caption{Throughput of different Binary NoC architectures with varying size corresponding to different traffic patterns when all of them 
+are clocked at the maximum supported clock frequency}
+\label{fig:tputmax}
+\end{figure*}
+
+\begin{figure*}[t]
+\centering     %%% not \center
+\subfigure[Random]{\label{fig:rndlatency}\includegraphics[width=0.65\columnwidth]{Data/randomLatencyMax.pdf}}
+\subfigure[Tornado]{\label{fig:tornadolatency}\includegraphics[width=0.65\columnwidth]{Data/tornadoLatencyMax.pdf}}
+%\subfigure[Complement]{\label{fig:complementlatency}\includegraphics[width=0.5\columnwidth]{Data/complementLatencyMax.pdf}}
+\subfigure[Reverse]{\label{fig:reverselatency}\includegraphics[width=0.65\columnwidth]{Data/reverseLatencyMax.pdf}}
+\caption{Maximum latency of different Binary NoC architectures with varying size corresponding to different traffic patterns when all of them 
+are clocked at the maximum supported clock frequency}
+\label{fig:latmax}
+\end{figure*}
+
+
 The current AsyncBTree implementation does not include virtual channels and flow control is achieved through at electrical signaling level.
 The interface between switches as well as switches and PEs confirm to AXI4-stream interface.
 Such interface also enables seamless integration of several vendor supported IP cores directly with the NoC.

@@ -4,7 +4,8 @@ Network on chip is an interconnect approach that helps different IPs and subsyst
 In this approach each processing element (PE) is connected to a switch and multiple switches are interconnected to form a network.
 A PE could be a processor core, a DSP core or an IP block.
 The network infrastructure helps in routing data from one PE to another in the form of data packets. 
-Based on how the switches are interconnected, there are different NoC topologies such as mesh, torus, tree, ring, star, BFT etc. as shown in Fig.~\ref{fig:topologies}.
+NoCs have found varying applications such as image and signal processing~\cite{Joshi2007}, multi-processor systems~\cite{Bertozzi2005}, virtual machine implementations~\cite{Mathias2006} etc.
+Based on how the switches are interconnected, there are different NoC topologies such as mesh, torus, tree, ring, star, BFT etc. as shown in Fig.~\ref{fig:topologies}~\cite{ORTINOBON201624}.
 
 In a mesh topology every switch, except the ones on the edges, is connected to 4 other neighboring switches.
 A torus topology is similar to mesh but cyclic in nature.
@@ -20,7 +21,7 @@ Unlike mesh and torus where each switch has a corresponding PE, in a tree topolo
    \label{fig:topologies}
 \end{figure}
 
-For interconnected networks, an important performance parameter is the bisection bandwidth.
+For interconnected networks, an important performance parameter is the bisection bandwidth~\cite{Wen-Chung2012}.
 It is defined as the minimum bandwidth between two equal partitions of the network.
 For a mesh topology, it is $\sqrt{n}*B$, where \emph{n} is the number of switches and \emph{B} is the bandwidth of a single link.
 For torus, it is twice that of mesh but for a binary tree, it is only \emph{B}.
@@ -28,6 +29,8 @@ To address this issue, instead of using a single link between switches, more lin
 Such topology is called a fat tree~\cite{Leiserson1985}. 
 Although this will improve the bisection bandwidth, the switches in the upper hierarchy becomes more and more complex.
 In this work we analyze whether using asynchronous switches with same link width can provide similar performance of fat trees while keeping relatively simpler switches.
+
+
 
 There have been previous efforts to develop NoC architectures specifically targeting FPGAs.
 CONNECT NoC generator is the most popular among them~\cite{papa_connect_fpga2012}.

@@ -28,29 +28,6 @@ Table~\ref{table:NocResourceUtilisation} lists the resource utilization and cloc
 Data shows that these topologies are quite resource intensive compared to all binary tree configurations, especially the number of LUTs.
 In terms of clock performance, for larger NoC configurations, they perform better than fat trees but inferior to traditional binary trees and the proposed AsyncBTrees.
 
-
-\begin{figure*}[t]
-\centering     %%% not \center
-\subfigure[Random]{\label{fig:randtput}\includegraphics[width=0.65\columnwidth]{Data/randomTputMax.pdf}}
-\subfigure[Tornado]{\label{fig:torndadotput}\includegraphics[width=0.65\columnwidth]{Data/tornadoTputMax.pdf}}
-%\subfigure[Complement]{\label{fig:complementtput}\includegraphics[width=0.5\columnwidth]{Data/complementTputMax.pdf}}
-\subfigure[Reverse]{\label{fig:reversetput}\includegraphics[width=0.65\columnwidth]{Data/reverseTputMax.pdf}}
-\caption{Throughput of different Binary NoC architectures with varying size corresponding to different traffic patterns when all of them 
-are clocked at the maximum supported clock frequency}
-\label{fig:tputmax}
-\end{figure*}
-
-\begin{figure*}[t]
-\centering     %%% not \center
-\subfigure[Random]{\label{fig:rndlatency}\includegraphics[width=0.65\columnwidth]{Data/randomLatencyMax.pdf}}
-\subfigure[Tornado]{\label{fig:tornadolatency}\includegraphics[width=0.65\columnwidth]{Data/tornadoLatencyMax.pdf}}
-%\subfigure[Complement]{\label{fig:complementlatency}\includegraphics[width=0.5\columnwidth]{Data/complementLatencyMax.pdf}}
-\subfigure[Reverse]{\label{fig:reverselatency}\includegraphics[width=0.65\columnwidth]{Data/reverseLatencyMax.pdf}}
-\caption{Maximum latency of different Binary NoC architectures with varying size corresponding to different traffic patterns when all of them 
-are clocked at the maximum supported clock frequency}
-\label{fig:latmax}
-\end{figure*}
-
 Fig.~\ref{fig:tput} and~\ref{fig:latency} compares the throughput and latency of the three implementations with different NoC sizes for different traffic patterns such as random, tornado and reverse~\cite{Bahn2008}.
 The different patterns are generated based on how the destination addresses as generated for each data packet.
 In each case, the PE to switch interface is clocked at the lowest frequency supported among the three implementations.
@@ -67,6 +44,8 @@ Again for smaller NoC sizes (8 or less) AsyncTree performance is better.
 Several FPGA-based multi-processor systems have 8 core or less thus AsyncBTree could be much suitable for their implementation.
 
 Fig.~\ref{fig:tputPerf} compares the performance of each NoC compared to their resource utilization.
+The total number of resources is calculated by adding the number of LUTs with the scaled number of flip-flops.
+The number of flip-flops is multiplied by a factor of 0.5 since in Xilinx 7-series FPGAs there are twice the number of flip-flops compared to LUTs in every logic slice.
 Synchronous binary trees clearly have an upper hand in this regard.
 AsyncBTree give moderately high throughput by consuming relatively less resources.
 But for larger NoC size, mesh topology is still the suitable candidate.
