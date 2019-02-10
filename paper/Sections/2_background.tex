@@ -49,13 +49,13 @@ In this work we analyze whether using asynchronous switches with same link width
 But it requires to explicitly set up a channel on the routing path before transmitting the first payload packet, and a flow cannot use more than its guaranteed bandwidth share even if the network is underutilized.
 The MANGO~\cite{Bjerregaard2006} architecture is a clock-less NoC to provide connection-oriented guaranteed services (GS) as well as connection-less best-effort (BE) routing.
 The clock-less implementation has the advantage of zero dynamic power consumption when the network is idle, but the main challenge is its interfacing with the standard IP-cores.
-IP cores available from vendors and third party developers are synchronous in nature thus requiring a clock signal between them and the NoC.
+IP cores available from vendors and third-party developers are synchronous in nature thus requiring a clock signal between them and the NoC.
 Both these implementations target ASIC implementations and are not evaluated on FPGAs to understand the maximum possible speed of their operation.
 
 There have been previous efforts to develop NoC architectures specifically targeting FPGAs.
 CONNECT NoC generator is the most popular among them~\cite{papa_connect_fpga2012}.
 CONNECT is inspired by the fact that FPGAs have a large routing infrastructure available compared to memory and logic elements and tries to exploit it. 
-It supports different NoC topologies and uses a single stage pipeline mechanism  to minimize hardware and latency. 
+It supports different NoC topologies and uses a single stage pipeline mechanism to minimize hardware and latency. 
 It has low operating frequency and is still quite resource intensive as seen in Section~\ref{sec:result}. 
 Split-merge is another NoC infrastructure developed at University of Pennsylvania~\cite{Huan2012}.
 It tries to overcome the limited clock performance of CONNECT at the expense of few more resources.

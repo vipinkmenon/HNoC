@@ -9,14 +9,14 @@ The designs are simulated as well as implemented with Vivado 2017.3 targeting Xi
 \input Tables/SystemResource
 Table~\ref{table:systemResourceConsumption} compares the resource utilization and the maximum frequency of operation for the binary tree, AsyncBTree, and fat tree for different network sizes (number of PEs).
 For all implementations, the interface between PEs and the switches are kept 32-bits wide.
-As expected binary trees are least resource intensive due to their simple switch architecture.
+As expected, binary trees are least resource intensive due to their simple switch architecture.
 AsyncBTree consumes 45\% to 65\% more LUTs (look-up-tables) and about 165\% more flip flops compared to the binary tree implementation.
 The multiple frequencies in the AsyncBTree rows represent the maximum clock frequency supported at different tree levels.
 At the lowest level (switches connected to PEs), the clock performance is better than that of binary trees but deteriorates as going higher in the hierarchy.
 This could be because of the additional pipelining present inside the asynchronous FIFOs.
 This also means if AsyncBTree is used as a synchronous NoC (all tree levels are clocked by a single clock source), its resource consumption and performance will be worse than a binary tree. 
 
-Compared to AsyncBTree, fat trees consumes $\sim$3.7$\times$ LUTs but less than half the number of flip flops.
+Compared to AsyncBTree, fat trees consume $\sim$3.7$\times$ LUTs but less than half the number of flip flops.
 AsyncBTree requires more flip flops due to the presence of asynchronous FIFOs.
 For fat trees, the impact due to complex switches can be clearly seen in the clock performance, where they are not even able to achieve 200 MHz for a high-end FPGA.
 Due to the low clock performance of the NoC, the PEs also have to be under-clocked in most scenarios for overall synchronous operations.
